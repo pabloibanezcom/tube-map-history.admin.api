@@ -1,0 +1,8528 @@
+[
+    {
+        "name": "Abbey Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0015713,
+                51.5319333
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Abbey Wood",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1229,
+                51.4915
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Acton Central",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2634,
+                51.5088
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Acton Main Line",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2669,
+                51.5169
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Acton Town",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.278126,
+                51.5025
+            ]
+        },
+        "lines": ["Piccadilly","District"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Albany Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1266,
+                51.4358
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Aldgate",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.07537,
+                51.51394
+            ]
+        },
+        "lines": ["Circle","Metropolitan"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Aldgate East",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.07178,
+                51.51514
+            ]
+        },
+        "lines": ["District","Hammersmith &amp; City"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Alexandra Palace",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1197,
+                51.5983
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "All Saints",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.012832,
+                51.510301
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Alperton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.30061,
+                51.54097
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Amersham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.60732,
+                51.67435
+            ]
+        },
+        "lines": ["Metropolitan","TfL Rail"
+        ],
+        "farezones": ["9"
+        ]
+    },
+    {
+        "name": "Anerley",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0651,
+                51.4125
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Angel",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.10579,
+                51.53253
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Angel Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0495,
+                51.6118
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Archway",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.13474,
+                51.56536
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Arnos Grove",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.13355,
+                51.61625
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Arsenal",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.10561,
+                51.55847
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Baker Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.15708,
+                51.522236
+            ]
+        },
+        "lines": ["Bakerloo","Circle","Hammersmith &amp; City","Jubilee","Metropolitan"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Balham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.152945844,
+                51.44344113
+            ]
+        },
+        "lines": ["Northern","TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Bank",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.08905843,
+                51.5134047
+            ]
+        },
+        "lines": ["Central","Northern","Waterloo &amp; City","DLR"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Banstead",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2132,
+                51.3292
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Barbican",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.097758,
+                51.520865
+            ]
+        },
+        "lines": ["Circle","Hammersmith &amp; City","Metropolitan"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Barking",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.08018,
+                51.54079
+            ]
+        },
+        "lines": ["District","Hammersmith &amp; City","London Overground","TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Barkingside",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.08854,
+                51.58543
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Barnehurst",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1595,
+                51.4648
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Barnes",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.242,
+                51.4671
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Barnes Bridge",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2523,
+                51.4722
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Barons Court",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.21434,
+                51.490281
+            ]
+        },
+        "lines": ["Piccadilly","District"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Battersea Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1477,
+                51.4779
+            ]
+        },
+        "lines": ["London Overground","TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Bayswater",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.187569,
+                51.51224
+            ]
+        },
+        "lines": ["Circle","District"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Beckenham Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0161,
+                51.4246
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Beckenham Junction",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0257,
+                51.4109
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Beckton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.06164,
+                51.514411
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Beckton Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.054778,
+                51.508758
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Becontree",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1262,
+                51.54029
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Bellingham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0199,
+                51.4342
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Belmont",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1986,
+                51.344
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Belsize Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.16465,
+                51.55036
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Belvedere",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1524,
+                51.4927
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Bermondsey",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0635,
+                51.49813
+            ]
+        },
+        "lines": ["Jubilee"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Berrylands",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2803,
+                51.3988
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Bethnal Green",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.05504,
+                51.52718
+            ]
+        },
+        "lines": ["Central","London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Bexley",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1479,
+                51.4403
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Bexleyheath",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1338,
+                51.4635
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Bickley",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0441,
+                51.3995
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Birkbeck",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0568,
+                51.4039
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Blackfriars",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1041905,
+                51.5114403
+            ]
+        },
+        "lines": ["Circle","District","TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Blackheath",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0064,
+                51.4663
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Blackhorse Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.04104,
+                51.58698
+            ]
+        },
+        "lines": ["Victoria","London Overground","TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Blackwall",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.007438,
+                51.507903
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Bond Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.14897,
+                51.51461
+            ]
+        },
+        "lines": ["Central","Jubilee"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Borough",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.09446,
+                51.50095
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Boston Manor",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.325573,
+                51.495371
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Bounds Green",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.12418,
+                51.607
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["3","4"
+        ]
+    },
+    {
+        "name": "Bow Church",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.021,
+                51.5289
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Bow Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.02482,
+                51.52709
+            ]
+        },
+        "lines": ["District","Hammersmith &amp; City"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Bowes Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1209,
+                51.6078
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3","4"
+        ]
+    },
+    {
+        "name": "Brent Cross",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.21414,
+                51.57693
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Brentford",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3096,
+                51.4875
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Brentwood",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.3001,
+                51.6137
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["9"
+        ]
+    },
+    {
+        "name": "Brimsdown",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0301,
+                51.6556
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Brixton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.115421,
+                51.46239
+            ]
+        },
+        "lines": ["Victoria","TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Brockley",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0369,
+                51.4645
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Bromley North",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0179,
+                51.4088
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Bromley South",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0181,
+                51.4004
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Bromley-by-Bow",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.01282,
+                51.52466
+            ]
+        },
+        "lines": ["District","Hammersmith &amp; City"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Brondesbury",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.202,
+                51.5451
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Brondesbury Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2103,
+                51.5407
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Broxbourne",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0094,
+                51.7483
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["9"
+        ]
+    },
+    {
+        "name": "Bruce Grove",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0704,
+                51.594
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Buckhurst Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.04705,
+                51.62611
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Burnt Oak",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.26427,
+                51.603
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Bush Hill Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0691,
+                51.6418
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Bushey",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.385,
+                51.644
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["8"
+        ]
+    },
+    {
+        "name": "Caledonian Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.11802,
+                51.5485
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Caledonian Road & Barnsbury",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1145,
+                51.5432
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Cambridge Heath",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0572,
+                51.5321
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Camden Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1401,
+                51.5444
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Camden Town",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.14316,
+                51.5393
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Canada Water",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.04967,
+                51.49787
+            ]
+        },
+        "lines": ["Jubilee","London Overground","TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Canary Wharf",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.01987,
+                51.50362
+            ]
+        },
+        "lines": ["Jubilee","DLR"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Canning Town",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.008876,
+                51.51388
+            ]
+        },
+        "lines": ["Jubilee","DLR"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Cannon Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.09047,
+                51.51141
+            ]
+        },
+        "lines": ["Circle","District","TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Canonbury",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0925,
+                51.5482
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Canons Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.29487,
+                51.6081
+            ]
+        },
+        "lines": ["Jubilee"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Carpenders Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.386,
+                51.629
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["7"
+        ]
+    },
+    {
+        "name": "Carshalton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1659,
+                51.3686
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Carshalton Beeches",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1714,
+                51.3577
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Castle Bar Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3323,
+                51.5228
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Caterham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0783,
+                51.28214
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Catford",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0261,
+                51.4447
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Catford Bridge",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.025,
+                51.4446
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Chadwell Heath",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1292,
+                51.5678
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Chafford Hundred",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.2876,
+                51.4859
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["9"
+        ]
+    },
+    {
+        "name": "Chalfont & Latimer",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.56053,
+                51.66822
+            ]
+        },
+        "lines": ["Metropolitan","TfL Rail"
+        ],
+        "farezones": ["8"
+        ]
+    },
+    {
+        "name": "Chalk Farm",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.15384,
+                51.5439
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Chancery Lane",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.11115,
+                51.51836
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Charing Cross",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.122963,
+                51.507108
+            ]
+        },
+        "lines": ["Bakerloo","Northern","TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Charlton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.031,
+                51.4868
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Cheam",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2147,
+                51.356
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Chelsfield",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1076,
+                51.3565
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Chesham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.610986426,
+                51.70522733
+            ]
+        },
+        "lines": ["Metropolitan"
+        ],
+        "farezones": ["9"
+        ]
+    },
+    {
+        "name": "Cheshunt",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0221,
+                51.7039
+            ]
+        },
+        "lines": ["London Overground","TfL Rail"
+        ],
+        "farezones": ["8"
+        ]
+    },
+    {
+        "name": "Chessington North",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3005,
+                51.3642
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Chessington South",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.308,
+                51.3569
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Chigwell",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.07511,
+                51.61795
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Chingford",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0094,
+                51.6331
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Chipstead",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1693,
+                51.3093
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Chislehurst",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0573,
+                51.4057
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Chiswick",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2683,
+                51.4813
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Chiswick Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.26866,
+                51.49466
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Chorleywood",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.518373353,
+                51.65429872
+            ]
+        },
+        "lines": ["Metropolitan","TfL Rail"
+        ],
+        "farezones": ["7"
+        ]
+    },
+    {
+        "name": "City Thameslink",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1037,
+                51.5163
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Clapham Common",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.13802,
+                51.46156
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Clapham High Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1328,
+                51.4658
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Clapham Junction",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1703,
+                51.4644
+            ]
+        },
+        "lines": ["London Overground","TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Clapham North",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1295,
+                51.46522
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Clapham South",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.147562148,
+                51.45292257
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Clapton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0571,
+                51.5617
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Clock House",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0411,
+                51.4088
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Cockfosters",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.14811,
+                51.65117
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Colindale",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.24996,
+                51.59556
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Colliers Wood",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.17800983,
+                51.41823649
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Coulsdon South",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.138,
+                51.3157
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Coulsdon Town",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.134,
+                51.3219
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Covent Garden",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.12427,
+                51.51308
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Crayford",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1786,
+                51.4483
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Crews Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1072,
+                51.6845
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Cricklewood",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2129,
+                51.5586
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Crofton Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0367,
+                51.455
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Crossharbour",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.014543,
+                51.495086
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Crouch Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1171,
+                51.572
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Croxley",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.441479115,
+                51.64733268
+            ]
+        },
+        "lines": ["Metropolitan"
+        ],
+        "farezones": ["7"
+        ]
+    },
+    {
+        "name": "Crystal Palace",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0726,
+                51.4182
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3","4"
+        ]
+    },
+    {
+        "name": "Custom House",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.026013,
+                51.509731
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Cutty Sark",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.010811,
+                51.481713
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Cyprus",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.06399,
+                51.50836
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Dagenham Dock",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.145,
+                51.5268
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Dagenham East",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.16439,
+                51.54396
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Dagenham Heathway",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.14543,
+                51.54173
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Dalston Junction",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0747,
+                51.5453
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Dalston Kingsland",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0763,
+                51.5482
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Dartford",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.2193,
+                51.4475
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["8"
+        ]
+    },
+    {
+        "name": "Debden",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.08364,
+                51.64535
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Denmark Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0894,
+                51.4683
+            ]
+        },
+        "lines": ["London Overground","TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Deptford",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0265,
+                51.4788
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Deptford Bridge",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.022496,
+                51.478016
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Devons Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.01708,
+                51.522274
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Dollis Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.23884,
+                51.5525
+            ]
+        },
+        "lines": ["Jubilee"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Drayton Green",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.33,
+                51.5165
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Drayton Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1055,
+                51.5528
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Ealing Broadway",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.30118,
+                51.51482
+            ]
+        },
+        "lines": ["Central","District","TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Ealing Common",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.28825,
+                51.50997
+            ]
+        },
+        "lines": ["Piccadilly","District"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Earl's Court",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.193906,
+                51.491521
+            ]
+        },
+        "lines": ["Piccadilly","District"
+        ],
+        "farezones": ["1","2"
+        ]
+    },
+    {
+        "name": "Earlsfield",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1877,
+                51.4424
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "East Acton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.24827,
+                51.51753
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "East Croydon",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.093,
+                51.3753
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "East Dulwich",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0804,
+                51.4616
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "East Finchley",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.164956323,
+                51.58729747
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "East Ham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0526,
+                51.53931
+            ]
+        },
+        "lines": ["District","Hammersmith &amp; City"
+        ],
+        "farezones": ["3","4"
+        ]
+    },
+    {
+        "name": "East India",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.002128,
+                51.509516
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "East Putney",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.211138,
+                51.459015
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Eastcote",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.39629,
+                51.57676
+            ]
+        },
+        "lines": ["Piccadilly","Metropolitan"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Eden Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0262,
+                51.39
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Edgware",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.27515,
+                51.61385
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Edgware Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.169068,
+                51.51956
+            ]
+        },
+        "lines": ["Bakerloo","Circle","District","Hammersmith &amp; City"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Edmonton Green",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0614,
+                51.6242
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Elephant & Castle",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.10047,
+                51.49467
+            ]
+        },
+        "lines": ["Bakerloo","Northern","TfL Rail"
+        ],
+        "farezones": ["1","2"
+        ]
+    },
+    {
+        "name": "Elm Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.19779,
+                51.54969
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Elmers End",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0496,
+                51.3981
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Elmstead Woods",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0441,
+                51.4168
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Elstree & Borehamwood",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2802,
+                51.6531
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Eltham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0515,
+                51.4555
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Elverson Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.016265,
+                51.468768
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Embankment",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.12195,
+                51.50717
+            ]
+        },
+        "lines": ["Bakerloo","Circle","District","Northern"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Emerson Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.2204,
+                51.5687
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Enfield Chase",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0908,
+                51.6529
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Enfield Lock",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0284,
+                51.6709
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Enfield Town",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0792,
+                51.6516
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Epping",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.11495,
+                51.69365
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Epsom Downs",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2389,
+                51.3237
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Erith",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1754,
+                51.4816
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Essex Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0963,
+                51.5406
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Euston",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.13303,
+                51.52774
+            ]
+        },
+        "lines": ["Northern","Victoria","London Overground","TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Euston Square",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1357,
+                51.52584
+            ]
+        },
+        "lines": ["Circle","Hammersmith &amp; City","Metropolitan"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Ewell East",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2419,
+                51.3451
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Ewell West",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2569,
+                51.3502
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Fairlop",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.09125,
+                51.59634
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Falconwood",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0799,
+                51.4592
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Farringdon",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.104789,
+                51.520086
+            ]
+        },
+        "lines": ["Circle","Hammersmith &amp; City","Metropolitan","TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Feltham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.4088,
+                51.4481
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Fenchurch Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0783,
+                51.5114
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Finchley Central",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1924,
+                51.60102
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Finchley Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.179867,
+                51.546701
+            ]
+        },
+        "lines": ["Jubilee","Metropolitan"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Finchley Road & Frognal",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1837,
+                51.5499
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Finsbury Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.10543,
+                51.56498
+            ]
+        },
+        "lines": ["Piccadilly","Victoria","TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Forest Gate",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0242,
+                51.5494
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Forest Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0533,
+                51.4393
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Fulham Broadway",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.19488,
+                51.48033
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Fulwell",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3508,
+                51.4334
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Gallions Reach",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.071911,
+                51.509111
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Gants Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.06637,
+                51.57649
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Gidea Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.2063,
+                51.582
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Gipsy Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.084,
+                51.4246
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Gloucester Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.17295341,
+                51.49408266
+            ]
+        },
+        "lines": ["Piccadilly","Circle","District"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Golders Green",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1941,
+                51.57249
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Goldhawk Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.226776,
+                51.501248
+            ]
+        },
+        "lines": ["Circle","Hammersmith &amp; City"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Goodge Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.13441,
+                51.5206
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Goodmayes",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1109,
+                51.5655
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Gordon Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0943,
+                51.6632
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Gospel Oak",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1514,
+                51.5552
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Grange Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.09258,
+                51.61326
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Grange Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0969,
+                51.6431
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Grays",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.322,
+                51.476
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["9"
+        ]
+    },
+    {
+        "name": "Great Portland Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.14397,
+                51.52391
+            ]
+        },
+        "lines": ["Circle","Hammersmith &amp; City","Metropolitan"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Green Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.14276,
+                51.50674
+            ]
+        },
+        "lines": ["Piccadilly","Jubilee","Victoria"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Greenford",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.345903,
+                51.542346
+            ]
+        },
+        "lines": ["Central","TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Greenwich",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.015391,
+                51.478016
+            ]
+        },
+        "lines": ["TfL Rail","DLR"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Grove Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0219,
+                51.4306
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Gunnersbury",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.275554312,
+                51.49126844
+            ]
+        },
+        "lines": ["District","London Overground","TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Hackbridge",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1539,
+                51.3778
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Hackney Central",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0559,
+                51.547
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Hackney Downs",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0601,
+                51.5483
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Hackney Wick",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0249,
+                51.5432
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Hadley Wood",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1761,
+                51.6688
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Haggerston",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0736,
+                51.5381
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Hainault",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.09332,
+                51.60288
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Hammersmith",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.222825,
+                51.492328
+            ]
+        },
+        "lines": ["Piccadilly","Circle","District","Hammersmith &amp; City"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Hampstead",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.17851,
+                51.55645
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Hampstead Heath",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1654,
+                51.5553
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Hampton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3717,
+                51.4159
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Hampton Court",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3425,
+                51.4028
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Hampton Wick",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3107,
+                51.4141
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Hanger Lane",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2929,
+                51.53
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Hanwell",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3389,
+                51.5116
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Harlesden",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.257622488,
+                51.53628278
+            ]
+        },
+        "lines": ["Bakerloo","London Overground","TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Harold Wood",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.2343,
+                51.5928
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Harringay",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1052,
+                51.577
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Harringay Green Lanes",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0977,
+                51.5774
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Harrow & Wealdstone",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.334725352,
+                51.59205973
+            ]
+        },
+        "lines": ["Bakerloo","London Overground","TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Harrow-on-the-Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.337052,
+                51.579335
+            ]
+        },
+        "lines": ["Metropolitan","TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Hatch End",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3682,
+                51.6097
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Hatton Cross",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.423035,
+                51.466988
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["5","6"
+        ]
+    },
+    {
+        "name": "Haydons Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.188,
+                51.4255
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Hayes",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0102,
+                51.3765
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Hayes & Harlington",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.4203,
+                51.5031
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Headstone Lane",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3566,
+                51.6019
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Heathrow Central",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.454,
+                51.471
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Heathrow Terminal 4",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.44689658,
+                51.4594777
+            ]
+        },
+        "lines": ["Piccadilly","TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Heathrow Terminal 5",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.4926154,
+                51.4701561
+            ]
+        },
+        "lines": ["Piccadilly","TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Heathrow Terminals 1, 2, 3",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.4527438,
+                51.4712899
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Hendon",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2389,
+                51.58
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3","4"
+        ]
+    },
+    {
+        "name": "Hendon Central",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.22653,
+                51.58346
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["3","4"
+        ]
+    },
+    {
+        "name": "Herne Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1021,
+                51.4533
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Heron Quays",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0207681,
+                51.5046489
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "High Barnet",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.194138166,
+                51.6506519
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "High Street Kensington",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.192351664,
+                51.50034591
+            ]
+        },
+        "lines": ["Circle","District"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Highams Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0001,
+                51.6084
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Highbury & Islington",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.10752,
+                51.54502
+            ]
+        },
+        "lines": ["Victoria","London Overground","TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Highgate",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.14553,
+                51.57722
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Hillingdon",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.45062,
+                51.55364
+            ]
+        },
+        "lines": ["Piccadilly","Metropolitan"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Hither Green",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0008,
+                51.4519
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Holborn",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.12055,
+                51.51711
+            ]
+        },
+        "lines": ["Piccadilly","Central"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Holland Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.20553,
+                51.50722
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Holloway Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.11278,
+                51.5529
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Homerton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0431,
+                51.547
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Honor Oak Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0456,
+                51.4501
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Hornchurch",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.21797,
+                51.55387
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Hornsey",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1116,
+                51.5862
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Hounslow",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3622,
+                51.462
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Hounslow Central",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.365853,
+                51.47129
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Hounslow East",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.356,
+                51.47354
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Hounslow West",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.386471,
+                51.473689
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Hoxton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0754,
+                51.5318
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["1","2"
+        ]
+    },
+    {
+        "name": "Hyde Park Corner",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.15278,
+                51.50313
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Ickenham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.44257,
+                51.56147
+            ]
+        },
+        "lines": ["Piccadilly","Metropolitan"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Ilford",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0696,
+                51.5586
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Imperial Wharf",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1828,
+                51.4751
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Island Gardens",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.011039,
+                51.488001
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Isleworth",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.337,
+                51.4749
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Kenley",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1007,
+                51.3246
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Kennington",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.10587,
+                51.48823
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Kensal Green",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.224253545,
+                51.53060655
+            ]
+        },
+        "lines": ["Bakerloo","London Overground","TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Kensal Rise",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2204,
+                51.5345
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Kensington (Olympia)",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.20931,
+                51.49675
+            ]
+        },
+        "lines": ["District","London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Kent House",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0453,
+                51.4123
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Kentish Town",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.14067,
+                51.55046
+            ]
+        },
+        "lines": ["Northern","TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Kentish Town West",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1468,
+                51.5468
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Kenton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.316870809,
+                51.58173809
+            ]
+        },
+        "lines": ["Bakerloo","London Overground","TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Kew Bridge",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2878,
+                51.4895
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Kew Gardens",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.284980014,
+                51.47725641
+            ]
+        },
+        "lines": ["District","London Overground","TfL Rail"
+        ],
+        "farezones": ["3","4"
+        ]
+    },
+    {
+        "name": "Kidbrooke",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0273,
+                51.4621
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Kilburn",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.205002,
+                51.5471715
+            ]
+        },
+        "lines": ["Jubilee"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Kilburn High Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1925,
+                51.5373
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Kilburn Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.193963023,
+                51.53495818
+            ]
+        },
+        "lines": ["Bakerloo"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "King George V",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.06299,
+                51.50202
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "King's Cross",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1233,
+                51.5324
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "King's Cross St. Pancras",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.12399,
+                51.53057
+            ]
+        },
+        "lines": ["Piccadilly","Circle","Hammersmith &amp; City","Metropolitan","Northern","Victoria"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Kingsbury",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2788,
+                51.58422
+            ]
+        },
+        "lines": ["Jubilee"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Kingston",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3019,
+                51.4129
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Kingswood",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.211,
+                51.295
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Knightsbridge",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1603,
+                51.50169
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Knockholt",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1307,
+                51.3459
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Ladbroke Grove",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.21114,
+                51.5173
+            ]
+        },
+        "lines": ["Circle","Hammersmith &amp; City"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Ladywell",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0192,
+                51.4562
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Lambeth North",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.11216,
+                51.49894
+            ]
+        },
+        "lines": ["Bakerloo"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Lancaster Gate",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.175067,
+                51.512083
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Langdon Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0163477,
+                51.5153183
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Latimer Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.218428,
+                51.513125
+            ]
+        },
+        "lines": ["Circle","Hammersmith &amp; City"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Lee",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0128,
+                51.4497
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Leicester Square",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.12849,
+                51.51148
+            ]
+        },
+        "lines": ["Piccadilly","Northern"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Lewisham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.013166,
+                51.465216
+            ]
+        },
+        "lines": ["TfL Rail","DLR"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Leyton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.005669,
+                51.556483
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Leyton Midland Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0072,
+                51.5693
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Leytonstone",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.00739,
+                51.56828
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["3","4"
+        ]
+    },
+    {
+        "name": "Leytonstone High Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0073,
+                51.5634
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Limehouse",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0395511,
+                51.5124366
+            ]
+        },
+        "lines": ["TfL Rail","DLR"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Liverpool Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.082458,
+                51.517675
+            ]
+        },
+        "lines": ["Central","Circle","Hammersmith &amp; City","Metropolitan","London Overground","TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "London Bridge",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.084826,
+                51.505353
+            ]
+        },
+        "lines": ["Jubilee","Northern","TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "London City Airport",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.04864,
+                51.50319
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "London Fields",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0577,
+                51.5407
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Loughborough Junction",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.102,
+                51.4661
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Loughton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.05583,
+                51.6417
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Lower Sydenham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0336,
+                51.4245
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Maida Vale",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.185888819,
+                51.52989409
+            ]
+        },
+        "lines": ["Bakerloo"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Malden Manor",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2618,
+                51.3847
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Manor House",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.09601,
+                51.57038
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Manor Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0463,
+                51.5526
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3","4"
+        ]
+    },
+    {
+        "name": "Mansion House",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.09397,
+                51.51256
+            ]
+        },
+        "lines": ["Circle","District"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Marble Arch",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.15869195,
+                51.513597
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Maryland",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0059,
+                51.546
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Marylebone",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.162996,
+                51.52266
+            ]
+        },
+        "lines": ["Bakerloo","TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Maze Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0032,
+                51.483
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Mile End",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.033471,
+                51.525306
+            ]
+        },
+        "lines": ["Central","District","Hammersmith &amp; City"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Mill Hill Broadway",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2491,
+                51.6128
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Mill Hill East",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.20965,
+                51.60892
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Mitcham Eastfields",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1547,
+                51.4077
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Mitcham Junction",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1576,
+                51.393
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Monument",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.085991,
+                51.510165
+            ]
+        },
+        "lines": ["Circle","District"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Moor Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.432070848,
+                51.62970512
+            ]
+        },
+        "lines": ["Metropolitan"
+        ],
+        "farezones": ["6","7"
+        ]
+    },
+    {
+        "name": "Moorgate",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.08859,
+                51.51817
+            ]
+        },
+        "lines": ["Circle","Hammersmith &amp; City","Metropolitan","Northern","TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Morden",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.194599126,
+                51.40222413
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Morden South",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.199,
+                51.3965
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Mornington Crescent",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.13901,
+                51.53427
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Mortlake",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2672,
+                51.4682
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Motspur Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2397,
+                51.3958
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Mottingham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0504,
+                51.4401
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Mudchute",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.014595,
+                51.491185
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Neasden",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.25042,
+                51.55427
+            ]
+        },
+        "lines": ["Jubilee"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "New Barnet",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1738,
+                51.6488
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "New Beckenham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0348,
+                51.4164
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "New Cross",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0325,
+                51.476
+            ]
+        },
+        "lines": ["London Overground","TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "New Cross Gate",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0406,
+                51.4752
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "New Eltham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0705,
+                51.438
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "New Malden",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.256,
+                51.4039
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "New Southgate",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1432,
+                51.6142
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Newbury Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.08927,
+                51.57565
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Norbiton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2838,
+                51.4124
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Norbury",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1214,
+                51.4114
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "North Acton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.26019,
+                51.5237
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "North Dulwich",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0887,
+                51.4543
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "North Ealing",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.28838,
+                51.51807
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "North Greenwich",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0036,
+                51.50056
+            ]
+        },
+        "lines": ["Jubilee"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "North Harrow",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.362595264,
+                51.58503612
+            ]
+        },
+        "lines": ["Metropolitan"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "North Sheen",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2865,
+                51.4656
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "North Wembley",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.304072648,
+                51.56258091
+            ]
+        },
+        "lines": ["Bakerloo","London Overground","TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Northfields",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.313188,
+                51.499856
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Northolt",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.36968,
+                51.548467
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Northolt Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3595,
+                51.5574
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Northumberland Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0551,
+                51.5986
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Northwick Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.317857023,
+                51.57850117
+            ]
+        },
+        "lines": ["Metropolitan"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Northwood",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.423584422,
+                51.61098984
+            ]
+        },
+        "lines": ["Metropolitan"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Northwood Hills",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.408812575,
+                51.60043795
+            ]
+        },
+        "lines": ["Metropolitan"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Norwood Junction",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0749,
+                51.3971
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Notting Hill Gate",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1962847,
+                51.509028
+            ]
+        },
+        "lines": ["Central","Circle","District"
+        ],
+        "farezones": ["1","2"
+        ]
+    },
+    {
+        "name": "Nunhead",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0527,
+                51.4671
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Oakleigh Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1667,
+                51.6379
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Oakwood",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.13192,
+                51.64739
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Ockendon",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.29,
+                51.52
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["9"
+        ]
+    },
+    {
+        "name": "Old Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.08751,
+                51.52618
+            ]
+        },
+        "lines": ["Northern","TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Orpington",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0885,
+                51.3741
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Osterley",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.35196,
+                51.481569
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Oval",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.11284,
+                51.48214
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Oxford Circus",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.14119,
+                51.51517
+            ]
+        },
+        "lines": ["Bakerloo","Central","Victoria"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Paddington",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.175538808,
+                51.51518466
+            ]
+        },
+        "lines": ["Bakerloo","Circle","District","Hammersmith &amp; City","TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Palmers Green",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1102,
+                51.6184
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Park Royal",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.28417,
+                51.52671
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Parsons Green",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.20205,
+                51.47488
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Peckham Rye",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0691,
+                51.4701
+            ]
+        },
+        "lines": ["London Overground","TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Penge East",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0537,
+                51.4191
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Penge West",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0606,
+                51.4174
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Perivale",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.32391,
+                51.536673
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Petts Wood",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0742,
+                51.3889
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Piccadilly Circus",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.13392,
+                51.51022
+            ]
+        },
+        "lines": ["Piccadilly","Bakerloo"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Pimlico",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.133037,
+                51.489081
+            ]
+        },
+        "lines": ["Victoria"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Pinner",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.380539158,
+                51.59270271
+            ]
+        },
+        "lines": ["Metropolitan"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Plaistow",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.01659,
+                51.53122
+            ]
+        },
+        "lines": ["District","Hammersmith &amp; City"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Plumstead",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0844,
+                51.4897
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Ponders End",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0349,
+                51.642
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Pontoon Dock",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.03308,
+                51.50205
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Poplar",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.016503,
+                51.507725
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Preston Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.295813875,
+                51.57229051
+            ]
+        },
+        "lines": ["Metropolitan"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Prince Regent",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.033473,
+                51.509471
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Pudding Mill Lane",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0142,
+                51.5339
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Purfleet",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.237,
+                51.481
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["9"
+        ]
+    },
+    {
+        "name": "Purley",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1135,
+                51.3377
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Purley Oaks",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0987,
+                51.3469
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Putney",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2162,
+                51.4611
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Putney Bridge",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2088141,
+                51.46868
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Queen's Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.205257721,
+                51.534179
+            ]
+        },
+        "lines": ["Bakerloo","London Overground","TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Queens Road Peckham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0573,
+                51.4736
+            ]
+        },
+        "lines": ["London Overground","TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Queensbury",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.28655,
+                51.59437
+            ]
+        },
+        "lines": ["Jubilee"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Queenstown Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.147,
+                51.4748
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Queensway",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.18705,
+                51.510484
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Rainham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1905,
+                51.5169
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Ravensbourne",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0075,
+                51.4141
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Ravenscourt Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2356,
+                51.49419
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Rayners Lane",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3724,
+                51.57534
+            ]
+        },
+        "lines": ["Piccadilly","Metropolitan"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Raynes Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2299,
+                51.4094
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Rectory Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0681,
+                51.5584
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Redbridge",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.04542,
+                51.57618
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Reedham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1233,
+                51.3313
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Regent's Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.14713,
+                51.52344
+            ]
+        },
+        "lines": ["Bakerloo"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Richmond",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.300618047,
+                51.4632474
+            ]
+        },
+        "lines": ["District","London Overground","TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Rickmansworth",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.473521454,
+                51.64027898
+            ]
+        },
+        "lines": ["Metropolitan","TfL Rail"
+        ],
+        "farezones": ["7"
+        ]
+    },
+    {
+        "name": "Riddlesdown",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0996,
+                51.3323
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Roding Valley",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.04264,
+                51.61691
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Romford",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1827,
+                51.5749
+            ]
+        },
+        "lines": ["London Overground","TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Rotherhithe",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0522,
+                51.5008
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Royal Albert",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.046148,
+                51.508456
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Royal Oak",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.187785,
+                51.519383
+            ]
+        },
+        "lines": ["Circle","Hammersmith &amp; City"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Royal Victoria",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.018083,
+                51.509156
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Ruislip",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.42157,
+                51.57146
+            ]
+        },
+        "lines": ["Piccadilly","Metropolitan"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Ruislip Gardens",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.410587,
+                51.560711
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Ruislip Manor",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.41185,
+                51.57349
+            ]
+        },
+        "lines": ["Piccadilly","Metropolitan"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Russell Square",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.124336,
+                51.523243
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Sanderstead",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.094,
+                51.3484
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Selhurst",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0883,
+                51.3921
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Seven Kings",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0969,
+                51.5635
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Seven Sisters",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.07495,
+                51.58318
+            ]
+        },
+        "lines": ["Victoria","London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Shadwell",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.05548,
+                51.511853
+            ]
+        },
+        "lines": ["London Overground","DLR"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Shenfield",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.3328,
+                51.6331
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["9"
+        ]
+    },
+    {
+        "name": "Shepherd's Bush",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.21881,
+                51.50474
+            ]
+        },
+        "lines": ["Central","London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Shepherd's Bush Market",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.226231,
+                51.506063
+            ]
+        },
+        "lines": ["Circle","Hammersmith &amp; City"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Shoreditch High Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0768,
+                51.5234
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Shortlands",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0019,
+                51.4058
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Sidcup",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.104,
+                51.4338
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Silver Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0676,
+                51.6149
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Slade Green",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1904,
+                51.4678
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Sloane Square",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.156090904,
+                51.49258474
+            ]
+        },
+        "lines": ["Circle","District"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Snaresbrook",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.021329999999999998,
+                51.58002
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "South Acton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2707,
+                51.4994
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "South Bermondsey",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0548,
+                51.4887
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "South Croydon",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0933,
+                51.3629
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "South Ealing",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.307856,
+                51.500801
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "South Greenford",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3369,
+                51.5342
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "South Hampstead",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1788,
+                51.5414
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "South Harrow",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3521,
+                51.56461
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "South Kensington",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.172791,
+                51.494066
+            ]
+        },
+        "lines": ["Piccadilly","Circle","District"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "South Kenton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.308566354,
+                51.57044666
+            ]
+        },
+        "lines": ["Bakerloo","London Overground","TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "South Merton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2062,
+                51.403
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "South Quay",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.018636,
+                51.500413
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "South Ruislip",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.398708,
+                51.556795
+            ]
+        },
+        "lines": ["Central","TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "South Tottenham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.072,
+                51.5802
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "South Wimbledon",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.192262754,
+                51.41543048
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["3","4"
+        ]
+    },
+    {
+        "name": "South Woodford",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.02726,
+                51.59088
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Southall",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3783,
+                51.506
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Southbury",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0524,
+                51.6488
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Southfields",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.206466,
+                51.444941
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Southgate",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.12765,
+                51.6324
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Southwark",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.10478,
+                51.50384
+            ]
+        },
+        "lines": ["Jubilee"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "St Helier",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1985,
+                51.3901
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "St James Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0323,
+                51.581
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "St Johns",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0225,
+                51.4691
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "St Margarets",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3204,
+                51.455
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "St Mary Cray",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1058,
+                51.3947
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "St Pancras",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1261,
+                51.5314
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "St. James's Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.13394,
+                51.49971
+            ]
+        },
+        "lines": ["Circle","District"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "St. John's Wood",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.17428,
+                51.53472
+            ]
+        },
+        "lines": ["Jubilee"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "St. Paul's",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.097598,
+                51.515285
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Stamford Brook",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.24619,
+                51.494935
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Stamford Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0761,
+                51.5749
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Stanmore",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.30241,
+                51.61895
+            ]
+        },
+        "lines": ["Jubilee"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Star Lane",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0019913,
+                51.5207933
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Stepney Green",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.046546,
+                51.521884
+            ]
+        },
+        "lines": ["District","Hammersmith &amp; City"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Stockwell",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1227,
+                51.47224
+            ]
+        },
+        "lines": ["Northern","Victoria"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Stoke Newington",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0727,
+                51.5651
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Stonebridge Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.275978856,
+                51.54402388
+            ]
+        },
+        "lines": ["Bakerloo","London Overground","TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Stoneleigh",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2487,
+                51.3637
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Stratford",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.005085,
+                51.54047
+            ]
+        },
+        "lines": ["Central","Jubilee","London Overground","TfL Rail","DLR"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Stratford High Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0032387,
+                51.5382033
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Stratford International",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0087,
+                51.5448
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Stratford International Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0110114,
+                51.5449031
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Strawberry Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3388,
+                51.4389
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Streatham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1311,
+                51.426
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Streatham Common",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1359,
+                51.4187
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Streatham Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1271,
+                51.438
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Sudbury & Harrow Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3167,
+                51.554
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Sudbury Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.335949,
+                51.556998
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Sudbury Hill Harrow",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3358,
+                51.5589
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Sudbury Town",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.31598,
+                51.55093
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Sundridge Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0221,
+                51.4137
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Surbiton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3044,
+                51.3926
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Surrey Quays",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0477,
+                51.4933
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Sutton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1903,
+                51.3601
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Sutton Common",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1964,
+                51.3751
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Swiss Cottage",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.17436,
+                51.54333
+            ]
+        },
+        "lines": ["Jubilee"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Sydenham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0545,
+                51.4268
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Sydenham Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0802,
+                51.4326
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Syon Lane",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3248,
+                51.4818
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Tadworth",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.236,
+                51.292
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Tattenham Corner",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2426,
+                51.3092
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Teddington",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3325,
+                51.4247
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Temple",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.11341,
+                51.51114
+            ]
+        },
+        "lines": ["Circle","District"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Thames Ditton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3383,
+                51.3886
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Theobalds Grove",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0327,
+                51.6937
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["7"
+        ]
+    },
+    {
+        "name": "Theydon Bois",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.10354,
+                51.67246
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Thornton Heath",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1004,
+                51.3985
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Tolworth",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2793,
+                51.3771
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Tooting",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1603,
+                51.4196
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Tooting Bec",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.159635693,
+                51.43578971
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Tooting Broadway",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.167910811,
+                51.42780008
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Tottenham Court Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.13093911,
+                51.51672074
+            ]
+        },
+        "lines": ["Central","Northern"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Tottenham Hale",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.059808,
+                51.588878
+            ]
+        },
+        "lines": ["Victoria","TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Totteridge & Whetstone",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.17917,
+                51.63022
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Tower Gateway",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.073466,
+                51.510911
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Tower Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.076813,
+                51.50991
+            ]
+        },
+        "lines": ["Circle","District"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Tufnell Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.13813,
+                51.55663
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Tulse Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1049,
+                51.4399
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Turkey Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0474,
+                51.6725
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Turnham Green",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.25406,
+                51.495143
+            ]
+        },
+        "lines": ["Piccadilly","District"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Turnpike Lane",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.10308,
+                51.59031
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Twickenham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3296,
+                51.4504
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Upminster",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.25177,
+                51.55925
+            ]
+        },
+        "lines": ["District","London Overground","TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Upminster Bridge",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.23509,
+                51.55847
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Upney",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.09998,
+                51.53824
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Upper Holloway",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1298,
+                51.5638
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Upper Warlingham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.078,
+                51.3085
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Upton Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.03373,
+                51.53514
+            ]
+        },
+        "lines": ["District","Hammersmith &amp; City"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Uxbridge",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.47725,
+                51.54687
+            ]
+        },
+        "lines": ["Piccadilly","Metropolitan"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Vauxhall",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.12369,
+                51.48603
+            ]
+        },
+        "lines": ["Victoria","TfL Rail"
+        ],
+        "farezones": ["1","2"
+        ]
+    },
+    {
+        "name": "Victoria",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.14400853,
+                51.49662869
+            ]
+        },
+        "lines": ["Circle","District","Victoria","TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Waddon",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.117,
+                51.3674
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Wallington",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1533,
+                51.3592
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Waltham Cross",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0266,
+                51.6851
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["7"
+        ]
+    },
+    {
+        "name": "Walthamstow Central",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.01996,
+                51.58293
+            ]
+        },
+        "lines": ["Victoria","London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Walthamstow Queen's Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.024,
+                51.5817
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Wandsworth Common",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1635,
+                51.4464
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Wandsworth Road",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.139,
+                51.4702
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Wandsworth Town",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1879,
+                51.461
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Wanstead",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.02864,
+                51.57565
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Wanstead Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0264,
+                51.5518
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Wapping",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0558,
+                51.5044
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Warren Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1381,
+                51.5245
+            ]
+        },
+        "lines": ["Northern","Victoria"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Warwick Avenue",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.183777837,
+                51.52329728
+            ]
+        },
+        "lines": ["Bakerloo"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Waterloo",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.11328,
+                51.50322
+            ]
+        },
+        "lines": ["Bakerloo","Jubilee","Northern","Waterloo &amp; City","TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Waterloo East",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1101,
+                51.5041
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "Watford",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.41745306,
+                51.65741058
+            ]
+        },
+        "lines": ["Metropolitan"
+        ],
+        "farezones": ["7"
+        ]
+    },
+    {
+        "name": "Watford High Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3918,
+                51.6525
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["8"
+        ]
+    },
+    {
+        "name": "Watford Junction",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3958,
+                51.6635
+            ]
+        },
+        "lines": ["London Overground","TfL Rail"
+        ],
+        "farezones": ["9"
+        ]
+    },
+    {
+        "name": "Welling",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.1017,
+                51.4647
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Wembley Central",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.29577538,
+                51.55122817
+            ]
+        },
+        "lines": ["Bakerloo","London Overground","TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Wembley Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.279770242,
+                51.56355598
+            ]
+        },
+        "lines": ["Jubilee","Metropolitan"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Wembley Stadium",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2863,
+                51.5543
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "West Acton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.28064,
+                51.51818
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "West Brompton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.19475,
+                51.48681
+            ]
+        },
+        "lines": ["District","London Overground","TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "West Croydon",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.102,
+                51.3785
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "West Drayton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.4719,
+                51.5101
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "West Dulwich",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0906,
+                51.4409
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "West Ealing",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3203,
+                51.5137
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "West Finchley",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.188711152,
+                51.60922281
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "West Ham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.004141,
+                51.527917
+            ]
+        },
+        "lines": ["District","Hammersmith &amp; City","Jubilee","TfL Rail","DLR"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "West Hampstead",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.19275,
+                51.54716
+            ]
+        },
+        "lines": ["Jubilee","London Overground"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "West Hampstead Thameslink",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.19183,
+                51.54848
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "West Harrow",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.353144584,
+                51.5795432
+            ]
+        },
+        "lines": ["Metropolitan"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "West India Quay",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.01988,
+                51.506723
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "West Kensington",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.20532,
+                51.49085
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "West Norwood",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1035,
+                51.4318
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "West Ruislip",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.43674,
+                51.569324
+            ]
+        },
+        "lines": ["Central","TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "West Silvertown",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.02208,
+                51.50335
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "West Sutton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2051,
+                51.3662
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "West Wickham",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0145,
+                51.3813
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Westbourne Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.201778,
+                51.520995
+            ]
+        },
+        "lines": ["Circle","Hammersmith &amp; City"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Westcombe Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0187,
+                51.4842
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Westferry",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.02699,
+                51.509576
+            ]
+        },
+        "lines": ["DLR"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Westminster",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.12489,
+                51.50121
+            ]
+        },
+        "lines": ["Circle","District","Jubilee"
+        ],
+        "farezones": ["1"
+        ]
+    },
+    {
+        "name": "White City",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.224226,
+                51.512206
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "White Hart Lane",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0711,
+                51.6049
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Whitechapel",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.05951,
+                51.51946
+            ]
+        },
+        "lines": ["District","Hammersmith &amp; City","London Overground","TfL Rail"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Whitton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.3578,
+                51.4495
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["5"
+        ]
+    },
+    {
+        "name": "Whyteleafe",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0811,
+                51.3097
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Whyteleafe South",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0768,
+                51.3034
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Willesden Green",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.22106,
+                51.54919
+            ]
+        },
+        "lines": ["Jubilee"
+        ],
+        "farezones": ["2","3"
+        ]
+    },
+    {
+        "name": "Willesden Junction",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.229378995,
+                51.53032031
+            ]
+        },
+        "lines": ["Bakerloo","London Overground"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Wimbledon",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.20544,
+                51.422
+            ]
+        },
+        "lines": ["District","TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Wimbledon Chase",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2142,
+                51.4095
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Wimbledon Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.19864,
+                51.43391
+            ]
+        },
+        "lines": ["District"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Winchmore Hill",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1013,
+                51.6341
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Wood Green",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.10939,
+                51.59709
+            ]
+        },
+        "lines": ["Piccadilly"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Wood Lane",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2264898,
+                51.510027
+            ]
+        },
+        "lines": ["Circle"
+        ],
+        "farezones": ["2"
+        ]
+    },
+    {
+        "name": "Wood Street",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.0021,
+                51.5864
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Woodford",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.03328,
+                51.60582
+            ]
+        },
+        "lines": ["Central"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Woodgrange Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0454,
+                51.5487
+            ]
+        },
+        "lines": ["London Overground"
+        ],
+        "farezones": ["3","4"
+        ]
+    },
+    {
+        "name": "Woodmansterne",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.1539,
+                51.3192
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["6"
+        ]
+    },
+    {
+        "name": "Woodside Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.185578888,
+                51.61817173
+            ]
+        },
+        "lines": ["Northern"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Woolwich Arsenal",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0673798,
+                51.490078
+            ]
+        },
+        "lines": ["TfL Rail","DLR"
+        ],
+        "farezones": ["4"
+        ]
+    },
+    {
+        "name": "Woolwich Dockyard",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                0.0536,
+                51.4913
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["3"
+        ]
+    },
+    {
+        "name": "Worcester Park",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -0.2412,
+                51.3804
+            ]
+        },
+        "lines": ["TfL Rail"
+        ],
+        "farezones": ["4"
+        ]
+    }
+]

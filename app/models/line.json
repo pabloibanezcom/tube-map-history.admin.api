@@ -1,0 +1,13 @@
+{
+    "name": "Line",
+    "route": "line",
+    "authLevel": "full-public",
+    "properties": {
+        "name": {
+            "type": "String"
+        },
+        "colour": {
+            "type": "String"
+        }
+    }
+}

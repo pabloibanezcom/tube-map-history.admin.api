@@ -1,0 +1,32 @@
+{
+    "name": "Station",
+    "route": "station",
+    "authLevel": "full-public",
+    "properties": {
+        "name": {
+            "type": "String"
+        },
+        "geometry": {
+            "type": "Point"
+        },
+        "farezones": [
+            {
+                "type": "Number"
+            }
+        ],
+        "year": {
+            "type": "Number"
+        },
+        "connections": [{
+            "line": {
+                "type": "Line"
+            },
+            "station": {
+                "type": "Station"
+            },
+            "year": {
+                "type": "Number"
+            }
+        }]
+    }
+}

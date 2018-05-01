@@ -1,0 +1,66 @@
+[
+    {
+        "name": "Picadilly",
+        "colour": "#0019a8"
+    },
+    {
+        "name": "Bakerloo",
+        "colour": "#894e24"
+    },
+    {
+        "name": "Central",
+        "colour": "#dc241f"
+    },
+    {
+        "name": "Circle",
+        "colour": "#ffce00"
+    },
+    {
+        "name": "District",
+        "colour": "#007229"
+    },
+    {
+        "name": "Hammersmith & City",
+        "colour": "#d799af"
+    },
+    {
+        "name": "Jubilee",
+        "colour": "#6a7278"
+    },
+    {
+        "name": "Metropolitan",
+        "colour": "#751056"
+    },
+    {
+        "name": "Northern",
+        "colour": "#000"
+    },
+    {
+        "name": "Victoria",
+        "colour": "#00a0e2"
+    },
+    {
+        "name": "Waterloo & City",
+        "colour": "#76d0bd"
+    },
+    {
+        "name": "London Overground",
+        "colour": "#e86a10"
+    },
+    {
+        "name": "TfL Rail",
+        "colour": "#0019a8"
+    },
+    {
+        "name": "DLR",
+        "colour": "#00afad"
+    },
+    {
+        "name": "Tram",
+        "colour": "#6c0"
+    },
+    {
+        "name": "Elizabeth",
+        "colour": "#5a429a"
+    }
+]
