@@ -8,6 +8,9 @@
         },
         "colour": {
             "type": "String"
+        },
+        "fontColour": {
+            "type": "String"
         }
     }
 }

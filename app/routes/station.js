@@ -13,26 +13,37 @@ module.exports = (app, modelsService) => {
     app.routesInfo['Station'].push({ model: 'Station', name: 'Get stations by year', method: 'GET', url: url });
   }
 
-  const registerAddConnectionToStation = () => {
-    const url = '/api/station/connection/new';
-    app.post(url,
+  const registerUpdateStation = () => {
+    const url = '/api/station/update/:id';
+    app.put(url,
       (req, res) => {
-        service.addConnectionToStation(modelsService, req.body)
+        service.updateStation(modelsService, req.params.id, req.body)
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Station'].push({ model: 'Station', name: 'Add connection', method: 'POST', url: url, body: { station: null, line: null, otherStation: null, year: 1900 } });
+    app.routesInfo['Station'].push({ model: 'Station', name: 'Update station', method: 'PUT', url: url, body: { name: null, geometry: null, farezones: null, year: 1900, yearEnd: null } });
+  }
+
+  const registerAddConnection = () => {
+    const url = '/api/station/update/:stationId/connection';
+    app.post(url,
+      (req, res) => {
+        service.addConnection(modelsService, req.params.stationId, req.body)
+          .then(result => res.status(result.statusCode).send(result.data))
+          .catch(err => res.status(500).send(err));
+      });
+    app.routesInfo['Station'].push({ model: 'Station', name: 'Add connection', method: 'POST', url: url, body: { station: null, line: null, year: 1900, yearEnd: null } });
   }
 
   const registerUpdateConnection = () => {
-    const url = '/api/station/connection/update';
-    app.post(url,
+    const url = '/api/station/update/:stationId/connection/:connectionId';
+    app.put(url,
       (req, res) => {
-        service.updateConnection(modelsService, req.body)
+        service.updateConnection(modelsService, req.params.stationId, req.params.connectionId, req.body)
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Station'].push({ model: 'Station', name: 'Update connection', method: 'POST', url: url, body: { station: null, connection: null, line: null, otherStation: null, year: 1900 } });
+    app.routesInfo['Station'].push({ model: 'Station', name: 'Update connection', method: 'PUT', url: url, body: { station: null, line: null, year: 1900, yearEnd: null } });
   }
 
   const registerGetStationWiki = () => {
@@ -47,7 +58,8 @@ module.exports = (app, modelsService) => {
   }
 
   registerGetStationsByYear();
-  registerAddConnectionToStation();
+  registerAddConnection();
+  registerUpdateStation();
   registerUpdateConnection();
   registerGetStationWiki();
 

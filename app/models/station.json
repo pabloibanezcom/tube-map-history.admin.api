@@ -17,16 +17,24 @@
         "year": {
             "type": "Number"
         },
-        "connections": [{
-            "line": {
-                "type": "Line"
-            },
-            "station": {
-                "type": "Station"
-            },
-            "year": {
-                "type": "Number"
+        "yearEnd": {
+            "type": "Number"
+        },
+        "connections": [
+            {
+                "line": {
+                    "type": "Line"
+                },
+                "station": {
+                    "type": "Station"
+                },
+                "year": {
+                    "type": "Number"
+                },
+                "yearEnd": {
+                    "type": "Number"
+                }
             }
-        }]
+        ]
     }
 }
