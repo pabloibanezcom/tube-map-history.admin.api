@@ -1,9 +1,10 @@
 const wikipedia = require("node-wikipedia");
 const service = {};
 
-service.getStationsByYear = async (modelsService, year) => {
+service.getStationsByYearRange = async (modelsService, yearTo, yearFrom) => {
+  const yearFromQuery = yearFrom ? { $gt: parseInt(yearFrom) - 1 } : null;
   const stations = await modelsService.getModel('Station')
-    .find({ year: { $lt: parseInt(year) + 1 } })
+    .find({ year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 } })
     .populate({ path: 'connections.line', select: 'name colour' })
     .populate({ path: 'connections.station', select: 'name geometry' })
   return { statusCode: 200, data: stations };

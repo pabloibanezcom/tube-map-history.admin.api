@@ -2,15 +2,21 @@ const service = require('../services/station.service');
 
 module.exports = (app, modelsService) => {
 
-  const registerGetStationsByYear = () => {
-    const url = '/api/station/year/:year';
+  const registerGetStationsByYearRange = () => {
+    const url = '/api/station/year/:yearTo';
     app.get(url,
       (req, res) => {
-        service.getStationsByYear(modelsService, req.params.year)
+        service.getStationsByYearRange(modelsService, req.params.yearTo)
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Station'].push({ model: 'Station', name: 'Get stations by year', method: 'GET', url: url });
+    app.get(`${url}/:yearFrom`,
+      (req, res) => {
+        service.getStationsByYearRange(modelsService, req.params.yearTo, req.params.yearFrom)
+          .then(result => res.status(result.statusCode).send(result.data))
+          .catch(err => res.status(500).send(err));
+      });
+    app.routesInfo['Station'].push({ model: 'Station', name: 'Get stations by year range', method: 'GET', url: url });
   }
 
   const registerUpdateStation = () => {
@@ -57,7 +63,7 @@ module.exports = (app, modelsService) => {
     app.routesInfo['Station'].push({ model: 'Station', name: 'Get station wiki', method: 'GET', url: url });
   }
 
-  registerGetStationsByYear();
+  registerGetStationsByYearRange();
   registerAddConnection();
   registerUpdateStation();
   registerUpdateConnection();
