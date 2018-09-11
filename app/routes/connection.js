@@ -27,7 +27,7 @@ module.exports = (app, modelsService) => {
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Connection'].push({ model: 'Connection', name: 'Add connection', method: 'POST', url: url, body: { line: null, year: 1900, yearEnd: null, stations: null } });
+    app.routesInfo['Connection'].push({ model: 'Connection', name: 'Add connection', method: 'POST', url: url, body: { year: 1900, yearEnd: null, stations: [], lines: [], } });
   }
 
   const registerRemoveConnection = () => {
