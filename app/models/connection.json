@@ -1,0 +1,21 @@
+{
+  "name": "Connection",
+  "route": "connection",
+  "authLevel": "none",
+  "properties": {
+    "year": {
+      "type": "Number"
+    },
+    "yearEnd": {
+      "type": "Number"
+    },
+    "lines": {
+      "type": "[Line]",
+      "propertyMatch": "connections"
+    },
+    "stations": {
+      "type": "[Station]",
+      "propertyMatch": "connections"
+    }
+  }
+}

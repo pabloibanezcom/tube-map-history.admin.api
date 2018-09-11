@@ -1,16 +1,20 @@
 {
-    "name": "Line",
-    "route": "line",
-    "authLevel": "full-public",
-    "properties": {
-        "name": {
-            "type": "String"
-        },
-        "colour": {
-            "type": "String"
-        },
-        "fontColour": {
-            "type": "String"
-        }
+  "name": "Line",
+  "route": "line",
+  "authLevel": "full-public",
+  "properties": {
+    "name": {
+      "type": "String"
+    },
+    "colour": {
+      "type": "String"
+    },
+    "fontColour": {
+      "type": "String"
+    },
+    "connections": {
+      "type": "[Connection]",
+      "propertyMatch": "lines"
     }
+  }
 }

@@ -1,40 +1,26 @@
 {
-    "name": "Station",
-    "route": "station",
-    "authLevel": "full-public",
-    "properties": {
-        "name": {
-            "type": "String"
-        },
-        "geometry": {
-            "type": "Point"
-        },
-        "farezones": [
-            {
-                "type": "Number"
-            }
-        ],
-        "year": {
-            "type": "Number"
-        },
-        "yearEnd": {
-            "type": "Number"
-        },
-        "connections": [
-            {
-                "line": {
-                    "type": "Line"
-                },
-                "station": {
-                    "type": "Station"
-                },
-                "year": {
-                    "type": "Number"
-                },
-                "yearEnd": {
-                    "type": "Number"
-                }
-            }
-        ]
+  "name": "Station",
+  "route": "station",
+  "authLevel": "full-public",
+  "properties": {
+    "name": {
+      "type": "String"
+    },
+    "geometry": {
+      "type": "Point"
+    },
+    "farezones": {
+      "type": "Number"
+    },
+    "year": {
+      "type": "Number"
+    },
+    "yearEnd": {
+      "type": "Number"
+    },
+    "connections": {
+      "type": "[Connection]",
+      "propertyMatch": "stations"
     }
+  }
 }
