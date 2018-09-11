@@ -4,7 +4,7 @@ service.getConnectionsByYearRange = async (modelsService, yearTo, yearFrom) => {
   const yearFromQuery = yearFrom ? { $gt: parseInt(yearFrom) - 1 } : null;
   const connections = await modelsService.getModel('Connection')
     .find({ year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 } })
-    .populate({ path: 'stations', select: 'geometry' }, { path: 'lines', select: 'colour fontColour' })
+    .populate([{ path: 'stations', select: 'geometry' }, { path: 'lines', select: 'colour fontColour' }])
   return { statusCode: 200, data: connections };
 }
 
