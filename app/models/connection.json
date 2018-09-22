@@ -9,8 +9,11 @@
     "yearEnd": {
       "type": "Number"
     },
-    "lines": {
-      "type": "[Line]",
+    "distance": {
+      "type": "Number"
+    },
+    "line": {
+      "type": "Line",
       "propertyMatch": "connections"
     },
     "stations": {

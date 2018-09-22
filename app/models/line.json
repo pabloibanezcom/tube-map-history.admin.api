@@ -14,7 +14,7 @@
     },
     "connections": {
       "type": "[Connection]",
-      "propertyMatch": "lines"
+      "propertyMatch": "line"
     }
   }
 }

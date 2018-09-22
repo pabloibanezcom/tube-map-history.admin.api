@@ -4,28 +4,24 @@ service.getConnectionsByYearRange = async (modelsService, yearTo, yearFrom) => {
   const yearFromQuery = yearFrom ? { $gt: parseInt(yearFrom) - 1 } : null;
   const connections = await modelsService.getModel('Connection')
     .find({ year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 } })
-    .populate([{ path: 'stations', select: 'geometry' }, { path: 'lines', select: 'colour fontColour' }])
+    .populate([{ path: 'stations', select: 'geometry' }, { path: 'line', select: 'colour fontColour' }])
   return { statusCode: 200, data: connections };
 }
 
 service.addConnection = async (modelsService, obj) => {
   const Connection = await modelsService.getModel('Connection');
   // Check if already exists a connection with the same two stations
-  const existingCon = await Connection.findOne({ stations: obj.stations });
+  const existingCon = await Connection.findOne({ stations: obj.stations, line: obj.line });
   if (existingCon) {
-    return { statusCode: 400, data: 'Connection with same two stations already exists' };
+    return { statusCode: 400, data: 'Connection with same two stations and line already exists' };
   }
   const Station = await modelsService.getModel('Station');
   const Line = await modelsService.getModel('Line');
   const stations = [];
-  const lines = [];
+  const line = [];
   for (const s of obj.stations) {
     const station = await Station.findOne({ _id: s });
     stations.push(station);
-  }
-  for (const l of obj.lines) {
-    const line = await Line.findOne({ _id: l });
-    lines.push(line);
   }
   if (!isConnectionValid(stations)) {
     return { statusCode: 400, data: 'Stations need to be two' };
@@ -34,12 +30,12 @@ service.addConnection = async (modelsService, obj) => {
     year: obj.year,
     yearEnd: obj.yearEnd,
     stations: obj.stations,
-    lines: obj.lines,
+    line: obj.line,
   }
   const newObj = new Connection(objSchema);
   const doc = await newObj.save();
   await updateRelationship(false, stations, doc._id);
-  await updateRelationship(false, lines, doc._id);
+  await updateRelationship(false, line, doc._id);
   return { statusCode: 200, data: doc };
 }
 
