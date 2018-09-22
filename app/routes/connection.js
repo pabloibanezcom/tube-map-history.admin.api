@@ -25,7 +25,7 @@ module.exports = (app, modelsService) => {
       (req, res) => {
         service.addConnection(modelsService, req.body)
           .then(result => res.status(result.statusCode).send(result.data))
-          .catch(err => res.status(500).send(err));
+          .catch(err => { console.log(err); res.status(500).send(err) });
       });
     app.routesInfo['Connection'].push({ model: 'Connection', name: 'Add connection', method: 'POST', url: url, body: { year: 1900, yearEnd: null, stations: [], line: null, } });
   }
