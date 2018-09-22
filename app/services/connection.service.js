@@ -18,7 +18,7 @@ service.addConnection = async (modelsService, obj) => {
   const Station = await modelsService.getModel('Station');
   const Line = await modelsService.getModel('Line');
   const stations = [];
-  const line = [];
+  const line = await Line.findOne({ _id: obj.line });
   for (const s of obj.stations) {
     const station = await Station.findOne({ _id: s });
     stations.push(station);
@@ -35,7 +35,7 @@ service.addConnection = async (modelsService, obj) => {
   const newObj = new Connection(objSchema);
   const doc = await newObj.save();
   await updateRelationship(false, stations, doc._id);
-  await updateRelationship(false, line, doc._id);
+  await updateRelationship(false, [line], doc._id);
   return { statusCode: 200, data: doc };
 }
 
