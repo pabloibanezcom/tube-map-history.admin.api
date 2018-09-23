@@ -6,6 +6,9 @@
     "name": {
       "type": "String"
     },
+    "shortName": {
+      "type": "String"
+    },
     "colour": {
       "type": "String"
     },
