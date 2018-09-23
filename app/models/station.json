@@ -15,6 +15,9 @@
     "yearEnd": {
       "type": "Number"
     },
+    "markerIcon": {
+      "type": "String"
+    },
     "connections": {
       "type": "[Connection]",
       "propertyMatch": "stations"

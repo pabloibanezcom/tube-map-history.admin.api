@@ -38,6 +38,9 @@ service.addConnection = async (modelsService, obj) => {
   }
   const newObj = new Connection(objSchema);
   const doc = await newObj.save();
+  for (const s of stations) {
+    await updateMarkerIcon(s);
+  }
   await updateRelationship(false, stations, doc._id);
   await updateRelationship(false, [line], doc._id);
   return { statusCode: 200, data: doc };
@@ -51,6 +54,14 @@ service.removeConnection = async (modelsService, connectionId) => {
   const lines = await modelsService.getModel('Line').find({ connections: { "$in": [connectionId] } });
   updateRelationship(true, lines, connectionId);
   return { statusCode: 202, data: doc };
+}
+
+service.updateMarkerIconForAllStations = async (modelsService) => {
+  const stations = await modelsService.getModel('Station').find({}).populate({ path: 'connections', populate: { path: 'line' } });
+  for (const s of stations) {
+    await updateMarkerIcon(s);
+  }
+  return { statusCode: 200, data: 'Stations markers updated correctly' };
 }
 
 const isConnectionValid = (stations) => {
@@ -74,6 +85,12 @@ const updateRelationship = async (removeMode, elementsToUpdate, connectionId) =>
     await e.save();
   }
   return;
+}
+
+const updateMarkerIcon = async (station) => {
+  const uniqueLines = [...new Set(station.connections.map(c => c.line.shortName))];
+  station.markerIcon = uniqueLines.length === 1 ? uniqueLines[0] : 'multiple';
+  await station.save();
 }
 
 module.exports = service;

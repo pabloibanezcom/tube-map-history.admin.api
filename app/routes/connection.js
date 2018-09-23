@@ -41,9 +41,20 @@ module.exports = (app, modelsService) => {
     app.routesInfo['Connection'].push({ model: 'Connection', name: 'Remove connection', method: 'DELETE', url: url });
   }
 
+  const registerUpdateMarkerIconForAllStations = () => {
+    const url = '/api/connection/udpate-station-markers';
+    app.get(url,
+      (req, res) => {
+        service.updateMarkerIconForAllStations(modelsService)
+          .then(result => res.status(result.statusCode).send(result.data))
+          .catch(err => res.status(500).send(err));
+      });
+  }
+
   app.routesInfo['Connection'] = [];
   registerGetConnectionsByYearRange();
   registerAddConnection();
   registerRemoveConnection();
+  registerUpdateMarkerIconForAllStations();
 
 };
