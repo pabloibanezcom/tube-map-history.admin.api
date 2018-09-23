@@ -1,3 +1,5 @@
+const calculateDistance = require('../util/calculateDistance');
+
 const service = {};
 
 service.getConnectionsByYearRange = async (modelsService, yearTo, yearFrom) => {
@@ -31,6 +33,7 @@ service.addConnection = async (modelsService, obj) => {
     year: obj.year,
     yearEnd: obj.yearEnd,
     stations: obj.stations,
+    distance: calculateDistance(stations[0].geometry.coordinates, stations[1].geometry.coordinates),
     line: obj.line,
   }
   const newObj = new Connection(objSchema);
