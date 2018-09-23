@@ -59,7 +59,9 @@ const isConnectionValid = (stations) => {
 const updateRelationship = async (removeMode, elementsToUpdate, connectionId) => {
   for (const e of elementsToUpdate) {
     if (!removeMode) {
-      e.connections = e.connections || [];
+      if (!e.connections) {
+        e.connections = [];
+      }
       e.connections.push(connectionId);
     } else {
       const index = e.connections.indexOf(connectionId);
