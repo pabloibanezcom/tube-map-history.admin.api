@@ -3,6 +3,9 @@
   "route": "line",
   "authLevel": "full-public",
   "properties": {
+    "order": {
+      "type": "Number"
+    },
     "name": {
       "type": "String"
     },
@@ -14,6 +17,9 @@
     },
     "fontColour": {
       "type": "String"
+    },
+    "startStations": {
+      "type": "[Station]"
     },
     "connections": {
       "type": "[Connection]",
