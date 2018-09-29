@@ -18,6 +18,12 @@
     "fontColour": {
       "type": "String"
     },
+    "year": {
+      "type": "Number"
+    },
+    "distance": {
+      "type": "Number"
+    },
     "startStations": {
       "type": "[Station]"
     },
