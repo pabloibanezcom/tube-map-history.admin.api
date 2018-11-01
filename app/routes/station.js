@@ -2,6 +2,17 @@ const service = require('../services/station.service');
 
 module.exports = (app, modelsService) => {
 
+  const registerSearchStations = () => {
+    const url = '/api/station';
+    app.post(url,
+      (req, res) => {
+        service.searchStations(modelsService, req.body)
+          .then(result => res.status(result.statusCode).send(result.data))
+          .catch(err => res.status(500).send(err));
+      });
+    app.routesInfo['Station'].push({ model: 'Station', name: 'Search stations', method: 'POST', url: url });
+  }
+
   const registerGetStationsByYearRange = () => {
     const url = '/api/station/year/:yearTo';
     app.get(url,
@@ -63,6 +74,8 @@ module.exports = (app, modelsService) => {
     app.routesInfo['Station'].push({ model: 'Station', name: 'Get station wiki', method: 'GET', url: url });
   }
 
+  app.routesInfo['Station'] = [];
+  registerSearchStations();
   registerGetStationsByYearRange();
   registerAddConnection();
   registerUpdateStation();

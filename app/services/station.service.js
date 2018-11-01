@@ -1,6 +1,37 @@
 const wikipedia = require("node-wikipedia");
 const service = {};
 
+service.searchStations = async (modelsService, body) => {
+  const searchParams = {
+    filter: {},
+    sort: body.sort || '',
+    select: body.select || '',
+    populate: body.populate || ''
+  };
+  if (body.filter && body.filter.name) {
+    searchParams.filter.name = { $regex: body.filter.name, $options: 'i' };
+  }
+  if (body.filter && body.filter.year) {
+    searchParams.filter.year = { $gte: body.filter.year.min, $lte: body.filter.year.max };
+  }
+  if (body.filter && body.filter.line) {
+    searchParams.filter.connections = { $exists: true, $not: { $size: 0 } };
+  }
+  let stations = await modelsService.getModel('Station')
+    .find(searchParams.filter)
+    .sort(searchParams.sort)
+    .limit(searchParams.limit)
+    .select(searchParams.select)
+    .populate(searchParams.populate);
+  if (body.filter && body.filter.line) {
+    stations = stations.filter(st => st.connections.some(c => c.line.equals(body.filter.line)));
+  }
+  if (body.limit) {
+    stations = stations.slice(0, body.limit);
+  }
+  return { statusCode: 200, data: stations };
+}
+
 service.getStationsByYearRange = async (modelsService, yearTo, yearFrom) => {
   const yearFromQuery = yearFrom ? { $gt: parseInt(yearFrom) - 1 } : null;
   const stations = await modelsService.getModel('Station')
