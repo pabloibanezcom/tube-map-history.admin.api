@@ -23,6 +23,17 @@ service.searchStations = async (modelsService, body) => {
     .limit(searchParams.limit)
     .select(searchParams.select)
     .populate(searchParams.populate);
+  if (body.filter && body.filter.numberLines) {
+    stations = stations.filter(st => {
+      const lines = [];
+      st.connections.map(c => {
+        if (!lines.includes(c.line.id)) {
+          lines.push(c.line.id);
+        }
+      });
+      return lines.length >= body.filter.numberLines.min && lines.length <= body.filter.numberLines.max;
+    });
+  }
   if (body.filter && body.filter.line) {
     stations = stations.filter(st => st.connections.some(c => c.line.equals(body.filter.line)));
   }
