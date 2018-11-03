@@ -31,7 +31,7 @@ const options = {
 };
 
 let generator;
-if (process.env.DEV_MODE) {
+if (process.env.DEV_MODE === 'true') {
   generator = require('../../scaffolding/node-express-mongodb');
 } else {
   generator = require('node-express-mongodb');
