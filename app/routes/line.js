@@ -2,6 +2,17 @@ const service = require('../services/line.service');
 
 module.exports = (app, modelsService) => {
 
+  const registerSearchLines = () => {
+    const url = '/api/line/search';
+    app.post(url,
+      (req, res) => {
+        service.searchLines(modelsService, req.body)
+          .then(result => res.status(result.statusCode).send(result.data))
+          .catch(err => res.status(500).send(err));
+      });
+    app.routesInfo['Line'].push({ model: 'Line', name: 'Search lines', method: 'POST', url: url });
+  }
+
   const registerGetLineFullInfo = () => {
     const url = '/api/line/full/:lineId';
     app.get(url,
@@ -24,6 +35,7 @@ module.exports = (app, modelsService) => {
     app.routesInfo['Line'].push({ model: 'Line', name: 'Calculate line distance', method: 'GET', url: url });
   }
 
+  registerSearchLines();
   registerGetLineFullInfo();
   registerCalculateLineDistance();
 

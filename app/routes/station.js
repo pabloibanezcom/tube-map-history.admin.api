@@ -3,7 +3,7 @@ const service = require('../services/station.service');
 module.exports = (app, modelsService) => {
 
   const registerSearchStations = () => {
-    const url = '/api/station';
+    const url = '/api/station/search';
     app.post(url,
       (req, res) => {
         service.searchStations(modelsService, req.body)
@@ -74,7 +74,6 @@ module.exports = (app, modelsService) => {
     app.routesInfo['Station'].push({ model: 'Station', name: 'Get station wiki', method: 'GET', url: url });
   }
 
-  app.routesInfo['Station'] = [];
   registerSearchStations();
   registerGetStationsByYearRange();
   registerAddConnection();

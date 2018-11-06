@@ -1,4 +1,21 @@
+const paginateResults = require('../util/paginateResults');
 const service = {};
+
+service.searchLines = async (modelsService, body) => {
+  const searchParams = {
+    filter: {},
+    select: body.select || '',
+    populate: body.populate || ''
+  };
+  if (body.filter && body.filter.name) {
+    searchParams.filter.name = { $regex: body.filter.name, $options: 'i' };
+  }
+  let lines = await modelsService.getModel('Line')
+    .find(searchParams.filter)
+    .select(searchParams.select)
+    .populate(searchParams.populate);
+  return { statusCode: 200, data: paginateResults(lines, body.pagination) };
+}
 
 service.getLineFullInfo = async (modelsService, lineId) => {
   const line = await modelsService.getModel('Line')

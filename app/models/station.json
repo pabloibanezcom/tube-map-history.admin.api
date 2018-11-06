@@ -1,7 +1,7 @@
 {
   "name": "Station",
   "route": "station",
-  "authLevel": "none",
+  "authLevel": "full-public",
   "properties": {
     "name": {
       "type": "String"
