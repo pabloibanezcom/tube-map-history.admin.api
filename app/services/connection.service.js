@@ -23,7 +23,7 @@ service.addConnection = async (modelsService, obj) => {
   const stations = [];
   const line = await Line.findOne({ _id: obj.line });
   for (const s of obj.stations) {
-    const station = await Station.findOne({ _id: s });
+    const station = await Station.findOne({ _id: s }).populate({ path: 'connections', populate: { path: 'line' } });
     stations.push(station);
   }
   if (!isConnectionValid(stations)) {
@@ -38,8 +38,9 @@ service.addConnection = async (modelsService, obj) => {
   }
   const newObj = new Connection(objSchema);
   const doc = await newObj.save();
+  doc.line = line;
   for (const s of stations) {
-    await updateMarkerIcon(s);
+    await updateMarkerIcon(s, doc, 'add');
   }
   await updateRelationship(false, stations, doc._id);
   await updateRelationship(false, [line], doc._id);
@@ -47,9 +48,13 @@ service.addConnection = async (modelsService, obj) => {
 }
 
 service.removeConnection = async (modelsService, connectionId) => {
-  const doc = await modelsService.getModel('Connection').findById(connectionId);
+  const doc = await modelsService.getModel('Connection').findById(connectionId)
+    .populate({ path: 'stations', populate: { path: 'connections', populate: { path: 'line' } } });
+  const stations = doc.stations;
   await doc.remove();
-  const stations = await modelsService.getModel('Station').find({ connections: { "$in": [connectionId] } });
+  for (const s of stations) {
+    await updateMarkerIcon(s, doc, 'remove');
+  }
   updateRelationship(true, stations, connectionId);
   const lines = await modelsService.getModel('Line').find({ connections: { "$in": [connectionId] } });
   updateRelationship(true, lines, connectionId);
@@ -87,8 +92,14 @@ const updateRelationship = async (removeMode, elementsToUpdate, connectionId) =>
   return;
 }
 
-const updateMarkerIcon = async (station) => {
-  const uniqueLines = [...new Set(station.connections.map(c => c.line.shortName))];
+const updateMarkerIcon = async (station, connection, operation) => {
+  let connections;
+  if (operation === 'add') {
+    connections = [connection].concat(station.connections);
+  } else if (operation === 'remove') {
+    connections = station.connections.filter(c => c.id !== connection.id);
+  }
+  const uniqueLines = [...new Set(connections.map(c => c.line.shortName))];
   station.markerIcon = uniqueLines.length === 1 ? uniqueLines[0] : 'multiple';
   await station.save();
 }
