@@ -12,6 +12,9 @@
     "distance": {
       "type": "Number"
     },
+    "order": {
+      "type": "Number"
+    },
     "line": {
       "type": "Line",
       "propertyMatch": "connections"

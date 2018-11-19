@@ -1,0 +1,6 @@
+{
+  "name": "Generation",
+  "route": "generation",
+  "authLevel": "none",
+  "properties": {}
+}

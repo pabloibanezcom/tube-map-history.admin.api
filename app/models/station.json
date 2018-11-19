@@ -18,6 +18,9 @@
     "markerIcon": {
       "type": "String"
     },
+    "markerColor": {
+      "type": "String"
+    },
     "connections": {
       "type": "[Connection]",
       "propertyMatch": "stations"

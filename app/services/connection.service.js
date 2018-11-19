@@ -35,6 +35,7 @@ service.addConnection = async (modelsService, obj) => {
     stations: obj.stations,
     distance: calculateDistance(stations[0].geometry.coordinates, stations[1].geometry.coordinates),
     line: obj.line,
+    order: obj.order
   }
   const newObj = new Connection(objSchema);
   const doc = await newObj.save();
@@ -98,9 +99,12 @@ const updateMarkerIcon = async (station, connection, operation) => {
     connections = [connection].concat(station.connections);
   } else if (operation === 'remove') {
     connections = station.connections.filter(c => c.id !== connection.id);
+  } else {
+    connections = station.connections.slice(0);
   }
-  const uniqueLines = [...new Set(connections.map(c => c.line.shortName))];
+  const uniqueLines = [...new Set(connections.map(c => { return c.line.shortName }))];
   station.markerIcon = uniqueLines.length === 1 ? uniqueLines[0] : 'multiple';
+  // station.markerColor = uniqueLines.length === 1 ? uniqueLines[0].colour : '#fff';
   await station.save();
 }
 
