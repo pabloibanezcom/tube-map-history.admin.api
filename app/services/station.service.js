@@ -41,7 +41,7 @@ service.searchStations = async (modelsService, body) => {
 service.getStationsByYearRange = async (modelsService, yearTo, yearFrom) => {
   const yearFromQuery = yearFrom ? { $gt: parseInt(yearFrom) - 1 } : null;
   const stations = await modelsService.getModel('Station')
-    .find({ year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 } });
+    .find({ year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 }, connections: { $exists: true, $ne: [] } });
   return { statusCode: 200, data: stations };
 }
 
