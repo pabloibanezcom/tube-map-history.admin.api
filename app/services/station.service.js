@@ -45,6 +45,19 @@ service.getStationsByYearRange = async (modelsService, yearTo, yearFrom) => {
   return { statusCode: 200, data: stations };
 }
 
+service.getStationFull = async (modelsService, stationId) => {
+  const station = await modelsService.getModel('Station').findOne({ _id: stationId })
+    .populate({
+      path: 'connections', populate: [{ path: 'stations', select: 'name year markerIcon' },
+      { path: 'line', select: 'name shortName colour fontColour' }]
+    });
+  // Remove self station from connections stations
+  for (const c of station.connections) {
+    c.stations = c.stations.filter(s => s.id !== stationId);
+  }
+  return { statusCode: 200, data: station };
+}
+
 service.updateStation = async (modelsService, stationId, body) => {
   const station = await modelsService.getModel('Station').findOne({ _id: stationId });
   station.name = body.name;
@@ -52,48 +65,6 @@ service.updateStation = async (modelsService, stationId, body) => {
   station.farezones = body.farezones;
   station.year = body.year;
   station.yearEnd = body.yearEnd;
-  await station.save();
-  return { statusCode: 200, data: station };
-}
-
-service.addConnection = async (modelsService, stationId, body) => {
-  const station = await modelsService.getModel('Station').findOne({ _id: stationId });
-  if (!station) {
-    return { statusCode: 404, data: 'Station not found' };
-  }
-  const line = await modelsService.getModel('Line').findOne({ _id: body.line });
-  const otherStation = await modelsService.getModel('Station').findOne({ _id: body.station });
-  if (!station || !line || !otherStation) {
-    return { statusCode: 404, data: 'Data not found' };
-  }
-  station.connections.push({
-    line: line._id,
-    station: otherStation._id,
-    year: body.year,
-    yearEnd: body.yearEnd
-  });
-  await station.save();
-  return { statusCode: 200, data: station };
-}
-
-service.updateConnection = async (modelsService, stationId, connectionId, body) => {
-  const station = await modelsService.getModel('Station').findOne({ _id: stationId });
-  if (!station) {
-    return { statusCode: 404, data: 'Station not found' };
-  }
-  const con = station.connections.find(c => c.id === connectionId);
-  if (!con) {
-    return { statusCode: 404, data: 'Connection not found' };
-  }
-  const line = await modelsService.getModel('Line').findOne({ _id: body.line });
-  const otherStation = await modelsService.getModel('Station').findOne({ _id: body.station });
-  if (!station || !line || !otherStation) {
-    return { statusCode: 404, data: 'Data not found' };
-  }
-  con.line = line._id;
-  con.station = otherStation._id;
-  con.year = body.year;
-  con.yearEnd = body.yearEnd;
   await station.save();
   return { statusCode: 200, data: station };
 }

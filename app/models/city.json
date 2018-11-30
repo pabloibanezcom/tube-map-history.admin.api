@@ -1,0 +1,6 @@
+{
+  "name": "City",
+  "route": "city",
+  "authLevel": "none",
+  "properties": {}
+}

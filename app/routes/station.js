@@ -30,6 +30,17 @@ module.exports = (app, modelsService) => {
     app.routesInfo['Station'].push({ model: 'Station', name: 'Get stations by year range', method: 'GET', url: url });
   }
 
+  const registerGetStationFull = () => {
+    const url = '/api/station/:id';
+    app.get(url,
+      (req, res) => {
+        service.getStationFull(modelsService, req.params.id)
+          .then(result => res.status(result.statusCode).send(result.data))
+          .catch(err => res.status(500).send(err));
+      });
+    app.routesInfo['Station'].push({ model: 'Station', name: 'Get station full data', method: 'GET', url: url });
+  }
+
   const registerUpdateStation = () => {
     const url = '/api/station/update/:id';
     app.put(url,
@@ -39,28 +50,6 @@ module.exports = (app, modelsService) => {
           .catch(err => res.status(500).send(err));
       });
     app.routesInfo['Station'].push({ model: 'Station', name: 'Update station', method: 'PUT', url: url, body: { name: null, geometry: null, farezones: null, year: 1900, yearEnd: null } });
-  }
-
-  const registerAddConnection = () => {
-    const url = '/api/station/update/:stationId/connection';
-    app.post(url,
-      (req, res) => {
-        service.addConnection(modelsService, req.params.stationId, req.body)
-          .then(result => res.status(result.statusCode).send(result.data))
-          .catch(err => res.status(500).send(err));
-      });
-    app.routesInfo['Station'].push({ model: 'Station', name: 'Add connection', method: 'POST', url: url, body: { station: null, line: null, year: 1900, yearEnd: null } });
-  }
-
-  const registerUpdateConnection = () => {
-    const url = '/api/station/update/:stationId/connection/:connectionId';
-    app.put(url,
-      (req, res) => {
-        service.updateConnection(modelsService, req.params.stationId, req.params.connectionId, req.body)
-          .then(result => res.status(result.statusCode).send(result.data))
-          .catch(err => res.status(500).send(err));
-      });
-    app.routesInfo['Station'].push({ model: 'Station', name: 'Update connection', method: 'PUT', url: url, body: { station: null, line: null, year: 1900, yearEnd: null } });
   }
 
   const registerGetStationWiki = () => {
@@ -76,9 +65,8 @@ module.exports = (app, modelsService) => {
 
   registerSearchStations();
   registerGetStationsByYearRange();
-  registerAddConnection();
+  registerGetStationFull();
   registerUpdateStation();
-  registerUpdateConnection();
   registerGetStationWiki();
 
 };
