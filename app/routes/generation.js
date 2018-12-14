@@ -42,7 +42,19 @@ module.exports = (app, modelsService) => {
     app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import DB', method: 'POST', url: url });
   }
 
+  const registerDoCalculations = () => {
+    const url = '/api/generation/calculate';
+    app.get(url,
+      (req, res) => {
+        service.doCalculations(modelsService)
+          .then(result => res.status(200).send('All calculations were made successfully'))
+          .catch(err => res.status(500).send(err));
+      });
+    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Do all calculations', method: 'GET', url: url });
+  }
+
   app.routesInfo['Generation'] = [];
   registerExportDB();
   registerImportDB();
+  registerDoCalculations();
 };

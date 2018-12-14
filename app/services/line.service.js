@@ -1,6 +1,13 @@
 const paginateResults = require('../util/paginateResults');
 const service = {};
 
+service.getLines = async (modelsService) => {
+  const lines = await modelsService.getModel('Line')
+    .find({})
+    .select('order name shortName colour fontColour year distance stationsAmount');
+  return { statusCode: 200, data: lines };
+}
+
 service.searchLines = async (modelsService, body) => {
   const searchParams = {
     filter: {},

@@ -1,5 +1,6 @@
 const XLSX = require('xlsx');
 const connectionService = require('./connection.service');
+const getUniqueInArray = require('../util/getUniqueInArray');
 
 const service = {};
 
@@ -123,11 +124,35 @@ service.importDB = async (modelsService) => {
         }
       }
     }
+    // Final calculations
+    service.doCalculations(modelsService);
     return { statusCode: 200, data: 'All data was imported correctly' };
   }
   catch (err) {
     return { statusCode: 500, data: err };
   }
+}
+
+service.doCalculations = async (modelsService) => {
+
+  const Line = modelsService.getModel('Line');
+
+  const calculateStationsAndDistanceInLine = async (Line) => {
+    const lines = await Line.find({}).populate({ path: 'connections', populate: { path: 'stations', select: 'id' } });
+    for (const l of lines) {
+      const allStations = [];
+      let distance = 0;
+      l.connections.forEach(c => {
+        c.stations.forEach(s => allStations.push(s.id));
+        distance += c.distance;
+      });
+      l.stationsAmount = getUniqueInArray(allStations).length;
+      l.distance = distance;
+      await l.save();
+    }
+  }
+
+  calculateStationsAndDistanceInLine(Line);
 }
 
 

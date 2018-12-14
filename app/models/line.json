@@ -1,7 +1,7 @@
 {
   "name": "Line",
   "route": "line",
-  "authLevel": "full-public",
+  "authLevel": "none",
   "properties": {
     "order": {
       "type": "Number"
@@ -22,6 +22,9 @@
       "type": "Number"
     },
     "distance": {
+      "type": "Number"
+    },
+    "stationsAmount": {
       "type": "Number"
     },
     "startStations": {
