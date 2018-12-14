@@ -14,7 +14,7 @@ module.exports = (app, modelsService) => {
   }
 
   const registerGetLineFullInfo = () => {
-    const url = '/api/line/full/:lineId';
+    const url = '/api/line/:lineId';
     app.get(url,
       (req, res) => {
         service.getLineFullInfo(modelsService, req.params.lineId)
