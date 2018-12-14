@@ -4,6 +4,7 @@ const service = {};
 service.getLines = async (modelsService) => {
   const lines = await modelsService.getModel('Line')
     .find({})
+    .sort('order')
     .select('order name shortName colour fontColour year distance stationsAmount');
   return { statusCode: 200, data: lines };
 }
