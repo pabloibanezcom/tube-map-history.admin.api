@@ -141,13 +141,13 @@ service.doCalculations = async (modelsService) => {
     const lines = await Line.find({}).populate({ path: 'connections', populate: { path: 'stations', select: 'id' } });
     for (const l of lines) {
       const allStations = [];
-      let distance = 0;
+      l.distance = 0;
       l.connections.forEach(c => {
         c.stations.forEach(s => allStations.push(s.id));
-        distance += c.distance;
+        l.distance += c.distance;
+        l.year = !l.year || (l.year > c.year) ? c.year : l.year;
       });
       l.stationsAmount = getUniqueInArray(allStations).length;
-      l.distance = distance;
       await l.save();
     }
   }
