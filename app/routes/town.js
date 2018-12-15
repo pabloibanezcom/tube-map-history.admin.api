@@ -3,10 +3,10 @@ const service = require('../services/town.service');
 module.exports = (app, modelsService) => {
 
   const registerGetTownInfo = () => {
-    const url = '/api/town/:townId';
+    const url = '/api/town/:town';
     app.get(url,
       (req, res) => {
-        service.getTownInfo(modelsService, req.params.townId)
+        service.getTownInfo(modelsService, req.params.town)
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });

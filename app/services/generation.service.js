@@ -175,8 +175,21 @@ service.importTowns = async (modelsService) => {
 
 service.doCalculations = async (modelsService) => {
 
+  const Town = modelsService.getModel('Town');
   const Line = modelsService.getModel('Line');
+  const Station = modelsService.getModel('Station');
+  const Connection = modelsService.getModel('Connection');
 
+  // Towns
+  const towns = await Town.find({});
+  for (let t of towns) {
+    t.linesAmount = await Line.count({ town: t.id });
+    t.stationsAmount = await Station.count({ town: t.id });
+    t.connectionsAmount = await Connection.count({ town: t.id });
+    await t.save();
+  }
+
+  // Lines
   const calculateStationsAndDistanceInLine = async (Line) => {
     const lines = await Line.find({}).populate({ path: 'connections', populate: { path: 'stations', select: 'id' } });
     for (const l of lines) {

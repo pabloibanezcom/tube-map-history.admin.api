@@ -26,6 +26,15 @@
     },
     "alias": {
       "type": "String"
+    },
+    "linesAmount": {
+      "type": "Number"
+    },
+    "stationsAmount": {
+      "type": "Number"
+    },
+    "connectionsAmount": {
+      "type": "Number"
     }
   }
 }

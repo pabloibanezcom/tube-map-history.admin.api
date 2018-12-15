@@ -1,14 +1,14 @@
 const paginateResults = require('../util/paginateResults');
-const getTownId = require('../util/getTownId');
+const getTown = require('../util/getTown');
 const service = {};
 
 service.getLines = async (modelsService, townIdOrName) => {
-  const townId = await getTownId(modelsService, townIdOrName);
-  if (!townId) {
+  const town = await getTown(modelsService, townIdOrName);
+  if (!town) {
     return { statusCode: 404, data: 'Town not found' };
   }
   const lines = await modelsService.getModel('Line')
-    .find({ town: townId })
+    .find({ town: town.id })
     .sort('order')
     .select('order name shortName colour fontColour year distance stationsAmount');
   return { statusCode: 200, data: lines };
