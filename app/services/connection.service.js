@@ -1,11 +1,16 @@
 const calculateDistance = require('../util/calculateDistance');
+const getTownId = require('../util/getTownId');
 
 const service = {};
 
-service.getConnectionsByYearRange = async (modelsService, yearTo, yearFrom) => {
+service.getConnectionsByYearRange = async (modelsService, townIdOrName, yearTo, yearFrom) => {
+  const townId = await getTownId(modelsService, townIdOrName);
+  if (!townId) {
+    return { statusCode: 404, data: 'Town not found' };
+  }
   const yearFromQuery = yearFrom ? { $gt: parseInt(yearFrom) - 1 } : null;
   const connections = await modelsService.getModel('Connection')
-    .find({ year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 } })
+    .find({ town: townId, year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 } })
     .populate({ path: 'line', select: 'name shortName colour fontColour' })
     .populate({ path: 'stations', select: 'name geometry' })
   return { statusCode: 200, data: connections };
@@ -30,6 +35,7 @@ service.addConnection = async (modelsService, obj) => {
     return { statusCode: 400, data: 'Stations need to be two' };
   }
   const objSchema = {
+    town: obj.town,
     year: obj.year,
     yearEnd: obj.yearEnd,
     stations: obj.stations,

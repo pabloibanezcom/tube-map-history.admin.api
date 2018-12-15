@@ -1,5 +1,6 @@
 const paginateResults = require('../util/paginateResults');
 const wikipedia = require("node-wikipedia");
+const getTownId = require('../util/getTownId');
 const service = {};
 
 service.searchStations = async (modelsService, body) => {
@@ -38,10 +39,14 @@ service.searchStations = async (modelsService, body) => {
   return { statusCode: 200, data: paginateResults(stations, body.pagination) };
 }
 
-service.getStationsByYearRange = async (modelsService, yearTo, yearFrom) => {
+service.getStationsByYearRange = async (modelsService, townIdOrName, yearTo, yearFrom) => {
+  const townId = await getTownId(modelsService, townIdOrName);
+  if (!townId) {
+    return { statusCode: 404, data: 'Town not found' };
+  }
   const yearFromQuery = yearFrom ? { $gt: parseInt(yearFrom) - 1 } : null;
   const stations = await modelsService.getModel('Station')
-    .find({ year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 }, connections: { $exists: true, $ne: [] } });
+    .find({ town: townId, year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 }, connections: { $exists: true, $ne: [] } });
   return { statusCode: 200, data: stations };
 }
 

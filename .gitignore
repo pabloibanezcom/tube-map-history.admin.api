@@ -39,4 +39,4 @@ Thumbs.db
 .env
 
 # Temporary data file
-TubeMapHistory_DB.xlsx
+/temp

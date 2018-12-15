@@ -1,6 +1,6 @@
 const service = {};
 
-service.getCityInfo = async (modelsService, cityId) => {
+service.getTownInfo = async (modelsService, townId) => {
   const stations = await modelsService.getModel('Station').count({});
   const lines = await modelsService.getModel('Line').count({});
   const connections = await modelsService.getModel('Connection').count({});

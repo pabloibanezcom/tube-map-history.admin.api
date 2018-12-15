@@ -14,20 +14,20 @@ module.exports = (app, modelsService) => {
   }
 
   const registerGetStationsByYearRange = () => {
-    const url = '/api/station/year/:yearTo';
+    const url = '/api/:town/station/year/:yearTo';
     app.get(url,
       (req, res) => {
-        service.getStationsByYearRange(modelsService, req.params.yearTo)
+        service.getStationsByYearRange(modelsService, req.params.town, req.params.yearTo)
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
     app.get(`${url}/:yearFrom`,
       (req, res) => {
-        service.getStationsByYearRange(modelsService, req.params.yearTo, req.params.yearFrom)
+        service.getStationsByYearRange(modelsService, req.params.town, req.params.yearTo, req.params.yearFrom)
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Station'].push({ model: 'Station', name: 'Get stations by year range', method: 'GET', url: url });
+    app.routesInfo['Station'].push({ model: 'Station', name: 'Get stations by year range in town', method: 'GET', url: url });
   }
 
   const registerGetStationFull = () => {

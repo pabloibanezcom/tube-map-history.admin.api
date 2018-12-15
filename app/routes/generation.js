@@ -4,6 +4,8 @@ const service = require('../services/generation.service');
 
 module.exports = (app, modelsService) => {
 
+  app.use(fileUpload());
+
   const registerExportDB = () => {
     const url = '/api/generation/export';
     app.get(url,
@@ -21,25 +23,44 @@ module.exports = (app, modelsService) => {
     app.routesInfo['Generation'].push({ model: 'Generation', name: 'Export DB', method: 'GET', url: url });
   }
 
-  const registerImportDB = () => {
-    const url = '/api/generation/import';
-    app.use(fileUpload());
+  const registerImportTownData = () => {
+    const url = '/api/generation/import/town/:town';
     app.post(url,
       (req, res) => {
-        const dataFile = req.files.dataFile;
-        if (fs.existsSync('TubeMapHistory_DB.xlsx')) {
-          fs.unlinkSync('TubeMapHistory_DB.xlsx');
+        const file = req.files[Object.keys(req.files)[0]];
+        if (fs.existsSync(`temp/${file.name}`)) {
+          fs.unlinkSync(`temp/${file.name}`);
         }
-        dataFile.mv('TubeMapHistory_DB.xlsx', (err) => {
+        file.mv(`temp/${file.name}`, (err) => {
           if (err)
             return res.status(500).send(err);
 
-          service.importDB(modelsService)
+          service.importTownData(modelsService, req.params.town, `temp/${file.name}`)
             .then(result => res.status(result.statusCode).send(result.data))
             .catch(err => res.status(500).send(err));
         });
       });
-    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import DB', method: 'POST', url: url });
+    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import town data', method: 'POST', url: url });
+  }
+
+  const registerImportTowns = () => {
+    const url = '/api/generation/import/towns';
+    app.post(url,
+      (req, res) => {
+        const dataFile = req.files.towns;
+        if (fs.existsSync('temp/towns.xlsx')) {
+          fs.unlinkSync('temp/towns.xlsx');
+        }
+        dataFile.mv('temp/towns.xlsx', (err) => {
+          if (err)
+            return res.status(500).send(err);
+
+          service.importTowns(modelsService)
+            .then(result => res.status(result.statusCode).send(result.data))
+            .catch(err => res.status(500).send(err));
+        });
+      });
+    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import Towns', method: 'POST', url: url });
   }
 
   const registerDoCalculations = () => {
@@ -55,6 +76,7 @@ module.exports = (app, modelsService) => {
 
   app.routesInfo['Generation'] = [];
   registerExportDB();
-  registerImportDB();
+  registerImportTownData();
+  registerImportTowns();
   registerDoCalculations();
 };

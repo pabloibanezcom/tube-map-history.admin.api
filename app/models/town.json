@@ -1,0 +1,31 @@
+{
+  "name": "Town",
+  "route": "town",
+  "authLevel": "none",
+  "properties": {
+    "order": {
+      "type": "Number"
+    },
+    "name": {
+      "type": "String"
+    },
+    "country": {
+      "type": "String"
+    },
+    "url": {
+      "type": "String"
+    },
+    "center": {
+      "type": "Point"
+    },
+    "zoom": {
+      "type": "Number"
+    },
+    "year": {
+      "type": "Number"
+    },
+    "alias": {
+      "type": "String"
+    }
+  }
+}

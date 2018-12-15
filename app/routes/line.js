@@ -3,14 +3,14 @@ const service = require('../services/line.service');
 module.exports = (app, modelsService) => {
 
   const registerGetLines = () => {
-    const url = '/api/line/all';
+    const url = '/api/:town/lines';
     app.get(url,
       (req, res) => {
-        service.getLines(modelsService)
+        service.getLines(modelsService, req.params.town)
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Line'].push({ model: 'Line', name: 'Get lines', method: 'GET', url: url });
+    app.routesInfo['Line'].push({ model: 'Line', name: 'Get lines in town', method: 'GET', url: url });
   }
 
   const registerGetLineFullInfo = () => {

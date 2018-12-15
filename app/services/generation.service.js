@@ -53,7 +53,11 @@ service.exportDB = async (modelsService) => {
   }
 }
 
-service.importDB = async (modelsService) => {
+service.importTownData = async (modelsService, townUrl, fileName) => {
+  const town = await modelsService.getModel('Town').findOne({ url: townUrl });
+  if (!town) {
+    return { statusCode: 404, data: 'Town not found' };
+  }
   const Station = modelsService.getModel('Station');
   const Line = modelsService.getModel('Line');
   const Connection = modelsService.getModel('Connection');
@@ -61,6 +65,7 @@ service.importDB = async (modelsService) => {
 
   const generateStation = async (stationObj) => {
     const stationDocument = new Station({
+      town: town.id,
       name: stationObj.name,
       year: stationObj.year,
       yearEnd: stationObj.yearEnd,
@@ -78,6 +83,7 @@ service.importDB = async (modelsService) => {
 
   const generateLine = async (lineSheet) => {
     const lineDocument = new Line({
+      town: town.id,
       order: lineSheet[0].order,
       name: lineSheet[0].name,
       shortName: lineSheet[0].shortName,
@@ -90,6 +96,7 @@ service.importDB = async (modelsService) => {
   const generateConnection = async (line, connection, prevConnection, order) => {
     const stationFromName = connection['station_from'] || prevConnection['station_to'];
     await connectionService.addConnection(modelsService, {
+      town: town.id,
       order: order,
       line: line.id,
       stations: [
@@ -102,17 +109,17 @@ service.importDB = async (modelsService) => {
   }
 
   try {
-    const book = XLSX.readFile('TubeMapHistory_DB.xlsx');
+    const book = XLSX.readFile(fileName);
     // Stations
-    await Station.remove({});
+    await Station.remove({ town: town.id });
     const stations = XLSX.utils.sheet_to_json(book.Sheets['Stations']);
     for (let st of stations) {
       const stationDocument = await generateStation(st);
       stationDocuments.push(stationDocument);
     }
     // Lines and Connections
-    await Line.remove({});
-    await Connection.remove({});
+    await Line.remove({ town: town.id });
+    await Connection.remove({ town: town.id });
     for (let sheetName of Object.keys(book.Sheets)) {
       // Line
       if (sheetName.startsWith('Line_')) {
@@ -127,6 +134,39 @@ service.importDB = async (modelsService) => {
     // Final calculations
     service.doCalculations(modelsService);
     return { statusCode: 200, data: 'All data was imported correctly' };
+  }
+  catch (err) {
+    return { statusCode: 500, data: err };
+  }
+}
+
+service.importTowns = async (modelsService) => {
+  const Town = modelsService.getModel('Town');
+  try {
+    const book = XLSX.readFile('temp/towns.xlsx');
+    const towns = XLSX.utils.sheet_to_json(book.Sheets['Towns']);
+    for (let tw of towns) {
+      let townDocument = await Town.findOne({ url: tw.url });
+      if (!townDocument) {
+        townDocument = new Town({});
+      }
+      townDocument.order = tw.oder;
+      townDocument.name = tw.name;
+      townDocument.country = tw.country;
+      townDocument.url = tw.url;
+      townDocument.center = {
+        type: 'Point',
+        coordinates: [
+          tw.lat,
+          tw.lng
+        ]
+      };
+      townDocument.zoom = tw.zoom;
+      townDocument.year = tw.year;
+      townDocument.alias = tw.alias;
+      await townDocument.save();
+    }
+    return { statusCode: 200, data: 'All towns were imported correctly' };
   }
   catch (err) {
     return { statusCode: 500, data: err };

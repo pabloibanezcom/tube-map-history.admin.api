@@ -33,6 +33,9 @@
     "connections": {
       "type": "[Connection]",
       "propertyMatch": "line"
+    },
+    "town": {
+      "type": "Town"
     }
   }
 }

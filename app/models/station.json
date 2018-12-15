@@ -24,6 +24,9 @@
     "connections": {
       "type": "[Connection]",
       "propertyMatch": "stations"
+    },
+    "town": {
+      "type": "Town"
     }
   }
 }
