@@ -34,7 +34,7 @@ service.getLineFullInfo = async (modelsService, lineId) => {
   const line = await modelsService.getModel('Line')
     .findById(lineId)
     .select('name shortName colour fontColour startStations year distance')
-    .populate({ path: 'connections', select: 'stations year yearEnd distance', populate: { path: 'stations', select: 'name' } })
+    .populate({ path: 'connections', select: 'stations year yearEnd distance', populate: { path: 'stations', select: 'name markerIcon' } })
   if (!line) {
     return { statusCode: 404, data: 'Line not found' };
   }
