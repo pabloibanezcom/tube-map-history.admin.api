@@ -3,12 +3,12 @@ const getTown = require('../util/getTown');
 const service = {};
 
 service.getLines = async (modelsService, townIdOrName) => {
-  const town = await getTown(modelsService, townIdOrName);
-  if (!town) {
+  const townId = await getTown(modelsService, townIdOrName);
+  if (!townId) {
     return { statusCode: 404, data: 'Town not found' };
   }
   const lines = await modelsService.getModel('Line')
-    .find({ town: town.id })
+    .find({ town: townId })
     .sort('order')
     .select('order name shortName colour fontColour year distance stationsAmount');
   return { statusCode: 200, data: lines };

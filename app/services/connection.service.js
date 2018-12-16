@@ -4,13 +4,13 @@ const getTown = require('../util/getTown');
 const service = {};
 
 service.getConnectionsByYearRange = async (modelsService, townIdOrName, yearTo, yearFrom) => {
-  const town = await getTown(modelsService, townIdOrName);
-  if (!town) {
+  const townId = await getTown(modelsService, townIdOrName);
+  if (!townId) {
     return { statusCode: 404, data: 'Town not found' };
   }
   const yearFromQuery = yearFrom ? { $gt: parseInt(yearFrom) - 1 } : null;
   const connections = await modelsService.getModel('Connection')
-    .find({ town: town.id, year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 } })
+    .find({ town: townId, year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 } })
     .populate({ path: 'line', select: 'name shortName colour fontColour' })
     .populate({ path: 'stations', select: 'name geometry' })
   return { statusCode: 200, data: connections };

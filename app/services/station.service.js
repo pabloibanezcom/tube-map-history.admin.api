@@ -40,13 +40,13 @@ service.searchStations = async (modelsService, body) => {
 }
 
 service.getStationsByYearRange = async (modelsService, townIdOrName, yearTo, yearFrom) => {
-  const town = await getTown(modelsService, townIdOrName);
-  if (!town) {
+  const townId = await getTown(modelsService, townIdOrName);
+  if (!townId) {
     return { statusCode: 404, data: 'Town not found' };
   }
   const yearFromQuery = yearFrom ? { $gt: parseInt(yearFrom) - 1 } : null;
   const stations = await modelsService.getModel('Station')
-    .find({ town: town.id, year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 }, connections: { $exists: true, $ne: [] } });
+    .find({ town: townId, year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 }, connections: { $exists: true, $ne: [] } });
   return { statusCode: 200, data: stations };
 }
 

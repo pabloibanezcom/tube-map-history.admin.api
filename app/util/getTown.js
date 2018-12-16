@@ -4,7 +4,7 @@ const getTown = async (modelsService, townIdOrName, onlyId = true) => {
   let town;
   if (ObjectId.isValid(townIdOrName)) {
     if (onlyId) {
-      return onlyId;
+      return townIdOrName;
     }
     town = await modelsService.getModel('Town').findOne({ _id: townIdOrName });
   } else {
