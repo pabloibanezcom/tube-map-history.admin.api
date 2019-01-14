@@ -3,10 +3,10 @@ const service = require('../services/station.service');
 module.exports = (app, modelsService) => {
 
   const registerSearchStations = () => {
-    const url = '/api/station/search';
+    const url = '/api/:town/station/search';
     app.post(url,
       (req, res) => {
-        service.searchStations(modelsService, req.body)
+        service.searchStations(modelsService, req.params.town, req.body)
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });

@@ -3,9 +3,15 @@ const wikipedia = require("node-wikipedia");
 const getTown = require('../util/getTown');
 const service = {};
 
-service.searchStations = async (modelsService, body) => {
+service.searchStations = async (modelsService, townIdOrName, body) => {
+  const townId = await getTown(modelsService, townIdOrName);
+  if (!townId) {
+    return { statusCode: 404, data: 'Town not found' };
+  }
   const searchParams = {
-    filter: {},
+    filter: {
+      town: townId
+    },
     select: body.select || '',
     populate: body.populate || ''
   };
