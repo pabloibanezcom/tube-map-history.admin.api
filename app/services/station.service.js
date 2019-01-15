@@ -12,6 +12,7 @@ service.searchStations = async (modelsService, townIdOrName, body) => {
     filter: {
       town: townId
     },
+    sort: body.sort || '',
     select: body.select || '',
     populate: body.populate || ''
   };
@@ -26,6 +27,7 @@ service.searchStations = async (modelsService, townIdOrName, body) => {
   }
   let stations = await modelsService.getModel('Station')
     .find(searchParams.filter)
+    .sort(searchParams.sort)
     .select(searchParams.select)
     .populate(searchParams.populate);
   if (body.filter && body.filter.numberLines) {
