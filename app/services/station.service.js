@@ -90,8 +90,12 @@ service.addStation = async (modelsService, townIdOrName, stationBody) => {
   return { statusCode: 200, data: doc };
 }
 
-service.updateStation = async (modelsService, stationId, body) => {
-  const station = await modelsService.getModel('Station').findOne({ _id: stationId });
+service.updateStation = async (modelsService, townIdOrName, stationId, body) => {
+  const townId = await getTown(modelsService, townIdOrName);
+  if (!townId) {
+    return { statusCode: 404, data: 'Town not found' };
+  }
+  const station = await modelsService.getModel('Station').findOne({ _id: stationId, town: townId });
   station.name = body.name;
   station.geometry = body.geometry;
   station.farezones = body.farezones;

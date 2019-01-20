@@ -1,12 +1,17 @@
 const XLSX = require('xlsx');
 const connectionService = require('./connection.service');
 const getUniqueInArray = require('../util/getUniqueInArray');
+const getTown = require('../util/getTown');
 
 const service = {};
 
-service.exportDB = async (modelsService) => {
+service.exportDB = async (modelsService, townIdOrName) => {
+  const townId = await getTown(modelsService, townIdOrName);
+  if (!townId) {
+    return { statusCode: 404, data: 'Town not found' };
+  }
   const stations = await modelsService.getModel('Station')
-    .find({})
+    .find({ town: townId })
     .sort('name')
     .select('name geometry year yearEnd');
   try {
@@ -24,7 +29,7 @@ service.exportDB = async (modelsService) => {
     XLSX.utils.book_append_sheet(book, stationsSheet, 'Stations');
     // Lines
     const lines = await modelsService.getModel('Line')
-      .find({})
+      .find({ town: townId })
       .sort('order')
       .select('order name shortName colour fontColour year connections')
       .populate({ path: 'connections', sort: 'order', populate: { path: 'stations', select: 'name' } });
@@ -45,7 +50,7 @@ service.exportDB = async (modelsService) => {
       XLSX.utils.book_append_sheet(book, lineSheet, `Line_${l.name}`);
     });
 
-    XLSX.writeFile(book, 'TubeMapHistory_DB.xlsx');
+    XLSX.writeFile(book, `${townIdOrName}.xlsx`);
     return;
   }
   catch (err) {

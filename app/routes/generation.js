@@ -7,20 +7,20 @@ module.exports = (app, modelsService) => {
   app.use(fileUpload());
 
   const registerExportDB = () => {
-    const url = '/api/generation/export';
+    const url = '/api/generation/export/:town';
     app.get(url,
       (req, res) => {
-        service.exportDB(modelsService)
+        service.exportDB(modelsService, req.params.town)
           .then(result => {
             setTimeout(() => {
-              if (fs.existsSync('TubeMapHistory_DB.xlsx')) {
-                res.download('TubeMapHistory_DB.xlsx');
+              if (fs.existsSync(`${req.params.town}.xlsx`)) {
+                res.download(`${req.params.town}.xlsx`);
               }
             }, 500);
           })
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Export DB', method: 'GET', url: url });
+    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Export DB by town', method: 'GET', url: url });
   }
 
   const registerImportTownData = () => {

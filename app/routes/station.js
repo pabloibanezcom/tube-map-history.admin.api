@@ -53,10 +53,10 @@ module.exports = (app, modelsService) => {
   }
 
   const registerUpdateStation = () => {
-    const url = '/api/station/update/:id';
+    const url = '/api/:town/station/:id';
     app.put(url,
       (req, res) => {
-        service.updateStation(modelsService, req.params.id, req.body)
+        service.updateStation(modelsService, req.params.town, req.params.id, req.body)
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
