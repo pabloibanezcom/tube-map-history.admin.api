@@ -71,6 +71,25 @@ service.getStationFull = async (modelsService, stationId) => {
   return { statusCode: 200, data: station };
 }
 
+service.addStation = async (modelsService, townIdOrName, stationBody) => {
+  const Station = await modelsService.getModel('Station');
+  const townId = await getTown(modelsService, townIdOrName);
+  if (!townId) {
+    return { statusCode: 404, data: 'Town not found' };
+  }
+  const objSchema = {
+    name: stationBody.name,
+    geometry: stationBody.geometry,
+    year: stationBody.year,
+    markerIcon: 'multiple',
+    yearEnd: stationBody.yearEnd,
+    town: townId
+  }
+  const station = new Station(objSchema);
+  const doc = await station.save();
+  return { statusCode: 200, data: doc };
+}
+
 service.updateStation = async (modelsService, stationId, body) => {
   const station = await modelsService.getModel('Station').findOne({ _id: stationId });
   station.name = body.name;

@@ -41,6 +41,17 @@ module.exports = (app, modelsService) => {
     app.routesInfo['Station'].push({ model: 'Station', name: 'Get station full data', method: 'GET', url: url });
   }
 
+  const registerAddStation = () => {
+    const url = '/api/:town/station';
+    app.post(url,
+      (req, res) => {
+        service.addStation(modelsService, req.params.town, req.body)
+          .then(result => res.status(result.statusCode).send(result.data))
+          .catch(err => res.status(500).send(err));
+      });
+    app.routesInfo['Station'].push({ model: 'Station', name: 'Add station', method: 'POST', url: url, body: { name: null, geometry: null, year: 1900, yearEnd: null } });
+  }
+
   const registerUpdateStation = () => {
     const url = '/api/station/update/:id';
     app.put(url,
@@ -66,6 +77,7 @@ module.exports = (app, modelsService) => {
   registerSearchStations();
   registerGetStationsByYearRange();
   registerGetStationFull();
+  registerAddStation();
   registerUpdateStation();
   registerGetStationWiki();
 
