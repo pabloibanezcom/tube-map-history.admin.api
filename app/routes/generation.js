@@ -25,7 +25,7 @@ module.exports = (app, modelsService) => {
 
   const registerImportTownData = () => {
     const url = '/api/generation/import/town/:town';
-    app.post(url,
+    app.put(url,
       (req, res) => {
         const file = req.files[Object.keys(req.files)[0]];
         if (fs.existsSync(`temp/${file.name}`)) {
@@ -40,12 +40,12 @@ module.exports = (app, modelsService) => {
             .catch(err => res.status(500).send(err));
         });
       });
-    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import town data', method: 'POST', url: url });
+    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import town data', method: 'PUT', url: url });
   }
 
   const registerImportTowns = () => {
     const url = '/api/generation/import/towns';
-    app.post(url,
+    app.put(url,
       (req, res) => {
         const dataFile = req.files.towns;
         if (fs.existsSync('temp/towns.xlsx')) {
@@ -60,7 +60,7 @@ module.exports = (app, modelsService) => {
             .catch(err => res.status(500).send(err));
         });
       });
-    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import Towns', method: 'POST', url: url });
+    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import Towns', method: 'PUT', url: url });
   }
 
   const registerDoCalculations = () => {
