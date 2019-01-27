@@ -28,6 +28,9 @@ module.exports = (app, modelsService) => {
     app.put(url,
       (req, res) => {
         const file = req.files[Object.keys(req.files)[0]];
+        if (!fs.existsSync('temp')) {
+          fs.mkdirSync('temp');
+        }
         if (fs.existsSync(`temp/${file.name}`)) {
           fs.unlinkSync(`temp/${file.name}`);
         }
