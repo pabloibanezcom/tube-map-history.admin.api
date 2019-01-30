@@ -59,9 +59,12 @@ service.exportDB = async (modelsService, townIdOrName) => {
 }
 
 service.importTownData = async (modelsService, townIdOrName, fileName) => {
-  const townId = await getTown(modelsService, townIdOrName);
-  if (!townId) {
+  const town = await getTown(modelsService, townIdOrName, false);
+  if (!town) {
     return { statusCode: 404, data: 'Town not found' };
+  }
+  if (!fileName.includes(town.url)) {
+    return { statusCode: 400, data: 'File name does not match Town ID' };
   }
   const Station = modelsService.getModel('Station');
   const Line = modelsService.getModel('Line');
@@ -70,7 +73,7 @@ service.importTownData = async (modelsService, townIdOrName, fileName) => {
 
   const generateStation = async (stationObj) => {
     const stationDocument = new Station({
-      town: townId,
+      town: town.id,
       name: stationObj.name,
       year: stationObj.year,
       yearEnd: stationObj.yearEnd,
@@ -88,7 +91,7 @@ service.importTownData = async (modelsService, townIdOrName, fileName) => {
 
   const generateLine = async (lineSheet) => {
     const lineDocument = new Line({
-      town: townId,
+      town: town.id,
       order: lineSheet[0].order,
       name: lineSheet[0].name,
       shortName: lineSheet[0].shortName,
@@ -101,7 +104,7 @@ service.importTownData = async (modelsService, townIdOrName, fileName) => {
   const generateConnection = async (line, connection, prevConnection, order) => {
     const stationFromName = connection['station_from'] || prevConnection['station_to'];
     await connectionService.addConnection(modelsService, {
-      town: townId,
+      town: town.id,
       order: order,
       line: line.id,
       stations: [
@@ -116,15 +119,15 @@ service.importTownData = async (modelsService, townIdOrName, fileName) => {
   try {
     const book = XLSX.readFile(fileName);
     // Stations
-    await Station.remove({ town: townId });
+    await Station.remove({ town: town.id });
     const stations = XLSX.utils.sheet_to_json(book.Sheets['Stations']);
     for (let st of stations) {
       const stationDocument = await generateStation(st);
       stationDocuments.push(stationDocument);
     }
     // Lines and Connections
-    await Line.remove({ town: townId });
-    await Connection.remove({ town: townId });
+    await Line.remove({ town: town.id });
+    await Connection.remove({ town: town.id });
     for (let sheetName of Object.keys(book.Sheets)) {
       // Line
       if (sheetName.startsWith('Line_')) {
