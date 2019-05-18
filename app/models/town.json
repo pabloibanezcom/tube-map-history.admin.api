@@ -9,9 +9,6 @@
     "name": {
       "type": "String"
     },
-    "country": {
-      "type": "String"
-    },
     "url": {
       "type": "String"
     },
@@ -35,6 +32,14 @@
     },
     "connectionsAmount": {
       "type": "Number"
+    },
+    "country": {
+      "type": "Country",
+      "propertyMatch": "towns"
+    },
+    "users": {
+      "type": "[UserTown]",
+      "propertyMatch": "town"
     }
   }
 }

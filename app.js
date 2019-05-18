@@ -26,8 +26,7 @@ const options = {
   token_key: process.env.TOKEN_KEY,
   host: process.env.HOST,
   mongodb_uri: process.env.MONGODB_URI,
-  root_path: process.env.ROOT_PATH,
-  exampleUsers: require('./app/auth/exampleUsers')
+  root_path: process.env.ROOT_PATH
 };
 
 let generator;

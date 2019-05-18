@@ -1,0 +1,20 @@
+{
+  "name": "Country",
+  "route": "country",
+  "authLevel": "none",
+  "properties": {
+    "name": {
+      "type": "String"
+    },
+    "code": {
+      "type": "String"
+    },
+    "continent": {
+      "type": "String"
+    },
+    "towns": {
+      "type": "[Town]",
+      "propertyMatch": "country"
+    }
+  }
+}

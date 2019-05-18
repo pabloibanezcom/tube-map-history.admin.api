@@ -1,0 +1,17 @@
+{
+  "name": "UserTown",
+  "authLevel": "none",
+  "properties": {
+    "user": {
+      "type": "User",
+      "propertyMatch": "towns"
+    },
+    "town": {
+      "type": "Town",
+      "propertyMatch": "users"
+    },
+    "role": {
+      "type": "String"
+    }
+  }
+}

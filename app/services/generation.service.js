@@ -150,6 +150,7 @@ service.importTownData = async (modelsService, townIdOrName, fileName) => {
 
 service.importTowns = async (modelsService) => {
   const Town = modelsService.getModel('Town');
+  const Country = modelsService.getModel('Country');
   try {
     const book = XLSX.readFile('temp/towns.xlsx');
     const towns = XLSX.utils.sheet_to_json(book.Sheets['Towns']);
@@ -160,7 +161,10 @@ service.importTowns = async (modelsService) => {
       }
       townDocument.order = tw.oder;
       townDocument.name = tw.name;
-      townDocument.country = tw.country;
+      const country = await Country.findOne({ name: tw.country });
+      if (country) {
+        townDocument.country = country.id;
+      }
       townDocument.url = tw.url;
       townDocument.center = {
         type: 'Point',
@@ -175,6 +179,28 @@ service.importTowns = async (modelsService) => {
       await townDocument.save();
     }
     return { statusCode: 200, data: 'All towns were imported correctly' };
+  }
+  catch (err) {
+    return { statusCode: 500, data: err };
+  }
+}
+
+service.importCountries = async (modelsService) => {
+  const Country = modelsService.getModel('Country');
+  try {
+    const book = XLSX.readFile('temp/countries.xlsx');
+    const countries = XLSX.utils.sheet_to_json(book.Sheets['Countries']);
+    for (let ct of countries) {
+      let countryDocument = await Country.findOne({ code: ct.code });
+      if (!countryDocument) {
+        countryDocument = new Country({});
+      }
+      countryDocument.code = ct.code;
+      countryDocument.name = ct.name;
+      countryDocument.continent = ct.continent;
+      await countryDocument.save();
+    }
+    return { statusCode: 200, data: 'All countries were imported correctly' };
   }
   catch (err) {
     return { statusCode: 500, data: err };

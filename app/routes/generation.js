@@ -66,6 +66,26 @@ module.exports = (app, modelsService) => {
     app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import Towns', method: 'PUT', url: url });
   }
 
+  const registerImportCountries = () => {
+    const url = '/api/generation/import/countries';
+    app.put(url,
+      (req, res) => {
+        const dataFile = req.files.countries;
+        if (fs.existsSync('temp/countries.xlsx')) {
+          fs.unlinkSync('temp/countries.xlsx');
+        }
+        dataFile.mv('temp/countries.xlsx', (err) => {
+          if (err)
+            return res.status(500).send(err);
+
+          service.importCountries(modelsService)
+            .then(result => res.status(result.statusCode).send(result.data))
+            .catch(err => res.status(500).send(err));
+        });
+      });
+    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import Countries', method: 'PUT', url: url });
+  }
+
   const registerDoCalculations = () => {
     const url = '/api/generation/calculate';
     app.get(url,
@@ -81,5 +101,6 @@ module.exports = (app, modelsService) => {
   registerExportDB();
   registerImportTownData();
   registerImportTowns();
+  registerImportCountries();
   registerDoCalculations();
 };

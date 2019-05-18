@@ -1,0 +1,14 @@
+{
+  "name": "User",
+  "route": "user",
+  "authLevel": "none",
+  "properties": {
+    "country": {
+      "type": "Country"
+    },
+    "towns": {
+      "type": "[UserTown]",
+      "propertyMatch": "user"
+    }
+  }
+}
