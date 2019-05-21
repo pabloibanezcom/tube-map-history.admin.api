@@ -16,7 +16,7 @@
     "express-fileupload": "^1.0.0",
     "express-session": "^1.15.0",
     "mongoose": "^5.0.14",
-    "node-express-mongodb": "1.0.28",
+    "node-express-mongodb": "1.0.29",
     "node-wikipedia": "0.0.2",
     "xlsx": "^0.14.1"
   },
