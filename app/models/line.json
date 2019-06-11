@@ -6,6 +6,9 @@
     "order": {
       "type": "Number"
     },
+    "key": {
+      "type": "String"
+    },
     "name": {
       "type": "String"
     },

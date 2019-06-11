@@ -10,7 +10,7 @@ service.getLines = async (modelsService, townIdOrName) => {
   const lines = await modelsService.getModel('Line')
     .find({ town: townId })
     .sort('order')
-    .select('order name shortName colour fontColour year distance stationsAmount');
+    .select('order key name shortName colour fontColour year distance stationsAmount');
   return { statusCode: 200, data: lines };
 }
 
@@ -33,7 +33,7 @@ service.searchLines = async (modelsService, body) => {
 service.getLineFullInfo = async (modelsService, lineId) => {
   const line = await modelsService.getModel('Line')
     .findById(lineId)
-    .select('name shortName colour fontColour startStations year distance')
+    .select('name key shortName colour fontColour startStations year distance')
     .populate({ path: 'connections', select: 'stations year yearEnd distance', populate: { path: 'stations', select: 'name markerIcon' } })
   if (!line) {
     return { statusCode: 404, data: 'Line not found' };

@@ -31,13 +31,13 @@ service.exportDB = async (modelsService, townIdOrName) => {
     const lines = await modelsService.getModel('Line')
       .find({ town: townId })
       .sort('order')
-      .select('order name shortName colour fontColour year connections')
+      .select('order key name shortName colour fontColour year connections')
       .populate({ path: 'connections', sort: 'order', populate: { path: 'stations', select: 'name' } });
     lines.map(l => {
 
       const line_data = [
-        ['order', 'name', 'shortName', 'colour', 'fontColour', 'lineyear', '', 'station_from', 'station_to', 'connectionYear', 'connectionYearEnd'],
-        [l.order, l.name, l.shortName, l.colour, l.fontColour, l.year],
+        ['order', 'key', 'name', 'shortName', 'colour', 'fontColour', 'lineyear', '', 'station_from', 'station_to', 'connectionYear', 'connectionYearEnd'],
+        [l.order, l.key, l.name, l.shortName, l.colour, l.fontColour, l.year],
         [],
       ];
 
