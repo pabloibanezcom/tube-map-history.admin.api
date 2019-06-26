@@ -1,6 +1,10 @@
 const paginateResults = require('../util/paginateResults');
 const getTown = require('../util/getTown');
 const service = {};
+const validateBody = require('../util/validations');
+const isTownUser = require('../util/auth').isTownUser;
+const transformMongooseErrors = require('../util/transformMongooseErrors');
+const addCreatedAndModified = require('../util/addCreatedAndModified');
 
 service.getLines = async (modelsService, townIdOrName) => {
   const townId = await getTown(modelsService, townIdOrName);
@@ -10,7 +14,7 @@ service.getLines = async (modelsService, townIdOrName) => {
   const lines = await modelsService.getModel('Line')
     .find({ town: townId })
     .sort('order')
-    .select('order key name shortName colour fontColour year distance stationsAmount');
+    .select('order key name shortName colour fontColour year distance stationsAmount lastModifiedDate lastModifiedUser');
   return { statusCode: 200, data: lines };
 }
 
@@ -33,8 +37,14 @@ service.searchLines = async (modelsService, body) => {
 service.getLineFullInfo = async (modelsService, lineId) => {
   const line = await modelsService.getModel('Line')
     .findById(lineId)
-    .select('name key shortName colour fontColour startStations year distance')
-    .populate({ path: 'connections', select: 'stations year yearEnd distance', populate: { path: 'stations', select: 'name markerIcon' } })
+    .select('name key shortName colour fontColour startStations year distance lastModifiedDate lastModifiedUser')
+    .populate(
+      [
+        { path: 'connections', select: 'stations year yearEnd distance', populate: { path: 'stations', select: 'name markerIcon' } },
+        { path: 'lastModifiedUser', select: 'firstName lastName country' },
+        { path: 'created.user', select: 'firstName lastName country' }
+      ]
+    )
   if (!line) {
     return { statusCode: 404, data: 'Line not found' };
   }
@@ -42,7 +52,7 @@ service.getLineFullInfo = async (modelsService, lineId) => {
 }
 
 service.calculateLineDistance = async (modelsService, lineId) => {
-  const line = await modelsService.getModel('Line')
+  const line = await smodelsService.getModel('Line')
     .findById(lineId)
     .populate({ path: 'connections', select: 'distance' })
   if (!line) {
@@ -51,6 +61,54 @@ service.calculateLineDistance = async (modelsService, lineId) => {
   line.distance = line.connections.map(c => c.distance).reduce((prev, next) => { return prev + next });
   await line.save();
   return { statusCode: 202, data: `${line.name} total distance: ${line.distance}` };
+}
+
+service.addLine = async (modelsService, user, townIdOrName, lineObj) => {
+  const Line = modelsService.getModel('Line');
+  const townId = await getTown(modelsService, townIdOrName);
+  const line = new Line(addCreatedAndModified({ ...lineObj, town: townId }, user, true));
+  try {
+    const doc = await line.save();
+    return { statusCode: 200, data: doc };
+  }
+  catch (err) {
+    return { statusCode: 400, data: transformMongooseErrors(err) };
+  }
+}
+
+service.updateLine = async (modelsService, user, lineId, body) => {
+  const bodyValidation = {
+    order: 'isNumber',
+    key: 'required',
+    name: 'required',
+    shortName: 'required',
+    colour: 'required',
+    fontColour: 'required',
+    year: 'isYear'
+  };
+  const validationErrors = validateBody(body, bodyValidation);
+  if (validationErrors) {
+    return { statusCode: 400, data: validationErrors };
+  }
+
+  const line = await modelsService.getModel('Line').findOne({ _id: lineId });
+  if (!isTownUser(user, line.town)) {
+    return { statusCode: 401, data: 'Unauthorized' };
+  }
+
+  line.order = body.order;
+  line.key = body.key;
+  line.name = body.name;
+  line.shortName = body.shortName;
+  line.colour = body.colour;
+  line.fontColour = body.fontColour;
+  line.year = body.year;
+
+  line.lastModifiedDate = Date.now();
+  line.lastModifiedUser = user.id;
+
+  await line.save();
+  return { statusCode: 200, data: line };
 }
 
 const sortConnections = (connections, startStations) => {

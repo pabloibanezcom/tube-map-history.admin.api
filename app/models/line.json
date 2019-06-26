@@ -1,28 +1,65 @@
 {
   "name": "Line",
   "route": "line",
-  "authLevel": "none",
   "properties": {
     "order": {
-      "type": "Number"
+      "type": "Number",
+      "required": true,
+      "postmanBody": {
+        "add": true,
+        "update": true
+      }
     },
     "key": {
-      "type": "String"
+      "type": "String",
+      "required": true,
+      "postmanBody": {
+        "add": true,
+        "update": true
+      }
     },
     "name": {
-      "type": "String"
+      "type": "String",
+      "required": [
+        true,
+        "Name is required"
+      ],
+      "postmanBody": {
+        "add": true,
+        "udpate": true
+      }
     },
     "shortName": {
-      "type": "String"
+      "type": "String",
+      "required": true,
+      "postmanBody": {
+        "add": true,
+        "update": true
+      }
     },
     "colour": {
-      "type": "String"
+      "type": "String",
+      "required": true,
+      "postmanBody": {
+        "add": true,
+        "update": true
+      }
     },
     "fontColour": {
-      "type": "String"
+      "type": "String",
+      "required": true,
+      "postmanBody": {
+        "add": true,
+        "update": true
+      }
     },
     "year": {
-      "type": "Number"
+      "type": "Number",
+      "required": true,
+      "postmanBody": {
+        "add": true,
+        "update": true
+      }
     },
     "distance": {
       "type": "Number"
@@ -38,7 +75,8 @@
       "propertyMatch": "line"
     },
     "town": {
-      "type": "Town"
+      "type": "Town",
+      "required": true
     }
   }
 }
