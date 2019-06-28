@@ -76,37 +76,13 @@ service.addLine = async (modelsService, user, townIdOrName, lineObj) => {
   }
 }
 
-service.updateLine = async (modelsService, user, lineId, body) => {
-  const bodyValidation = {
-    order: 'isNumber',
-    key: 'required',
-    name: 'required',
-    shortName: 'required',
-    colour: 'required',
-    fontColour: 'required',
-    year: 'isYear'
-  };
-  const validationErrors = validateBody(body, bodyValidation);
-  if (validationErrors) {
-    return { statusCode: 400, data: validationErrors };
-  }
-
+service.updateLine = async (modelsService, user, lineId, lineObj) => {
   const line = await modelsService.getModel('Line').findOne({ _id: lineId });
   if (!isTownUser(user, line.town)) {
     return { statusCode: 401, data: 'Unauthorized' };
   }
 
-  line.order = body.order;
-  line.key = body.key;
-  line.name = body.name;
-  line.shortName = body.shortName;
-  line.colour = body.colour;
-  line.fontColour = body.fontColour;
-  line.year = body.year;
-
-  line.lastModifiedDate = Date.now();
-  line.lastModifiedUser = user.id;
-
+  Object.assign(line, addCreatedAndModified(lineObj, user, false));
   await line.save();
   return { statusCode: 200, data: line };
 }

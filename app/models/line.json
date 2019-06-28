@@ -5,7 +5,7 @@
     "order": {
       "type": "Number",
       "required": true,
-      "postmanBody": {
+      "actions": {
         "add": true,
         "update": true
       }
@@ -13,9 +13,9 @@
     "key": {
       "type": "String",
       "required": true,
-      "postmanBody": {
+      "actions": {
         "add": true,
-        "update": true
+        "update": false
       }
     },
     "name": {
@@ -24,15 +24,15 @@
         true,
         "Name is required"
       ],
-      "postmanBody": {
+      "actions": {
         "add": true,
-        "udpate": true
+        "update": true
       }
     },
     "shortName": {
       "type": "String",
       "required": true,
-      "postmanBody": {
+      "actions": {
         "add": true,
         "update": true
       }
@@ -40,7 +40,7 @@
     "colour": {
       "type": "String",
       "required": true,
-      "postmanBody": {
+      "actions": {
         "add": true,
         "update": true
       }
@@ -48,7 +48,7 @@
     "fontColour": {
       "type": "String",
       "required": true,
-      "postmanBody": {
+      "actions": {
         "add": true,
         "update": true
       }
@@ -56,7 +56,7 @@
     "year": {
       "type": "Number",
       "required": true,
-      "postmanBody": {
+      "actions": {
         "add": true,
         "update": true
       }

@@ -1,0 +1,6 @@
+[
+  {
+    "name": "local-user-with-towns",
+    "populate": "towns"
+  }
+]

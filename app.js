@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
+const passportProfiles = require('./app/auth/passport-profiles.json')
 
 require('dotenv').load();
 const app = express();
@@ -23,7 +24,6 @@ app.use(session({
 
 const options = {
   app_name: process.env.APP_NAME,
-  token_key: process.env.TOKEN_KEY,
   host: process.env.HOST,
   mongodb_uri: process.env.MONGODB_URI,
   root_path: process.env.ROOT_PATH,
@@ -32,11 +32,11 @@ const options = {
 
 let generator;
 if (process.env.DEV_MODE === 'true') {
-  generator = require('../../scaffolding/node-express-mongodb');
+  generator = require('../../node-express-mongodb');
 } else {
   generator = require('node-express-mongodb');
 }
 
-generator.init(app, options);
+generator.init(app, options, passportProfiles);
 
 module.exports = app;

@@ -1,5 +1,6 @@
 const service = require('../services/line.service');
 const getPostmanBodyFromModelDef = require('../util/getPostmanBodyFromModelDef');
+const filterBodyForAction = require('../util/filterBodyForAction');
 
 module.exports = (app, modelsService, passport, modelDefinition) => {
 
@@ -30,7 +31,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
     app.post(url,
       passport.authenticate('local-user', { session: false }),
       (req, res) => {
-        service.addLine(modelsService, req.user, req.params.town, req.body)
+        service.addLine(modelsService, req.user, req.params.town, filterBodyForAction(modelDefinition, 'add', req.body))
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
@@ -40,9 +41,9 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
   const registerUpdateLine = () => {
     const url = '/api/line/:lineId';
     app.put(url,
-      passport.authenticate('local-user', { session: false }),
+      passport.authenticate('local-user-with-towns', { session: false }),
       (req, res) => {
-        service.updateLine(modelsService, req.user, req.params.lineId, req.body)
+        service.updateLine(modelsService, req.user, req.params.lineId, filterBodyForAction(modelDefinition, 'update', req.body))
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
