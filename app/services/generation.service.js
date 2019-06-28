@@ -42,7 +42,7 @@ service.exportDB = async (modelsService, townIdOrName) => {
       ];
 
       l.connections.map(c => {
-        line_data.push(['', '', '', '', '', '', '', c.stations[0].name, c.stations[1].name, c.year, c.yearEnd]);
+        line_data.push(['', '', '', '', '', '', '', '', c.stations[0].name, c.stations[1].name, c.year, c.yearEnd]);
       });
 
       var lineSheet = XLSX.utils.aoa_to_sheet(line_data);
@@ -92,11 +92,13 @@ service.importTownData = async (modelsService, townIdOrName, fileName) => {
   const generateLine = async (lineSheet) => {
     const lineDocument = new Line({
       town: town.id,
+      key: lineSheet[0].key,
       order: lineSheet[0].order,
       name: lineSheet[0].name,
       shortName: lineSheet[0].shortName,
       colour: lineSheet[0].colour,
-      fontColour: lineSheet[0].fontColour
+      fontColour: lineSheet[0].fontColour,
+      year: lineSheet[0].lineyear
     });
     return await lineDocument.save();
   }

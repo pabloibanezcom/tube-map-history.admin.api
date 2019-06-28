@@ -108,7 +108,7 @@ const updateMarkerIcon = async (station, connection, operation) => {
   } else {
     connections = station.connections.slice(0);
   }
-  const uniqueLines = [...new Set(connections.map(c => { return c.line.shortName }))];
+  const uniqueLines = [...new Set(connections.map(c => { return c.line.key }))];
   station.markerIcon = uniqueLines.length === 1 ? uniqueLines[0] : 'multiple';
   // station.markerColor = uniqueLines.length === 1 ? uniqueLines[0].colour : '#fff';
   await station.save();
