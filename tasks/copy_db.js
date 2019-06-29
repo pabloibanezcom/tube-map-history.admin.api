@@ -1,18 +1,8 @@
-const execFile = require('child_process').execFile;
-const chalk = require('chalk');
-require('dotenv').load();
-const exportDB = require('./export_db');
+const exportDB = require('./db/_export_DB');
+const importDB = require('./db/_import_DB');
+const deleteDump = require('./db/_delete_dump');
 
-if (process.env.npm_config_target === process.env.npm_config_source) {
-  console.log(chalk.red('Target can not be same as source'));
-  return;
-}
-
-const copyDB = async () => {
-  await exportDB();
-}
-
-copyDB();
-
-
-
+exportDB()
+  .then(importDB)
+  .then(deleteDump)
+  .catch(err => console.log(err));
