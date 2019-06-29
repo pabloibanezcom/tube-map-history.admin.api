@@ -1,7 +1,6 @@
 const paginateResults = require('../util/paginateResults');
 const getTown = require('../util/getTown');
 const service = {};
-const validateBody = require('../util/validations');
 const isTownUser = require('../util/auth').isTownUser;
 const transformMongooseErrors = require('../util/transformMongooseErrors');
 const addCreatedAndModified = require('../util/addCreatedAndModified');
@@ -85,6 +84,16 @@ service.updateLine = async (modelsService, user, lineId, lineObj) => {
   Object.assign(line, addCreatedAndModified(lineObj, user, false));
   await line.save();
   return { statusCode: 200, data: line };
+}
+
+service.deleteLine = async (modelsService, user, lineId) => {
+  try {
+    const doc = await modelsService.getModel('Line').findByIdAndDelete(lineId);
+    return { statusCode: 200, data: `${doc.name} (${doc.key}) was removed` };
+  }
+  catch (err) {
+    return { statusCode: 400, data: transformMongooseErrors(err) };
+  }
 }
 
 const sortConnections = (connections, startStations) => {

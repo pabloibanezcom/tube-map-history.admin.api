@@ -8,7 +8,7 @@ const importDB = async () => {
 
   return new Promise((resolve, reject) => {
     if (!process.env.npm_config_source) {
-      console.log(chalk.red('You must provide source ("local", "dev" or "int")'));
+      console.log(chalk.red('You must provide source ("local", "dev", "test" or "int")'));
       reject();
     }
 

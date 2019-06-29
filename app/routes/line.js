@@ -50,10 +50,23 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
     app.routesInfo['Line'].push({ model: 'Line', name: 'Update line', method: 'PUT', url: url, auth: true, body: getPostmanBodyFromModelDef(modelDefinition, 'update') });
   }
 
+  const registerDeleteLine = () => {
+    const url = '/api/line/:lineId';
+    app.delete(url,
+      passport.authenticate('local-user-with-towns', { session: false }),
+      (req, res) => {
+        service.deleteLine(modelsService, req.user, req.params.lineId)
+          .then(result => res.status(result.statusCode).send(result.data))
+          .catch(err => res.status(500).send(err));
+      });
+    app.routesInfo['Line'].push({ model: 'Line', name: 'Delete line', method: 'DELETE', url: url, auth: true });
+  }
+
   app.routesInfo['Line'] = [];
   registerGetLines();
   registerGetLineFullInfo();
   registerAddLine();
   registerUpdateLine();
+  registerDeleteLine();
 
 };

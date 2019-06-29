@@ -13,6 +13,7 @@
     "key": {
       "type": "String",
       "required": true,
+      "validate": "isKey",
       "actions": {
         "add": true,
         "update": false
