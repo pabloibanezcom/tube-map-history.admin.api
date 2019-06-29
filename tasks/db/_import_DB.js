@@ -38,7 +38,7 @@ const importDB = async () => {
     };
 
     if (process.env.MONGO_PATH) {
-      execFile(path, buildParams(params, true), callBack)
+      execFile(path, buildParams(params, true, db_source), callBack)
     } else {
       exec(path, callBack);
     }
