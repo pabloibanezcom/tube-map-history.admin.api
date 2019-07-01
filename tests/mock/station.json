@@ -1,0 +1,11 @@
+{
+  "name": "Test station",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -0.1248279,
+      51.5130793
+    ]
+  },
+  "year": 2002
+}

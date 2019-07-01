@@ -1,4 +1,4 @@
-const app = require('../app')
+const app = require('../../app')
 const agent = require('supertest').agent(app)
 
 const roles = {

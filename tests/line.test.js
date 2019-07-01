@@ -1,7 +1,7 @@
 const app = require('../app')
 const agent = require('supertest').agent(app)
 const mockLine = require('./mock/line.json');
-const loginAsRole = require('./loginAsRole');
+const loginAsRole = require('./helpers/loginAsRole');
 
 // GET LINES IN TOWN
 describe('GET /api/:town/lines', () => {
@@ -110,7 +110,7 @@ describe('POST /api/:town/line', () => {
 });
 
 // UPDATE LINE
-describe('PUT /api/:town/line', () => {
+describe('PUT /api/:town/line/:lineId', () => {
 
   let tokenM1;
   let tokenM2;
@@ -144,7 +144,7 @@ describe('PUT /api/:town/line', () => {
 });
 
 // DELETE LINE
-describe('PUT /api/:town/line', () => {
+describe('DELETE /api/line/:lineId', () => {
 
   let tokenM1;
   let tokenM2;

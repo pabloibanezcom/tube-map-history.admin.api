@@ -1,6 +1,8 @@
 const service = require('../services/station.service');
+const getPostmanBodyFromModelDef = require('../util/getPostmanBodyFromModelDef');
+const filterBodyForAction = require('../util/filterBodyForAction');
 
-module.exports = (app, modelsService) => {
+module.exports = (app, modelsService, passport, modelDefinition) => {
 
   const registerSearchStations = () => {
     const url = '/api/:town/station/search';
@@ -44,23 +46,37 @@ module.exports = (app, modelsService) => {
   const registerAddStation = () => {
     const url = '/api/:town/station';
     app.post(url,
+      passport.authenticate('local-user-with-towns', { session: false }),
       (req, res) => {
-        service.addStation(modelsService, req.params.town, req.body)
+        service.addStation(modelsService, req.user, req.params.town, filterBodyForAction(modelDefinition, 'add', req.body))
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Station'].push({ model: 'Station', name: 'Add station', method: 'POST', url: url, body: { name: null, geometry: null, year: 1900, yearEnd: null } });
+    app.routesInfo['Station'].push({ model: 'Station', name: 'Add station', method: 'POST', url: url, auth: ['M', 'A'], body: getPostmanBodyFromModelDef(modelDefinition, 'add') });
   }
 
   const registerUpdateStation = () => {
-    const url = '/api/:town/station/:id';
+    const url = '/api/station/:stationId';
     app.put(url,
+      passport.authenticate('local-user-with-towns', { session: false }),
       (req, res) => {
-        service.updateStation(modelsService, req.params.town, req.params.id, req.body)
+        service.updateStation(modelsService, req.user, req.params.stationId, filterBodyForAction(modelDefinition, 'update', req.body))
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Station'].push({ model: 'Station', name: 'Update station', method: 'PUT', url: url, body: { name: null, geometry: null, farezones: null, year: 1900, yearEnd: null } });
+    app.routesInfo['Station'].push({ model: 'Station', name: 'Update station', method: 'PUT', url: url, auth: ['C', 'A'], body: getPostmanBodyFromModelDef(modelDefinition, 'update') });
+  }
+
+  const registerDeleteStation = () => {
+    const url = '/api/station/:stationId';
+    app.delete(url,
+      passport.authenticate('local-user-with-towns', { session: false }),
+      (req, res) => {
+        service.deleteStation(modelsService, req.user, req.params.stationId)
+          .then(result => res.status(result.statusCode).send(result.data))
+          .catch(err => res.status(500).send(err));
+      });
+    app.routesInfo['Station'].push({ model: 'Station', name: 'Delete station', method: 'DELETE', url: url, auth: ['C', 'A'] });
   }
 
   const registerGetStationWiki = () => {
@@ -79,6 +95,7 @@ module.exports = (app, modelsService) => {
   registerGetStationFull();
   registerAddStation();
   registerUpdateStation();
+  registerDeleteStation();
   registerGetStationWiki();
 
 };

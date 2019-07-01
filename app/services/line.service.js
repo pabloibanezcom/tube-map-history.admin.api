@@ -1,9 +1,9 @@
 const paginateResults = require('../util/paginateResults');
 const getTown = require('../util/getTown');
-const service = {};
 const verifyRoles = require('../auth/role-verification');
 const transformMongooseErrors = require('../util/transformMongooseErrors');
 const addCreatedAndModified = require('../util/addCreatedAndModified');
+const service = {};
 
 service.getLines = async (modelsService, townIdOrName) => {
   const townId = await getTown(modelsService, townIdOrName);

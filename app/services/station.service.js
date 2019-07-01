@@ -1,6 +1,9 @@
 const paginateResults = require('../util/paginateResults');
 const wikipedia = require("node-wikipedia");
 const getTown = require('../util/getTown');
+const verifyRoles = require('../auth/role-verification');
+const transformMongooseErrors = require('../util/transformMongooseErrors');
+const addCreatedAndModified = require('../util/addCreatedAndModified');
 const service = {};
 
 service.searchStations = async (modelsService, townIdOrName, body) => {
@@ -64,6 +67,9 @@ service.getStationFull = async (modelsService, stationId) => {
       path: 'connections', populate: [{ path: 'stations', select: 'name year markerIcon' },
       { path: 'line', select: 'name shortName colour fontColour' }]
     });
+  if (!station) {
+    return { statusCode: 404, data: 'Station not found' };
+  }
   // Remove self station from connections stations
   for (const c of station.connections) {
     c.stations = c.stations.filter(s => s.id !== stationId);
@@ -71,38 +77,60 @@ service.getStationFull = async (modelsService, stationId) => {
   return { statusCode: 200, data: station };
 }
 
-service.addStation = async (modelsService, townIdOrName, stationBody) => {
-  const Station = await modelsService.getModel('Station');
-  const townId = await getTown(modelsService, townIdOrName);
-  if (!townId) {
-    return { statusCode: 404, data: 'Town not found' };
+service.addStation = async (modelsService, user, townIdOrName, stationObj) => {
+  const town = await getTown(modelsService, townIdOrName);
+  if (!verifyRoles(['M', 'A'], user, town._id)) {
+    return { statusCode: 401, data: 'Unauthorized' };
   }
-  const objSchema = {
-    name: stationBody.name,
-    geometry: stationBody.geometry,
-    year: stationBody.year,
-    markerIcon: 'multiple',
-    yearEnd: stationBody.yearEnd,
-    town: townId
+
+  const Station = modelsService.getModel('Station');
+  const station = new Station(addCreatedAndModified({ ...stationObj, town: town._id, markerIcon: 'multiple' }, user, true));
+
+  try {
+    const doc = await station.save();
+    return { statusCode: 200, data: doc };
   }
-  const station = new Station(objSchema);
-  const doc = await station.save();
-  return { statusCode: 200, data: doc };
+  catch (err) {
+    return { statusCode: 400, data: transformMongooseErrors(err) };
+  }
 }
 
-service.updateStation = async (modelsService, townIdOrName, stationId, body) => {
-  const townId = await getTown(modelsService, townIdOrName);
-  if (!townId) {
-    return { statusCode: 404, data: 'Town not found' };
+service.updateStation = async (modelsService, user, stationId, stationObj) => {
+  const station = await modelsService.getModel('Station').findOne({ _id: stationId });
+  if (!verifyRoles(['C', 'A'], user, null, station)) {
+    return { statusCode: 401, data: 'Unauthorized' };
   }
-  const station = await modelsService.getModel('Station').findOne({ _id: stationId, town: townId });
-  station.name = body.name;
-  station.geometry = body.geometry;
-  station.farezones = body.farezones;
-  station.year = body.year;
-  station.yearEnd = body.yearEnd;
-  await station.save();
-  return { statusCode: 200, data: station };
+
+  Object.assign(station, addCreatedAndModified(stationObj, user, false));
+
+  try {
+    await station.save();
+    return { statusCode: 200, data: station };
+  }
+  catch (err) {
+    return { statusCode: 400, data: transformMongooseErrors(err) };
+  }
+}
+
+service.deleteStation = async (modelsService, user, stationId) => {
+  try {
+    const station = await modelsService.getModel('Station').findOne({ _id: stationId });
+    if (!verifyRoles(['C', 'A'], user, null, station)) {
+      return { statusCode: 401, data: 'Unauthorized' };
+    }
+
+    try {
+      await station.remove();
+      return { statusCode: 200, data: `${station.name} was removed` };
+    }
+    catch (err) {
+      return { statusCode: 400, data: transformMongooseErrors(err) };
+    }
+  }
+  catch (err) {
+    console.log(err);
+  }
+
 }
 
 service.getStationWiki = async (stationName) => {
