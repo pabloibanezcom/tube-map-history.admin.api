@@ -1,7 +1,7 @@
 const paginateResults = require('../util/paginateResults');
 const getTown = require('../util/getTown');
 const service = {};
-const isTownUser = require('../util/auth').isTownUser;
+const verifyRoles = require('../auth/role-verification');
 const transformMongooseErrors = require('../util/transformMongooseErrors');
 const addCreatedAndModified = require('../util/addCreatedAndModified');
 
@@ -63,9 +63,14 @@ service.calculateLineDistance = async (modelsService, lineId) => {
 }
 
 service.addLine = async (modelsService, user, townIdOrName, lineObj) => {
+  const town = await getTown(modelsService, townIdOrName);
+  if (!verifyRoles(['M', 'A'], user, town._id)) {
+    return { statusCode: 401, data: 'Unauthorized' };
+  }
+
   const Line = modelsService.getModel('Line');
-  const townId = await getTown(modelsService, townIdOrName);
-  const line = new Line(addCreatedAndModified({ ...lineObj, town: townId }, user, true));
+  const line = new Line(addCreatedAndModified({ ...lineObj, town: town._id }, user, true));
+
   try {
     const doc = await line.save();
     return { statusCode: 200, data: doc };
@@ -77,19 +82,30 @@ service.addLine = async (modelsService, user, townIdOrName, lineObj) => {
 
 service.updateLine = async (modelsService, user, lineId, lineObj) => {
   const line = await modelsService.getModel('Line').findOne({ _id: lineId });
-  if (!isTownUser(user, line.town)) {
+  if (!verifyRoles(['C', 'A'], user, null, line)) {
     return { statusCode: 401, data: 'Unauthorized' };
   }
 
   Object.assign(line, addCreatedAndModified(lineObj, user, false));
-  await line.save();
-  return { statusCode: 200, data: line };
+
+  try {
+    await line.save();
+    return { statusCode: 200, data: line };
+  }
+  catch (err) {
+    return { statusCode: 400, data: transformMongooseErrors(err) };
+  }
 }
 
 service.deleteLine = async (modelsService, user, lineId) => {
+  const line = await modelsService.getModel('Line').findOne({ _id: lineId });
+  if (!verifyRoles(['C', 'A'], user, null, line)) {
+    return { statusCode: 401, data: 'Unauthorized' };
+  }
+
   try {
-    const doc = await modelsService.getModel('Line').findByIdAndDelete(lineId);
-    return { statusCode: 200, data: `${doc.name} (${doc.key}) was removed` };
+    await line.remove();
+    return { statusCode: 200, data: `${line.name} (${line.key}) was removed` };
   }
   catch (err) {
     return { statusCode: 400, data: transformMongooseErrors(err) };

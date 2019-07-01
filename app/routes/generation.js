@@ -20,7 +20,7 @@ module.exports = (app, modelsService) => {
           })
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Export DB by town', method: 'GET', url: url });
+    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Export DB from town', method: 'GET', url: url });
   }
 
   const registerImportTownData = () => {

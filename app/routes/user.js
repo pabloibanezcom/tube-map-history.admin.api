@@ -11,7 +11,7 @@ module.exports = (app, modelsService, passport) => {
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['User'].push({ model: 'User', name: 'Get user info', method: 'GET', url: url, auth: true });
+    app.routesInfo['User'].push({ model: 'User', name: 'Get user info', method: 'GET', url: url });
   }
 
   const registerAssignTownRoleToUser = () => {
@@ -23,7 +23,7 @@ module.exports = (app, modelsService, passport) => {
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['User'].push({ model: 'User', name: 'Assign town role to user', method: 'PUT', url: url, auth: true, body: { role: null } });
+    app.routesInfo['User'].push({ model: 'User', name: 'Assign town role to user', method: 'PUT', url: url, auth: ['A'], body: { role: null } });
   }
 
   registerGetUserInfo();

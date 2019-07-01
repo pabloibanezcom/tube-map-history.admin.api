@@ -20,6 +20,7 @@ const importDB = async () => {
     const params = {
       host,
       ssl: null,
+      drop: null,
       username,
       password,
       authenticationDatabase: username,

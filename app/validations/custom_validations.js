@@ -3,7 +3,7 @@ const isKey = (val) => {
 }
 
 const isYear = (val) => {
-  return !(!isNumber(val) && val >= 1800 && val <= 2019);
+  return Number.isInteger(val) && val >= 1800 && val <= 2019;
 }
 
 const validations = {

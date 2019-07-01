@@ -29,13 +29,13 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
   const registerAddLine = () => {
     const url = '/api/:town/line';
     app.post(url,
-      passport.authenticate('local-user', { session: false }),
+      passport.authenticate('local-user-with-towns', { session: false }),
       (req, res) => {
         service.addLine(modelsService, req.user, req.params.town, filterBodyForAction(modelDefinition, 'add', req.body))
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Line'].push({ model: 'Line', name: 'Add line', method: 'POST', url: url, auth: true, body: getPostmanBodyFromModelDef(modelDefinition, 'add') });
+    app.routesInfo['Line'].push({ model: 'Line', name: 'Add line', method: 'POST', url: url, auth: ['M', 'A'], body: getPostmanBodyFromModelDef(modelDefinition, 'add') });
   }
 
   const registerUpdateLine = () => {
@@ -47,7 +47,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Line'].push({ model: 'Line', name: 'Update line', method: 'PUT', url: url, auth: true, body: getPostmanBodyFromModelDef(modelDefinition, 'update') });
+    app.routesInfo['Line'].push({ model: 'Line', name: 'Update line', method: 'PUT', url: url, auth: ['C', 'A'], body: getPostmanBodyFromModelDef(modelDefinition, 'update') });
   }
 
   const registerDeleteLine = () => {
@@ -59,7 +59,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Line'].push({ model: 'Line', name: 'Delete line', method: 'DELETE', url: url, auth: true });
+    app.routesInfo['Line'].push({ model: 'Line', name: 'Delete line', method: 'DELETE', url: url, auth: ['C', 'A'] });
   }
 
   app.routesInfo['Line'] = [];

@@ -57,6 +57,7 @@
     "year": {
       "type": "Number",
       "required": true,
+      "validate": "isYear",
       "actions": {
         "add": true,
         "update": true
