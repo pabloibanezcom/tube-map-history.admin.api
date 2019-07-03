@@ -1,6 +1,8 @@
 const service = require('../services/connection.service');
+const getPostmanBodyFromModelDef = require('../util/getPostmanBodyFromModelDef');
+const connectionBody = require('./defaultRequestBodies/connection.json');
 
-module.exports = (app, modelsService) => {
+module.exports = (app, modelsService, passport, modelDefinition) => {
 
   const registerGetConnectionsByYearRange = () => {
     const url = '/api/:town/connection/year/:yearTo';
@@ -19,15 +21,40 @@ module.exports = (app, modelsService) => {
     app.routesInfo['Connection'].push({ model: 'Connection', name: 'Get connections by year range in town', method: 'GET', url: url });
   }
 
-  const registerAddConnection = () => {
-    const url = '/api/connection/add';
-    app.post(url,
+  const registerGetConnectionFullInfo = () => {
+    const url = '/api/connection/:connectionId';
+    app.get(url,
+      passport.authenticate('local-user', { session: false }),
       (req, res) => {
-        service.addConnection(modelsService, req.body)
+        service.getConnectionFullInfo(modelsService, req.user, req.params.connectionId)
+          .then(result => res.status(result.statusCode).send(result.data))
+          .catch(err => res.status(500).send(err));
+      });
+    app.routesInfo['Connection'].push({ model: 'Connection', name: 'Get full info from connection', method: 'GET', url: url, auth: ['U', 'A'] });
+  }
+
+  const registerAddConnection = () => {
+    const url = '/api/:town/connection';
+    app.post(url,
+      passport.authenticate('local-user-with-towns', { session: false }),
+      (req, res) => {
+        service.addConnection(modelsService, req.user, req.params.town, req.body)
+          .then(result => res.status(result.statusCode).send(result.data))
+          .catch(err => res.status(500).send(err));
+      });
+    app.routesInfo['Connection'].push({ model: 'Connection', name: 'Add connection', method: 'POST', url: url, auth: ['M', 'A'], body: connectionBody });
+  }
+
+  const registerUpdateConnection = () => {
+    const url = '/api/connection/:connectionId';
+    app.put(url,
+      passport.authenticate('local-user-with-towns', { session: false }),
+      (req, res) => {
+        service.updateConnection(modelsService, req.user, req.params.connectionId, req.body)
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => { console.log(err); res.status(500).send(err) });
       });
-    app.routesInfo['Connection'].push({ model: 'Connection', name: 'Add connection', method: 'POST', url: url, body: { year: 1900, yearEnd: null, stations: [], line: null, } });
+    app.routesInfo['Connection'].push({ model: 'Connection', name: 'Update connection', method: 'PUT', url: url, auth: ['C', 'A'], body: getPostmanBodyFromModelDef(modelDefinition, 'update') });
   }
 
   const registerRemoveConnection = () => {
@@ -53,7 +80,9 @@ module.exports = (app, modelsService) => {
 
   app.routesInfo['Connection'] = [];
   registerGetConnectionsByYearRange();
+  registerGetConnectionFullInfo();
   registerAddConnection();
+  registerUpdateConnection();
   registerRemoveConnection();
   registerUpdateMarkerIconForAllStations();
 

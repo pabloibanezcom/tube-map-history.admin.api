@@ -18,12 +18,13 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
   const registerGetLineFullInfo = () => {
     const url = '/api/line/:lineId';
     app.get(url,
+      passport.authenticate('local-user', { session: false }),
       (req, res) => {
-        service.getLineFullInfo(modelsService, req.params.lineId)
+        service.getLineFullInfo(modelsService, req.user, req.params.lineId)
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Line'].push({ model: 'Line', name: 'Get full info from line', method: 'GET', url: url });
+    app.routesInfo['Line'].push({ model: 'Line', name: 'Get full info from line', method: 'GET', url: url, auth: ['U', 'A'] });
   }
 
   const registerAddLine = () => {

@@ -49,8 +49,14 @@ describe('GET /api/line/:lineId', () => {
     done();
   });
 
-  it('it gets all the line info when lineId exists', async (done) => {
-    const lineRetrieved = await agent.get(`/api/line/${line._id}`).set('Accept', 'application/json').expect('Content-Type', /json/).expect(200);
+  it('when user is not logged it can not see line info', async (done) => {
+    agent.get(`/api/line/${line._id}`).set('Accept', 'application/json')
+      .expect(401, done);
+  });
+
+  it('when user is logged it can see line info', async (done) => {
+    const lineRetrieved = await agent.get(`/api/line/${line._id}`).set('Accept', 'application/json').expect('Content-Type', /json/).set('Authorization', `Bearer ${tokenA}`)
+      .expect(200);
     expect(lineRetrieved.body.key).toBe(line.key);
     expect(lineRetrieved.body.year).toBe(line.year);
     done();
@@ -103,6 +109,11 @@ describe('POST /api/:town/line', () => {
   });
 
   it('when line year is not a valid value it returns bad request', async (done) => {
+    agent.post(`/api/london/line`).send({ ...mockLine, year: 2050 }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`)
+      .expect(400, done);
+  });
+
+  it('when line key and line town already exits it returns bad request', async (done) => {
     agent.post(`/api/london/line`).send({ ...mockLine, year: 2050 }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`)
       .expect(400, done);
   });
@@ -163,7 +174,7 @@ describe('DELETE /api/line/:lineId', () => {
 
   it('when user is creator it can delete line', async (done) => {
     await agent.delete(`/api/line/${line1._id}`).set('Authorization', `Bearer ${tokenM1}`).expect(200);
-    agent.get(`/api/line/${line1._id}`).expect(404, done);
+    agent.get(`/api/line/${line1._id}`).set('Authorization', `Bearer ${tokenM1}`).expect(404, done);
   });
 
   it('when user is not creator it can not delete line', async (done) => {
@@ -174,6 +185,6 @@ describe('DELETE /api/line/:lineId', () => {
   it('when user is admin it can delete line', async (done) => {
     tokenA = await loginAsRole('A');
     await agent.delete(`/api/line/${line2._id}`).set('Authorization', `Bearer ${tokenA}`).expect(200);
-    agent.get(`/api/line/${line2._id}`).expect(404, done);
+    agent.get(`/api/line/${line2._id}`).set('Authorization', `Bearer ${tokenA}`).expect(404, done);
   });
 });

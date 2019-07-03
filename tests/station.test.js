@@ -2,6 +2,69 @@ const app = require('../app')
 const agent = require('supertest').agent(app)
 const mockStation = require('./mock/station.json');
 const loginAsRole = require('./helpers/loginAsRole');
+const stationSearchBody = require('./mock/station_search_body.json');
+
+// SEARCH STATIONS
+describe('POST /api/:town/station/search', () => {
+
+  let tokenA;
+
+  beforeAll(async (done) => {
+    tokenA = await loginAsRole('A');
+    done();
+  });
+
+  it('when user is not logged it can not search stations', async (done) => {
+    agent.post(`/api/london/station/search`).set('Accept', 'application/json')
+      .expect(401, done);
+  });
+
+  it('when user is logged it can search stations', async (done) => {
+    agent.post(`/api/london/station/search`).send(stationSearchBody).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`)
+      .expect(200, done);
+  });
+
+  it('when body does not contain proper pagination it returns 400', async (done) => {
+    agent.post(`/api/london/station/search`).send({ ...stationSearchBody, pagination: null }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`)
+      .expect(400, done);
+  });
+
+  it('when user is logged it can search stations', async (done) => {
+    agent.post(`/api/london/station/search`).send(stationSearchBody).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`)
+      .expect(200, done);
+  });
+
+
+});
+
+// GET FULL INFO FROM STATION
+describe('GET /api/station/:stationId', () => {
+
+  let tokenA;
+  let station;
+
+  beforeAll(async (done) => {
+    tokenA = await loginAsRole('A');
+    const stationRes = await agent.post(`/api/london/station`).send(mockStation).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`)
+      .expect(200);
+    station = stationRes.body;
+    done();
+  });
+
+  it('when user is not logged it can not see station info', async (done) => {
+    agent.get(`/api/station/${station._id}`).set('Accept', 'application/json')
+      .expect(401, done);
+  });
+
+  it('when user is logged it can see station info', async (done) => {
+    const stationRetrieved = await agent.get(`/api/station/${station._id}`).set('Accept', 'application/json').expect('Content-Type', /json/).set('Authorization', `Bearer ${tokenA}`)
+      .expect(200);
+    expect(stationRetrieved.body.key).toBe(station.key);
+    expect(stationRetrieved.body.year).toBe(station.year);
+    done();
+  });
+
+})
 
 // ADD STATION
 describe('POST /api/:town/station', () => {
@@ -82,7 +145,7 @@ describe('PUT /api/station/:stationId', () => {
 
   it('when user is admin it can update station', async (done) => {
     tokenA = await loginAsRole('A');
-    const modifedStationRes = await agent.put(`/api/station/${station._id}`).send({ ...mockStation, name: 'New station name' }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenM1}`).expect(200);
+    const modifedStationRes = await agent.put(`/api/station/${station._id}`).send({ ...mockStation, name: 'New station name' }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`).expect(200);
     expect(modifedStationRes.body.name).toBe('New station name');
     done();
   });
@@ -108,7 +171,7 @@ describe('DELETE /api/station/:stationId', () => {
 
   it('when user is creator it can delete station', async (done) => {
     await agent.delete(`/api/station/${station1._id}`).set('Authorization', `Bearer ${tokenM1}`).expect(200);
-    agent.get(`/api/station/${station1._id}`).expect(404, done);
+    agent.get(`/api/station/${station1._id}`).set('Authorization', `Bearer ${tokenM1}`).expect(404, done);
   });
 
   it('when user is not creator it can not delete station', async (done) => {
@@ -119,6 +182,6 @@ describe('DELETE /api/station/:stationId', () => {
   it('when user is admin it can delete station', async (done) => {
     tokenA = await loginAsRole('A');
     await agent.delete(`/api/station/${station2._id}`).set('Authorization', `Bearer ${tokenA}`).expect(200);
-    agent.get(`/api/station/${station2._id}`).expect(404, done);
+    agent.get(`/api/station/${station2._id}`).set('Authorization', `Bearer ${tokenA}`).expect(404, done);
   });
 });

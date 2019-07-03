@@ -1,12 +1,29 @@
 const paginateResults = require('../util/paginateResults');
-const wikipedia = require("node-wikipedia");
 const getTown = require('../util/getTown');
 const verifyRoles = require('../auth/role-verification');
 const transformMongooseErrors = require('../util/transformMongooseErrors');
 const addCreatedAndModified = require('../util/addCreatedAndModified');
+const validatePagination = require('../util/validatePagination');
 const service = {};
 
-service.searchStations = async (modelsService, townIdOrName, body) => {
+service.getStationsByYearRange = async (modelsService, townIdOrName, yearTo, yearFrom) => {
+  const townId = await getTown(modelsService, townIdOrName);
+  if (!townId) {
+    return { statusCode: 404, data: 'Town not found' };
+  }
+  const yearFromQuery = yearFrom ? { $gt: parseInt(yearFrom) - 1 } : null;
+  const stations = await modelsService.getModel('Station')
+    .find({ town: townId, year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 }, connections: { $exists: true, $ne: [] } });
+  return { statusCode: 200, data: stations };
+}
+
+service.searchStations = async (modelsService, user, townIdOrName, body) => {
+  if (!verifyRoles(['U', 'A'], user)) {
+    return { statusCode: 401, data: 'Unauthorized' };
+  }
+  if (!validatePagination(body.pagination)) {
+    return { statusCode: 400, data: 'Bad request: Pagination is wrong format' };
+  }
   const townId = await getTown(modelsService, townIdOrName);
   if (!townId) {
     return { statusCode: 404, data: 'Town not found' };
@@ -50,18 +67,10 @@ service.searchStations = async (modelsService, townIdOrName, body) => {
   return { statusCode: 200, data: paginateResults(stations, body.pagination) };
 }
 
-service.getStationsByYearRange = async (modelsService, townIdOrName, yearTo, yearFrom) => {
-  const townId = await getTown(modelsService, townIdOrName);
-  if (!townId) {
-    return { statusCode: 404, data: 'Town not found' };
+service.getStationFullInfo = async (modelsService, user, stationId) => {
+  if (!verifyRoles(['U', 'A'], user)) {
+    return { statusCode: 401, data: 'Unauthorized' };
   }
-  const yearFromQuery = yearFrom ? { $gt: parseInt(yearFrom) - 1 } : null;
-  const stations = await modelsService.getModel('Station')
-    .find({ town: townId, year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 }, connections: { $exists: true, $ne: [] } });
-  return { statusCode: 200, data: stations };
-}
-
-service.getStationFull = async (modelsService, stationId) => {
   const station = await modelsService.getModel('Station').findOne({ _id: stationId })
     .populate({
       path: 'connections', populate: [{ path: 'stations', select: 'name year markerIcon' },
@@ -131,13 +140,6 @@ service.deleteStation = async (modelsService, user, stationId) => {
     console.log(err);
   }
 
-}
-
-service.getStationWiki = async (stationName) => {
-  wikipedia.page.data("Clifford_Brown", { content: true }, function (response) {
-    console.log(response);
-  });
-  return { statusCode: 200, data: {} };
 }
 
 module.exports = service;

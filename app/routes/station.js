@@ -1,19 +1,9 @@
 const service = require('../services/station.service');
 const getPostmanBodyFromModelDef = require('../util/getPostmanBodyFromModelDef');
 const filterBodyForAction = require('../util/filterBodyForAction');
+const defaultSearchBody = require('./defaultRequestBodies/default_search.json');
 
 module.exports = (app, modelsService, passport, modelDefinition) => {
-
-  const registerSearchStations = () => {
-    const url = '/api/:town/station/search';
-    app.post(url,
-      (req, res) => {
-        service.searchStations(modelsService, req.params.town, req.body)
-          .then(result => res.status(result.statusCode).send(result.data))
-          .catch(err => res.status(500).send(err));
-      });
-    app.routesInfo['Station'].push({ model: 'Station', name: 'Search stations', method: 'POST', url: url });
-  }
 
   const registerGetStationsByYearRange = () => {
     const url = '/api/:town/station/year/:yearTo';
@@ -32,15 +22,28 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
     app.routesInfo['Station'].push({ model: 'Station', name: 'Get stations by year range in town', method: 'GET', url: url });
   }
 
-  const registerGetStationFull = () => {
-    const url = '/api/station/:id';
-    app.get(url,
+  const registerSearchStations = () => {
+    const url = '/api/:town/station/search';
+    app.post(url,
+      passport.authenticate('local-user', { session: false }),
       (req, res) => {
-        service.getStationFull(modelsService, req.params.id)
+        service.searchStations(modelsService, req.user, req.params.town, req.body)
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Station'].push({ model: 'Station', name: 'Get station full data', method: 'GET', url: url });
+    app.routesInfo['Station'].push({ model: 'Station', name: 'Search stations', method: 'POST', url: url, auth: ['U', 'A'], body: defaultSearchBody });
+  }
+
+  const registerGetStationFullInfo = () => {
+    const url = '/api/station/:stationId';
+    app.get(url,
+      passport.authenticate('local-user', { session: false }),
+      (req, res) => {
+        service.getStationFullInfo(modelsService, req.user, req.params.stationId)
+          .then(result => res.status(result.statusCode).send(result.data))
+          .catch(err => res.status(500).send(err));
+      });
+    app.routesInfo['Station'].push({ model: 'Station', name: 'Get full info from station', method: 'GET', url: url, auth: ['U', 'A'] });
   }
 
   const registerAddStation = () => {
@@ -79,23 +82,11 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
     app.routesInfo['Station'].push({ model: 'Station', name: 'Delete station', method: 'DELETE', url: url, auth: ['C', 'A'] });
   }
 
-  const registerGetStationWiki = () => {
-    const url = '/api/station/wiki/:station';
-    app.get(url,
-      (req, res) => {
-        service.getStationWiki(req.params.station)
-          .then(result => res.status(result.statusCode).send(result.data))
-          .catch(err => res.status(500).send(err));
-      });
-    app.routesInfo['Station'].push({ model: 'Station', name: 'Get station wiki', method: 'GET', url: url });
-  }
-
-  registerSearchStations();
   registerGetStationsByYearRange();
-  registerGetStationFull();
+  registerSearchStations();
+  registerGetStationFullInfo();
   registerAddStation();
   registerUpdateStation();
   registerDeleteStation();
-  registerGetStationWiki();
 
 };

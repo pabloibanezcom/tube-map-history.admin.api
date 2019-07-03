@@ -33,7 +33,10 @@ service.searchLines = async (modelsService, body) => {
   return { statusCode: 200, data: paginateResults(lines, body.pagination) };
 }
 
-service.getLineFullInfo = async (modelsService, lineId) => {
+service.getLineFullInfo = async (modelsService, user, lineId) => {
+  if (!verifyRoles(['U', 'A'], user)) {
+    return { statusCode: 401, data: 'Unauthorized' };
+  }
   const line = await modelsService.getModel('Line')
     .findById(lineId)
     .select('name key shortName colour fontColour startStations year distance lastModifiedDate lastModifiedUser')
