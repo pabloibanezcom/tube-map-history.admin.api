@@ -30,31 +30,31 @@ describe('POST /api/:town/line/search', () => {
       .expect(400, done);
   });
 
-  it('when filter name is defined returns only elements with name containing it', async (done) => {
+  it('when filter name is defined returns only lines with name containing it', async (done) => {
     const response = await agent.post(`/api/london/line/search`).send({ ...lineSearchBody, filter: { ...lineSearchBody.filter, name: 'piccadilly ' } }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);
     expect(response.body.elements.length).toBe(1);
     done();
   });
 
-  it('when sort asc is defined returns elements sorted', async (done) => {
+  it('when sort asc is defined returns lines sorted', async (done) => {
     const response = await agent.post(`/api/london/line/search`).send({ ...lineSearchBody, sort: { name: 1 } }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);
     expect(isSorted(response.body.elements, 'name')).toBe(true);
     done();
   });
 
-  it('when sort desc is defined returns elements sorted', async (done) => {
+  it('when sort desc is defined returns lines sorted', async (done) => {
     const response = await agent.post(`/api/london/line/search`).send({ ...lineSearchBody, sort: { year: -1 } }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);
     expect(isSorted(response.body.elements, 'year', true)).toBe(true);
     done();
   });
 
-  it('when select is defined returns elements with only properties in select', async (done) => {
+  it('when select is defined returns lines with only properties in select', async (done) => {
     const response = await agent.post(`/api/london/line/search`).send({ ...lineSearchBody, select: 'name key' }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);
     expect(response.body.elements.every(line => line.name && line.key && !line.shortName && !line.year)).toBe(true);
     done();
   });
 
-  it('when populate is defined returns elements with population applied', async (done) => {
+  it('when populate is defined returns lines with population applied', async (done) => {
     const response = await agent.post(`/api/london/line/search`)
       .send({ ...lineSearchBody, populate: { path: 'connections', select: 'stations', populate: { path: 'stations', select: 'name' } } })
       .set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);

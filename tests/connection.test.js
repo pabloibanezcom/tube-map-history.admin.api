@@ -3,6 +3,8 @@ const agent = require('supertest').agent(app);
 const mockLine = require('./mock/line.json');
 const mockStationA = require('./mock/stationA.json');
 const mockStationB = require('./mock/stationB.json');
+const connectionSearchBody = require('./mock/connection_search_body.json');
+const isSorted = require('./helpers/isSorted');
 
 const loginAsRole = require('./helpers/loginAsRole');
 
@@ -46,6 +48,60 @@ const getStation = async (token, stationId) => {
   const stationRes = await agent.get(`/api/station/${stationId}`).set('Accept', 'application/json').expect('Content-Type', /json/).set('Authorization', `Bearer ${token}`);
   return stationRes.body;
 }
+
+// SEARCH CONNECTIONS
+describe('POST /api/:town/connection/search', () => {
+
+  let tokenA;
+
+  beforeAll(async (done) => {
+    tokenA = await loginAsRole('A');
+    done();
+  });
+
+  it('when user is not logged it can not search connections', async (done) => {
+    agent.post(`/api/london/connection/search`).set('Accept', 'application/json')
+      .expect(401, done);
+  });
+
+  it('when user is logged it can search connections', async (done) => {
+    agent.post(`/api/london/connection/search`).send(connectionSearchBody).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`)
+      .expect(200, done);
+  });
+
+  it('when body does not contain proper pagination it returns 400', async (done) => {
+    agent.post(`/api/london/connection/search`).send({ ...connectionSearchBody, pagination: null }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`)
+      .expect(400, done);
+  });
+
+  it('when sort asc is defined returns connections sorted', async (done) => {
+    const response = await agent.post(`/api/london/connection/search`).send({ ...connectionSearchBody, sort: { year: 1 } }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);
+    expect(isSorted(response.body.elements, 'year')).toBe(true);
+    done();
+  });
+
+  it('when sort desc is defined returns connections sorted', async (done) => {
+    const response = await agent.post(`/api/london/connection/search`).send({ ...connectionSearchBody, sort: { year: -1 } }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);
+    expect(isSorted(response.body.elements, 'year', true)).toBe(true);
+    done();
+  });
+
+  it('when select is defined returns connections with only properties in select', async (done) => {
+    const response = await agent.post(`/api/london/connection/search`).send({ ...connectionSearchBody, select: 'year' }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);
+    expect(response.body.elements.every(connection => connection.year && !connection.line && !connection.stations)).toBe(true);
+    done();
+  });
+
+  it('when populate is defined returns connections with population applied', async (done) => {
+    const response = await agent.post(`/api/london/connection/search`)
+      .send({ ...connectionSearchBody, populate: { path: 'stations', select: 'name year' } })
+      .set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);
+    expect(response.body.elements.every(connection => connection.stations
+      && connection.stations.every(station => station && station.name && station.year && !station.geometry))).toBe(true);
+    done();
+  });
+
+});
 
 // GET FULL INFO FROM CONNECTION
 describe('GET /api/connection/:connectionId', () => {

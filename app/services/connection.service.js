@@ -21,6 +21,37 @@ service.getConnectionsByYearRange = async (modelsService, townIdOrName, yearTo, 
   return { statusCode: 200, data: connections };
 }
 
+service.searchConnections = async (modelsService, user, townIdOrName, body) => {
+  if (!verifyRoles(['U', 'A'], user)) {
+    return { statusCode: 401, data: 'Unauthorized' };
+  }
+  if (!validatePagination(body.pagination)) {
+    return { statusCode: 400, data: 'Bad request: Pagination is wrong format' };
+  }
+  const townId = await getTown(modelsService, townIdOrName);
+
+  if (!townId) {
+    return { statusCode: 404, data: 'Town not found' };
+  }
+
+  const searchParams = {
+    filter: {
+      town: townId
+    },
+    sort: body.sort || '',
+    select: body.select || '',
+    populate: body.populate || ''
+  };
+
+  let connections = await modelsService.getModel('Connection')
+    .find(searchParams.filter)
+    .sort(searchParams.sort)
+    .select(searchParams.select)
+    .populate(searchParams.populate);
+
+  return { statusCode: 200, data: paginateResults(connections, body.pagination) };
+}
+
 service.getConnectionFullInfo = async (modelsService, user, connectionId) => {
   if (!verifyRoles(['U', 'A'], user)) {
     return { statusCode: 401, data: 'Unauthorized' };

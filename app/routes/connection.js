@@ -1,6 +1,6 @@
 const service = require('../services/connection.service');
 const getPostmanBodyFromModelDef = require('../util/getPostmanBodyFromModelDef');
-const connectionBody = require('./defaultRequestBodies/connection.json');
+const defaultSearchBody = require('./defaultRequestBodies/default_search.json');
 
 module.exports = (app, modelsService, passport, modelDefinition) => {
 
@@ -19,6 +19,18 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
           .catch(err => res.status(500).send(err));
       });
     app.routesInfo['Connection'].push({ model: 'Connection', name: 'Get connections by year range in town', method: 'GET', url: url });
+  }
+
+  const registerSearchConnections = () => {
+    const url = '/api/:town/connection/search';
+    app.post(url,
+      passport.authenticate('local-user', { session: false }),
+      (req, res) => {
+        service.searchConnections(modelsService, req.user, req.params.town, req.body)
+          .then(result => res.status(result.statusCode).send(result.data))
+          .catch(err => res.status(500).send(err));
+      });
+    app.routesInfo['Connection'].push({ model: 'Connection', name: 'Search connection', method: 'POST', url: url, auth: ['U', 'A'], body: defaultSearchBody });
   }
 
   const registerGetConnectionFullInfo = () => {
@@ -81,6 +93,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
 
   app.routesInfo['Connection'] = [];
   registerGetConnectionsByYearRange();
+  registerSearchConnections();
   registerGetConnectionFullInfo();
   registerAddConnection();
   registerUpdateConnection();
