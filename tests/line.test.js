@@ -2,6 +2,69 @@ const app = require('../app')
 const agent = require('supertest').agent(app)
 const mockLine = require('./mock/line.json');
 const loginAsRole = require('./helpers/loginAsRole');
+const lineSearchBody = require('./mock/line_search_body.json');
+const isSorted = require('./helpers/isSorted');
+
+// SEARCH LINES
+describe('POST /api/:town/line/search', () => {
+
+  let tokenA;
+
+  beforeAll(async (done) => {
+    tokenA = await loginAsRole('A');
+    done();
+  });
+
+  it('when user is not logged it can not search lines', async (done) => {
+    agent.post(`/api/london/line/search`).set('Accept', 'application/json')
+      .expect(401, done);
+  });
+
+  it('when user is logged it can search lines', async (done) => {
+    agent.post(`/api/london/line/search`).send(lineSearchBody).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`)
+      .expect(200, done);
+  });
+
+  it('when body does not contain proper pagination it returns 400', async (done) => {
+    agent.post(`/api/london/line/search`).send({ ...lineSearchBody, pagination: null }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`)
+      .expect(400, done);
+  });
+
+  it('when filter name is defined returns only elements with name containing it', async (done) => {
+    const response = await agent.post(`/api/london/line/search`).send({ ...lineSearchBody, filter: { ...lineSearchBody.filter, name: 'piccadilly ' } }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);
+    expect(response.body.elements.length).toBe(1);
+    done();
+  });
+
+  it('when sort asc is defined returns elements sorted', async (done) => {
+    const response = await agent.post(`/api/london/line/search`).send({ ...lineSearchBody, sort: { name: 1 } }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);
+    expect(isSorted(response.body.elements, 'name')).toBe(true);
+    done();
+  });
+
+  it('when sort desc is defined returns elements sorted', async (done) => {
+    const response = await agent.post(`/api/london/line/search`).send({ ...lineSearchBody, sort: { year: -1 } }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);
+    expect(isSorted(response.body.elements, 'year', true)).toBe(true);
+    done();
+  });
+
+  it('when select is defined returns elements with only properties in select', async (done) => {
+    const response = await agent.post(`/api/london/line/search`).send({ ...lineSearchBody, select: 'name key' }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);
+    expect(response.body.elements.every(line => line.name && line.key && !line.shortName && !line.year)).toBe(true);
+    done();
+  });
+
+  it('when populate is defined returns elements with population applied', async (done) => {
+    const response = await agent.post(`/api/london/line/search`)
+      .send({ ...lineSearchBody, populate: { path: 'connections', select: 'stations', populate: { path: 'stations', select: 'name' } } })
+      .set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);
+    expect(response.body.elements.every(line => line.connections
+      && line.connections.every(connection => connection.stations
+        && connection.stations.every(station => station && station.name)))).toBe(true);
+    done();
+  });
+
+});
 
 // GET LINES IN TOWN
 describe('GET /api/:town/lines', () => {

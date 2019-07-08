@@ -3,6 +3,7 @@ const getTown = require('../util/getTown');
 const verifyRoles = require('../auth/role-verification');
 const transformMongooseErrors = require('../util/transformMongooseErrors');
 const addCreatedAndModified = require('../util/addCreatedAndModified');
+const validatePagination = require('../util/validatePagination');
 const service = {};
 
 service.getLines = async (modelsService, townIdOrName) => {
@@ -17,19 +18,38 @@ service.getLines = async (modelsService, townIdOrName) => {
   return { statusCode: 200, data: lines };
 }
 
-service.searchLines = async (modelsService, body) => {
+service.searchLines = async (modelsService, user, townIdOrName, body) => {
+  if (!verifyRoles(['U', 'A'], user)) {
+    return { statusCode: 401, data: 'Unauthorized' };
+  }
+  if (!validatePagination(body.pagination)) {
+    return { statusCode: 400, data: 'Bad request: Pagination is wrong format' };
+  }
+  const townId = await getTown(modelsService, townIdOrName);
+
+  if (!townId) {
+    return { statusCode: 404, data: 'Town not found' };
+  }
+
   const searchParams = {
-    filter: {},
+    filter: {
+      town: townId
+    },
+    sort: body.sort || '',
     select: body.select || '',
     populate: body.populate || ''
   };
+
   if (body.filter && body.filter.name) {
     searchParams.filter.name = { $regex: body.filter.name, $options: 'i' };
   }
+
   let lines = await modelsService.getModel('Line')
     .find(searchParams.filter)
+    .sort(searchParams.sort)
     .select(searchParams.select)
     .populate(searchParams.populate);
+
   return { statusCode: 200, data: paginateResults(lines, body.pagination) };
 }
 

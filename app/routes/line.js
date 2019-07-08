@@ -1,6 +1,7 @@
 const service = require('../services/line.service');
 const getPostmanBodyFromModelDef = require('../util/getPostmanBodyFromModelDef');
 const filterBodyForAction = require('../util/filterBodyForAction');
+const defaultSearchBody = require('./defaultRequestBodies/default_search.json');
 
 module.exports = (app, modelsService, passport, modelDefinition) => {
 
@@ -13,6 +14,18 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
           .catch(err => res.status(500).send(err));
       });
     app.routesInfo['Line'].push({ model: 'Line', name: 'Get lines in town', method: 'GET', url: url });
+  }
+
+  const registerSearchLines = () => {
+    const url = '/api/:town/line/search';
+    app.post(url,
+      passport.authenticate('local-user', { session: false }),
+      (req, res) => {
+        service.searchLines(modelsService, req.user, req.params.town, req.body)
+          .then(result => res.status(result.statusCode).send(result.data))
+          .catch(err => res.status(500).send(err));
+      });
+    app.routesInfo['Line'].push({ model: 'Line', name: 'Search line', method: 'POST', url: url, auth: ['U', 'A'], body: defaultSearchBody });
   }
 
   const registerGetLineFullInfo = () => {
@@ -65,6 +78,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
 
   app.routesInfo['Line'] = [];
   registerGetLines();
+  registerSearchLines();
   registerGetLineFullInfo();
   registerAddLine();
   registerUpdateLine();

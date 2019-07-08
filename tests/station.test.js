@@ -29,12 +29,6 @@ describe('POST /api/:town/station/search', () => {
       .expect(400, done);
   });
 
-  it('when user is logged it can search stations', async (done) => {
-    agent.post(`/api/london/station/search`).send(stationSearchBody).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`)
-      .expect(200, done);
-  });
-
-
 });
 
 // GET FULL INFO FROM STATION
