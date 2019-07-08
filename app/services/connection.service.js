@@ -56,7 +56,7 @@ service.addConnection = async (modelsService, user, townIdOrName, connectionObj)
   const objSchema = {
     town: town._id,
     line: connectionObj.line,
-    stations: connectionObj.stations,
+    stations: connectionObj.stations.sort(),
     year: connectionObj.year,
     yearEnd: connectionObj.yearEnd,
     distance: calculateDistance(stations[0].geometry.coordinates, stations[1].geometry.coordinates),
@@ -88,14 +88,22 @@ service.addConnection = async (modelsService, user, townIdOrName, connectionObj)
 }
 
 service.updateConnection = async (modelsService, user, connectionId, connectionObj) => {
+  connectionObj.stations.sort();
   const connection = await modelsService.getModel('Connection').findOne({ _id: connectionId });
   if (!verifyRoles(['C', 'A'], user, null, connection)) {
     return { statusCode: 401, data: 'Unauthorized' };
   }
 
-  const existingCon = await modelsService.getModel('Connection').findOne({ stations: connectionObj.stations, line: connectionObj.line });
-  if (existingCon) {
-    return { statusCode: 400, data: 'Connection with same two stations and line already exists' };
+  const oldLine = connection.line;
+  const newLine = connectionObj.line;
+  const oldStations = connection.stations;
+  const newStations = connectionObj.stations;
+
+  if (oldLine !== newLine || oldStations !== newStations) {
+    const existingCon = await modelsService.getModel('Connection').findOne({ _id: { $ne: connectionId }, stations: connectionObj.stations, line: connectionObj.line });
+    if (existingCon) {
+      return { statusCode: 400, data: 'Connection with same two stations and line already exists' };
+    }
   }
 
   const stations = await modelsService.getModel('Station').find({ '_id': { $in: connectionObj.stations } }).populate({ path: 'connections', populate: { path: 'line' } });
@@ -112,21 +120,53 @@ service.updateConnection = async (modelsService, user, connectionId, connectionO
     return { statusCode: 400, data: transformMongooseErrors(err) };
   }
 
+  // Removing from old line if change
+  if (oldLine !== newLine) {
+    const oldLineDoc = await modelsService.getModel('Line').findOne({ _id: oldLine });
+    updateRelationship(true, [oldLineDoc], connection._id);
+    await oldLineDoc.save();
+
+    const newLineDoc = await modelsService.getModel('Line').findOne({ _id: newLine });
+    updateRelationship(false, [newLineDoc], connection._id);
+    await newLineDoc.save();
+  }
+
+  // Removing from old station/s if change
+  if (oldStations !== newStations) {
+    for (const stationId of oldStations) {
+      if (!newStations.find(sId => sId == stationId)) {
+        const oldStationDoc = await modelsService.getModel('Station').findOne({ _id: stationId });
+        updateRelationship(true, [oldStationDoc], connection._id);
+        await oldStationDoc.save();
+      }
+    }
+
+    for (const stationId of newStations) {
+      if (!oldStations.find(sId => sId == stationId)) {
+        const newStationDoc = await modelsService.getModel('Station').findOne({ _id: stationId });
+        updateRelationship(false, [newStationDoc], connection._id);
+        await newStationDoc.save();
+      }
+    }
+  }
+
   return { statusCode: 200, data: connection };
+
 }
 
-service.removeConnection = async (modelsService, connectionId) => {
-  const doc = await modelsService.getModel('Connection').findById(connectionId)
-    .populate({ path: 'stations', populate: { path: 'connections', populate: { path: 'line' } } });
-  const stations = doc.stations;
-  await doc.remove();
-  for (const s of stations) {
-    await updateMarkerIcon(s, doc, 'remove');
+service.deleteConnection = async (modelsService, user, connectionId) => {
+  const connection = await modelsService.getModel('Connection').findOne({ _id: connectionId });
+  if (!verifyRoles(['C', 'A'], user, null, connection)) {
+    return { statusCode: 401, data: 'Unauthorized' };
   }
-  updateRelationship(true, stations, connectionId);
-  const lines = await modelsService.getModel('Line').find({ connections: { "$in": [connectionId] } });
-  updateRelationship(true, lines, connectionId);
-  return { statusCode: 202, data: doc };
+
+  try {
+    await connection.remove();
+    return { statusCode: 200, data: `${connection._id} was removed` };
+  }
+  catch (err) {
+    return { statusCode: 400, data: transformMongooseErrors(err) };
+  }
 }
 
 service.updateMarkerIconForAllStations = async (modelsService) => {

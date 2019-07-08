@@ -4,10 +4,18 @@
   "properties": {
     "year": {
       "type": "Number",
-      "required": true
+      "required": true,
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "yearEnd": {
-      "type": "Number"
+      "type": "Number",
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "distance": {
       "type": "Number",
@@ -15,11 +23,19 @@
     },
     "line": {
       "type": "Line",
-      "propertyMatch": "connections"
+      "propertyMatch": "connections",
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "stations": {
       "type": "[Station]",
-      "propertyMatch": "connections"
+      "propertyMatch": "connections",
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "town": {
       "type": "Town"

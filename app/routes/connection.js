@@ -42,7 +42,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Connection'].push({ model: 'Connection', name: 'Add connection', method: 'POST', url: url, auth: ['M', 'A'], body: connectionBody });
+    app.routesInfo['Connection'].push({ model: 'Connection', name: 'Add connection', method: 'POST', url: url, auth: ['M', 'A'], body: getPostmanBodyFromModelDef(modelDefinition, 'add') });
   }
 
   const registerUpdateConnection = () => {
@@ -57,15 +57,16 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
     app.routesInfo['Connection'].push({ model: 'Connection', name: 'Update connection', method: 'PUT', url: url, auth: ['C', 'A'], body: getPostmanBodyFromModelDef(modelDefinition, 'update') });
   }
 
-  const registerRemoveConnection = () => {
-    const url = '/api/connection/:id';
+  const registerDeleteConnection = () => {
+    const url = '/api/connection/:connectionId';
     app.delete(url,
+      passport.authenticate('local-user-with-towns', { session: false }),
       (req, res) => {
-        service.removeConnection(modelsService, req.params.id)
+        service.deleteConnection(modelsService, req.user, req.params.connectionId)
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
-    app.routesInfo['Connection'].push({ model: 'Connection', name: 'Remove connection', method: 'DELETE', url: url });
+    app.routesInfo['Connection'].push({ model: 'Connection', name: 'Delete connection', method: 'DELETE', url: url, auth: ['C', 'A'] });
   }
 
   const registerUpdateMarkerIconForAllStations = () => {
@@ -83,7 +84,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
   registerGetConnectionFullInfo();
   registerAddConnection();
   registerUpdateConnection();
-  registerRemoveConnection();
+  registerDeleteConnection();
   registerUpdateMarkerIconForAllStations();
 
 };

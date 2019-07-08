@@ -122,24 +122,18 @@ service.updateStation = async (modelsService, user, stationId, stationObj) => {
 }
 
 service.deleteStation = async (modelsService, user, stationId) => {
-  try {
-    const station = await modelsService.getModel('Station').findOne({ _id: stationId });
-    if (!verifyRoles(['C', 'A'], user, null, station)) {
-      return { statusCode: 401, data: 'Unauthorized' };
-    }
+  const station = await modelsService.getModel('Station').findOne({ _id: stationId });
+  if (!verifyRoles(['C', 'A'], user, null, station)) {
+    return { statusCode: 401, data: 'Unauthorized' };
+  }
 
-    try {
-      await station.remove();
-      return { statusCode: 200, data: `${station.name} was removed` };
-    }
-    catch (err) {
-      return { statusCode: 400, data: transformMongooseErrors(err) };
-    }
+  try {
+    await station.remove();
+    return { statusCode: 200, data: `${station.name} was removed` };
   }
   catch (err) {
-    console.log(err);
+    return { statusCode: 400, data: transformMongooseErrors(err) };
   }
-
 }
 
 module.exports = service;

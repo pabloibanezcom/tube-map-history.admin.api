@@ -31,6 +31,22 @@ const getFreshConnection = async () => {
   };
 }
 
+const addFreshConnection = async (token) => {
+  const connection = await getFreshConnection();
+  const res = await agent.post(`/api/london/connection`).send(connection).set('Accept', 'application/json').set('Authorization', `Bearer ${token}`).expect(200);
+  return res.body;
+}
+
+const getLine = async (token, lineId) => {
+  const lineRes = await agent.get(`/api/line/${lineId}`).set('Accept', 'application/json').expect('Content-Type', /json/).set('Authorization', `Bearer ${token}`);
+  return lineRes.body;
+}
+
+const getStation = async (token, stationId) => {
+  const stationRes = await agent.get(`/api/station/${stationId}`).set('Accept', 'application/json').expect('Content-Type', /json/).set('Authorization', `Bearer ${token}`);
+  return stationRes.body;
+}
+
 // GET FULL INFO FROM CONNECTION
 describe('GET /api/connection/:connectionId', () => {
 
@@ -132,12 +148,12 @@ describe('POST /api/:town/connection', () => {
   it('when connection is added its line and stations must have it in their connections', async (done) => {
     connection = await getFreshConnection();
     const connectionRes = await agent.post(`/api/london/connection`).send(connection).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);
-    const lineRes = await agent.get(`/api/line/${connection.line}`).set('Accept', 'application/json').expect('Content-Type', /json/).set('Authorization', `Bearer ${tokenA}`);
-    expect(lineRes.body.connections.find(con => con._id === connectionRes.body._id)).not.toBeUndefined();
-    const stationARes = await agent.get(`/api/station/${connection.stations[0]}`).set('Accept', 'application/json').expect('Content-Type', /json/).set('Authorization', `Bearer ${tokenA}`);
-    expect(stationARes.body.connections.find(con => con._id === connectionRes.body._id)).not.toBeUndefined();
-    const stationBRes = await agent.get(`/api/station/${connection.stations[1]}`).set('Accept', 'application/json').expect('Content-Type', /json/).set('Authorization', `Bearer ${tokenA}`);
-    expect(stationARes.body.connections.find(con => con._id === connectionRes.body._id)).not.toBeUndefined();
+    const line = await getLine(tokenA, connection.line);
+    expect(line.connections.find(con => con._id === connectionRes.body._id)).not.toBeUndefined();
+    const stationA = await getStation(tokenA, connection.stations[0]);
+    expect(stationA.connections.find(con => con._id === connectionRes.body._id)).not.toBeUndefined();
+    const stationB = await getStation(tokenA, connection.stations[1]);
+    expect(stationB.connections.find(con => con._id === connectionRes.body._id)).not.toBeUndefined();
     done();
   });
 
@@ -149,42 +165,130 @@ describe('PUT /api/connection/:connectionId', () => {
   let tokenM1;
   let tokenM2;
   let tokenA;
-  let connectionA;
-  let connectionB;
+  let mockConnectionA;
+  let mockConnectionB;
+  let connectionAId;
+  let connectionBId;
 
   beforeAll(async (done) => {
     tokenM1 = await loginAsRole('M1');
-    const mockConnection = await getFreshConnection();
-    const connectionRes = await agent.post(`/api/london/connection`).send(mockConnection).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenM1}`).expect(200);
-    connection = connectionRes.body;
+    tokenM2 = await loginAsRole('M2');
+    tokenA = await loginAsRole('A');
+    mockConnectionA = await getFreshConnection();
+    const connectionResA = await agent.post(`/api/london/connection`).send(mockConnectionA).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenM1}`).expect(200);
+    connectionAId = connectionResA.body._id;
+    mockConnectionB = await getFreshConnection();
+    const connectionResB = await agent.post(`/api/london/connection`).send(mockConnectionB).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenM1}`).expect(200);
+    connectionBId = connectionResB.body._id;
     done();
   });
 
   it('when user is creator it can update connection', async (done) => {
-    connectionA = await getFreshConnection();
-    const modifedConnectionRes = await agent.put(`/api/connection/${connection._id}`).send({ ...connectionA, year: 1990 }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenM1}`).expect(200);
+    const modifedConnectionRes = await agent.put(`/api/connection/${connectionAId}`).send({ ...mockConnectionA, year: 1990 }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenM1}`).expect(200);
     expect(modifedConnectionRes.body.year).toBe(1990);
     done();
   });
 
   it('when user is not creator it can not update connection', async (done) => {
-    tokenM2 = await loginAsRole('M2');
-    const mockConnection = await getFreshConnection();
-    agent.put(`/api/connection/${connection._id}`).send({ ...mockConnection, year: 1990 }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenM2}`).expect(401, done);
+    agent.put(`/api/connection/${connectionAId}`).send({ ...mockConnectionA, year: 1990 }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenM2}`).expect(401, done);
   });
 
   it('when user is admin it can update connection', async (done) => {
-    tokenA = await loginAsRole('A');
-    connectionB = await getFreshConnection();
-    const modifedConnectionRes = await agent.put(`/api/connection/${connection._id}`).send({ ...connectionB, year: 1990 }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`).expect(200);
-    connectionB._id = modifedConnectionRes.body._id;
-    expect(modifedConnectionRes.body.year).toBe(1990);
+    const modifedConnectionRes = await agent.put(`/api/connection/${connectionBId}`).send({ ...mockConnectionB, year: 1995 }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`).expect(200);
+    expect(modifedConnectionRes.body.year).toBe(1995);
     done();
   });
 
-  // it('when trying to update connection with same stations and line returns 400', async (done) => {
-  //   agent.put(`/api/connection/${connectionB._id}`).send(connectionA).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`)
-  //     .expect(400, done);
-  // });
+  it('when trying to update connection with existing stations and line in other connection returns 400', async (done) => {
+    agent.put(`/api/connection/${connectionBId}`).send(mockConnectionA).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`)
+      .expect(400, done);
+  });
 
+  it('when connection line is updated connection ref must be in new line and must be removed from old line', async (done) => {
+    const connection = await getFreshConnection();
+    const connectionRes = await agent.post(`/api/london/connection`).send(connection).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`).expect(200);
+    let oldLine = await getLine(tokenA, connectionRes.body.line._id);
+    expect(oldLine.connections.find(con => con._id === connectionRes.body._id)).not.toBeUndefined();
+    let newLine = await getFreshLine();
+    await agent.put(`/api/connection/${connectionRes.body._id}`).send({ ...connection, line: newLine._id }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);
+    oldLine = await getLine(tokenA, connectionRes.body.line._id);
+    expect(oldLine.connections.find(con => con._id === connectionRes.body._id)).toBeUndefined();
+    newLine = await getLine(tokenA, newLine._id);
+    expect(newLine.connections.find(con => con._id === connectionRes.body._id)).not.toBeUndefined();
+    done();
+  });
+
+  it('when connection station/s are updated connection ref must be in new station/s and must be removed from old station/s', async (done) => {
+    const connection = await getFreshConnection();
+    const connectionRes = await agent.post(`/api/london/connection`).send(connection).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`).expect(200);
+    let oldStationA = await getStation(tokenA, connectionRes.body.stations[0]);
+    let oldStationB = await getStation(tokenA, connectionRes.body.stations[1]);
+    expect(oldStationA.connections.find(con => con._id === connectionRes.body._id)).not.toBeUndefined();
+    expect(oldStationB.connections.find(con => con._id === connectionRes.body._id)).not.toBeUndefined();
+    let newStationA = await getFreshStation();
+    await agent.put(`/api/connection/${connectionRes.body._id}`).send({ ...connection, stations: [newStationA._id, oldStationB._id] }).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`);
+    oldStationA = await getStation(tokenA, connectionRes.body.stations[0]);
+    expect(oldStationA.connections.find(con => con._id === connectionRes.body._id)).toBeUndefined();
+    newStationA = await getStation(tokenA, newStationA._id);
+    expect(newStationA.connections.find(con => con._id === connectionRes.body._id)).not.toBeUndefined();
+    oldStationB = await getStation(tokenA, connectionRes.body.stations[1]);
+    expect(oldStationB.connections.find(con => con._id === connectionRes.body._id)).not.toBeUndefined();
+    done();
+  });
+
+});
+
+// DELETE CONNECTION
+describe('DELETE /api/connection/:connectionId', () => {
+
+  let tokenM1;
+  let tokenM2;
+  let tokenA;
+  let connectionA;
+  let connectionB;
+
+  beforeAll(async (done) => {
+    tokenM1 = await loginAsRole('M1');
+    tokenM2 = await loginAsRole('M2');
+    tokenA = await loginAsRole('A');
+    mockConnectionA = await getFreshConnection();
+    const connectionResA = await agent.post(`/api/london/connection`).send(mockConnectionA).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenM1}`).expect(200);
+    connectionA = connectionResA.body;
+    mockConnectionB = await getFreshConnection();
+    const connectionResB = await agent.post(`/api/london/connection`).send(mockConnectionB).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenM1}`).expect(200);
+    connectionB = connectionResB.body;
+    done();
+  });
+
+  it('when user is creator it can delete connection', async (done) => {
+    await agent.delete(`/api/connection/${connectionA._id}`).set('Authorization', `Bearer ${tokenM1}`).expect(200);
+    agent.get(`/api/connection/${connectionA._id}`).set('Authorization', `Bearer ${tokenM1}`).expect(404, done);
+  });
+
+  it('when user is not creator it can not delete connection', async (done) => {
+    agent.delete(`/api/connection/${connectionB._id}`).set('Authorization', `Bearer ${tokenM2}`).expect(401, done);
+  });
+
+  it('when user is admin it can delete connection', async (done) => {
+    await agent.delete(`/api/connection/${connectionB._id}`).set('Authorization', `Bearer ${tokenA}`).expect(200);
+    agent.get(`/api/connection/${connectionB._id}`).set('Authorization', `Bearer ${tokenA}`).expect(404, done);
+  });
+
+  it('when connection is deleted it must be removed from line and stations refs', async (done) => {
+    const connection = await addFreshConnection(tokenA);
+    let line = await getLine(tokenA, connection.line._id);
+    let stationA = await getStation(tokenA, connection.stations[0]);
+    let stationB = await getStation(tokenA, connection.stations[0]);
+    expect(line.connections.find(con => con._id === connection._id)).not.toBeUndefined();
+    expect(stationA.connections.find(con => con._id === connection._id)).not.toBeUndefined();
+    expect(stationB.connections.find(con => con._id === connection._id)).not.toBeUndefined();
+    await agent.delete(`/api/connection/${connection._id}`).set('Authorization', `Bearer ${tokenA}`).expect(200);
+    line = await getLine(tokenA, connection.line._id);
+    stationA = await getStation(tokenA, connection.stations[0]);
+    stationB = await getStation(tokenA, connection.stations[0]);
+    expect(line.connections.find(con => con._id === connection._id)).toBeUndefined();
+    expect(stationA.connections.find(con => con._id === connection._id)).toBeUndefined();
+    expect(stationB.connections.find(con => con._id === connection._id)).toBeUndefined();
+    done();
+  });
 });
