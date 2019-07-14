@@ -50,7 +50,8 @@ const getStation = async (token, stationId) => {
 }
 
 // SEARCH CONNECTIONS
-describe('POST /api/:town/connection/search', () => {
+// POST /api/:town/connection/search
+describe('SEARCH CONNECTIONS', () => {
 
   let tokenA;
 
@@ -104,7 +105,8 @@ describe('POST /api/:town/connection/search', () => {
 });
 
 // GET FULL INFO FROM CONNECTION
-describe('GET /api/connection/:connectionId', () => {
+// GET /api/connection/:connectionId
+describe('GET FULL INFO FROM CONNECTION', () => {
 
   let connection;
   let line;
@@ -146,7 +148,8 @@ describe('GET /api/connection/:connectionId', () => {
 })
 
 // ADD CONNECTION
-describe('POST /api/:town/connection', () => {
+// POST /api/:town/connection
+describe('ADD CONNECTION', () => {
 
   let tokenU;
   let tokenM1;
@@ -216,7 +219,8 @@ describe('POST /api/:town/connection', () => {
 });
 
 // UPDATE CONNECTION
-describe('PUT /api/connection/:connectionId', () => {
+// PUT /api/connection/:connectionId
+describe('UPDATE CONNECTION', () => {
 
   let tokenM1;
   let tokenM2;
@@ -295,7 +299,8 @@ describe('PUT /api/connection/:connectionId', () => {
 });
 
 // DELETE CONNECTION
-describe('DELETE /api/connection/:connectionId', () => {
+// DELETE /api/connection/:connectionId
+describe('DELETE CONNECTION', () => {
 
   let tokenM1;
   let tokenM2;

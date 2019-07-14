@@ -1,7 +1,9 @@
 const app = require('../app')
 const agent = require('supertest').agent(app)
 
-describe('GET /api/countries', function () {
+// GET COUNTRIES
+// GET /api/countries
+describe('GET COUNTRIES', function () {
   it('it get json with all countries', function (done) {
     agent
       .get('/api/countries')

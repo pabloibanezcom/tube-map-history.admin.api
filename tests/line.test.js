@@ -6,7 +6,8 @@ const lineSearchBody = require('./mock/line_search_body.json');
 const isSorted = require('./helpers/isSorted');
 
 // SEARCH LINES
-describe('POST /api/:town/line/search', () => {
+// POST /api/:town/line/search
+describe('SEARCH LINES', () => {
 
   let tokenA;
 
@@ -67,7 +68,8 @@ describe('POST /api/:town/line/search', () => {
 });
 
 // GET LINES IN TOWN
-describe('GET /api/:town/lines', () => {
+// GET /api/:town/lines
+describe('GET LINES IN TOWN', () => {
 
   let town;
   let lines;
@@ -99,7 +101,8 @@ describe('GET /api/:town/lines', () => {
 });
 
 // GET FULL INFO FROM LINE
-describe('GET /api/line/:lineId', () => {
+// GET /api/line/:lineId
+describe('GET FULL INFO FROM LINE', () => {
 
   let tokenA;
   let line;
@@ -128,7 +131,8 @@ describe('GET /api/line/:lineId', () => {
 })
 
 // ADD LINE
-describe('POST /api/:town/line', () => {
+// POST /api/:town/line
+describe('ADD LINE', () => {
 
   let tokenU;
   let tokenM1;
@@ -184,7 +188,8 @@ describe('POST /api/:town/line', () => {
 });
 
 // UPDATE LINE
-describe('PUT /api/:town/line/:lineId', () => {
+// PUT /api/:town/line/:lineId
+describe('UPDATE LINE', () => {
 
   let tokenM1;
   let tokenM2;
@@ -218,7 +223,8 @@ describe('PUT /api/:town/line/:lineId', () => {
 });
 
 // DELETE LINE
-describe('DELETE /api/line/:lineId', () => {
+// DELETE /api/line/:lineId
+describe('DELETE LINE', () => {
 
   let tokenM1;
   let tokenM2;

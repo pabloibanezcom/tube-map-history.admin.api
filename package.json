@@ -8,7 +8,9 @@
     "start:test": "NODE_ENV=test node ./bin/www",
     "test": "NODE_ENV=test jest --detectOpenHandles --forceExit",
     "test:watch": "NODE_ENV=test jest --detectOpenHandles --watch",
-    "test:coverage": "NODE_ENV=test jest --detectOpenHandles --forceExit --coverage",
+    "test-full": "npm run reset-test-db && npm run test:coverage",
+    "test:coverage": "NODE_ENV=test jest --detectOpenHandles --forceExit --verbose --coverage",
+    "reset-test-db": "npm run copy-db --source=dev --target=test",
     "copy-db": "node ./tasks/copy_db",
     "export-db": "node ./tasks/export_db",
     "import-db": "node ./tasks/import_db"
@@ -32,6 +34,7 @@
   },
   "devDependencies": {
     "chalk": "^2.4.2",
+    "faker": "^4.1.0",
     "jest": "^24.8.0",
     "supertest": "^4.0.2"
   }

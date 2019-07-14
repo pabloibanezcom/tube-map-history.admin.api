@@ -5,7 +5,8 @@ const loginAsRole = require('./helpers/loginAsRole');
 const stationSearchBody = require('./mock/station_search_body.json');
 
 // SEARCH STATIONS
-describe('POST /api/:town/station/search', () => {
+// POST /api/:town/station/search
+describe('SEARCH STATIONS', () => {
 
   let tokenA;
 
@@ -31,8 +32,9 @@ describe('POST /api/:town/station/search', () => {
 
 });
 
-// GET FULL INFO FROM STATION
-describe('GET /api/station/:stationId', () => {
+// SEARCH STATIONS
+// POST /api/:town/station/search
+describe('SEARCH STATIONS', () => {
 
   let tokenA;
   let station;
@@ -61,7 +63,8 @@ describe('GET /api/station/:stationId', () => {
 })
 
 // ADD STATION
-describe('POST /api/:town/station', () => {
+// POST /api/:town/station
+describe('ADD STATION', () => {
 
   let tokenU;
   let tokenM1;
@@ -112,7 +115,8 @@ describe('POST /api/:town/station', () => {
 });
 
 // UPDATE STATION
-describe('PUT /api/station/:stationId', () => {
+// PUT /api/station/:stationId
+describe('UPDATE STATION', () => {
 
   let tokenM1;
   let tokenM2;
@@ -146,7 +150,8 @@ describe('PUT /api/station/:stationId', () => {
 });
 
 // DELETE STATION
-describe('DELETE /api/station/:stationId', () => {
+// DELETE /api/station/:stationId
+describe('DELETE STATION', () => {
 
   let tokenM1;
   let tokenM2;

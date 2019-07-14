@@ -3,7 +3,9 @@ const agent = require('supertest').agent(app)
 
 let someTownId;
 
-describe('GET /api/towns', function () {
+// GET TOWNS
+// GET /api/towns
+describe('GET TOWNS', function () {
   it('it get json with all towns', function (done) {
     agent
       .get('/api/towns')
@@ -20,7 +22,9 @@ describe('GET /api/towns', function () {
   });
 });
 
-describe('GET /api/town/:town', function () {
+// GET TOWN INFO
+// GET /api/town/:town
+describe('GET TOWN INFO', function () {
   it('it get json with town info when townId exits', function (done) {
     agent
       .get(`/api/town/${someTownId}`)
