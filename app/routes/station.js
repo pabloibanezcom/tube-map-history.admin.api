@@ -23,11 +23,11 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
   }
 
   const registerSearchStations = () => {
-    const url = '/api/:town/station/search';
+    const url = '/api/:draftId/station/search';
     app.post(url,
       passport.authenticate('local-user', { session: false }),
       (req, res) => {
-        service.searchStations(modelsService, req.user, req.params.town, req.body)
+        service.searchStations(modelsService, req.user, req.params.draftId, req.body)
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });

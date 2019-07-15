@@ -17,20 +17,17 @@ service.getStationsByYearRange = async (modelsService, townIdOrName, yearTo, yea
   return { statusCode: 200, data: stations };
 }
 
-service.searchStations = async (modelsService, user, townIdOrName, body) => {
+service.searchStations = async (modelsService, user, draftId, body) => {
   if (!verifyRoles(['U', 'A'], user)) {
     return { statusCode: 401, data: 'Unauthorized' };
   }
   if (!validatePagination(body.pagination)) {
     return { statusCode: 400, data: 'Bad request: Pagination is wrong format' };
   }
-  const townId = await getTown(modelsService, townIdOrName);
-  if (!townId) {
-    return { statusCode: 404, data: 'Town not found' };
-  }
+
   const searchParams = {
     filter: {
-      town: townId
+      draft: draftId
     },
     sort: body.sort || '',
     select: body.select || '',
