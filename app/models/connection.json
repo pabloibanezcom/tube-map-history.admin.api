@@ -1,27 +1,41 @@
 {
   "name": "Connection",
   "route": "connection",
-  "authLevel": "none",
   "properties": {
     "year": {
-      "type": "Number"
+      "type": "Number",
+      "required": true,
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "yearEnd": {
-      "type": "Number"
+      "type": "Number",
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "distance": {
-      "type": "Number"
-    },
-    "order": {
-      "type": "Number"
+      "type": "Number",
+      "required": true
     },
     "line": {
       "type": "Line",
-      "propertyMatch": "connections"
+      "propertyMatch": "connections",
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "stations": {
       "type": "[Station]",
-      "propertyMatch": "connections"
+      "propertyMatch": "connections",
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "town": {
       "type": "Town"

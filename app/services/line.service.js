@@ -1,10 +1,10 @@
 const paginateResults = require('../util/paginateResults');
 const getTown = require('../util/getTown');
-const service = {};
-const validateBody = require('../util/validations');
-const isTownUser = require('../util/auth').isTownUser;
+const verifyRoles = require('../auth/role-verification');
 const transformMongooseErrors = require('../util/transformMongooseErrors');
 const addCreatedAndModified = require('../util/addCreatedAndModified');
+const validatePagination = require('../util/validatePagination');
+const service = {};
 
 service.getLines = async (modelsService, townIdOrName) => {
   const townId = await getTown(modelsService, townIdOrName);
@@ -18,23 +18,45 @@ service.getLines = async (modelsService, townIdOrName) => {
   return { statusCode: 200, data: lines };
 }
 
-service.searchLines = async (modelsService, body) => {
+service.searchLines = async (modelsService, user, townIdOrName, body) => {
+  if (!verifyRoles(['U', 'A'], user)) {
+    return { statusCode: 401, data: 'Unauthorized' };
+  }
+  if (!validatePagination(body.pagination)) {
+    return { statusCode: 400, data: 'Bad request: Pagination is wrong format' };
+  }
+  const townId = await getTown(modelsService, townIdOrName);
+
+  if (!townId) {
+    return { statusCode: 404, data: 'Town not found' };
+  }
+
   const searchParams = {
-    filter: {},
+    filter: {
+      town: townId
+    },
+    sort: body.sort || '',
     select: body.select || '',
     populate: body.populate || ''
   };
+
   if (body.filter && body.filter.name) {
     searchParams.filter.name = { $regex: body.filter.name, $options: 'i' };
   }
+
   let lines = await modelsService.getModel('Line')
     .find(searchParams.filter)
+    .sort(searchParams.sort)
     .select(searchParams.select)
     .populate(searchParams.populate);
+
   return { statusCode: 200, data: paginateResults(lines, body.pagination) };
 }
 
-service.getLineFullInfo = async (modelsService, lineId) => {
+service.getLineFullInfo = async (modelsService, user, lineId) => {
+  if (!verifyRoles(['U', 'A'], user)) {
+    return { statusCode: 401, data: 'Unauthorized' };
+  }
   const line = await modelsService.getModel('Line')
     .findById(lineId)
     .select('name key shortName colour fontColour startStations year distance lastModifiedDate lastModifiedUser')
@@ -64,9 +86,14 @@ service.calculateLineDistance = async (modelsService, lineId) => {
 }
 
 service.addLine = async (modelsService, user, townIdOrName, lineObj) => {
+  const town = await getTown(modelsService, townIdOrName);
+  if (!verifyRoles(['M', 'A'], user, town._id)) {
+    return { statusCode: 401, data: 'Unauthorized' };
+  }
+
   const Line = modelsService.getModel('Line');
-  const townId = await getTown(modelsService, townIdOrName);
-  const line = new Line(addCreatedAndModified({ ...lineObj, town: townId }, user, true));
+  const line = new Line(addCreatedAndModified({ ...lineObj, town: town._id }, user, true));
+
   try {
     const doc = await line.save();
     return { statusCode: 200, data: doc };
@@ -78,13 +105,34 @@ service.addLine = async (modelsService, user, townIdOrName, lineObj) => {
 
 service.updateLine = async (modelsService, user, lineId, lineObj) => {
   const line = await modelsService.getModel('Line').findOne({ _id: lineId });
-  if (!isTownUser(user, line.town)) {
+  if (!verifyRoles(['C', 'A'], user, null, line)) {
     return { statusCode: 401, data: 'Unauthorized' };
   }
 
   Object.assign(line, addCreatedAndModified(lineObj, user, false));
-  await line.save();
-  return { statusCode: 200, data: line };
+
+  try {
+    await line.save();
+    return { statusCode: 200, data: line };
+  }
+  catch (err) {
+    return { statusCode: 400, data: transformMongooseErrors(err) };
+  }
+}
+
+service.deleteLine = async (modelsService, user, lineId) => {
+  const line = await modelsService.getModel('Line').findOne({ _id: lineId });
+  if (!verifyRoles(['C', 'A'], user, null, line)) {
+    return { statusCode: 401, data: 'Unauthorized' };
+  }
+
+  try {
+    await line.remove();
+    return { statusCode: 200, data: `${line.name} (${line.key}) was removed` };
+  }
+  catch (err) {
+    return { statusCode: 400, data: transformMongooseErrors(err) };
+  }
 }
 
 const sortConnections = (connections, startStations) => {
