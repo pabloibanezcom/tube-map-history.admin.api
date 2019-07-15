@@ -1,21 +1,21 @@
 const paginateResults = require('../util/paginateResults');
-const getTown = require('../util/getTown');
+const getDraft = require('../util/getDraft');
 const verifyRoles = require('../auth/role-verification');
 const transformMongooseErrors = require('../util/transformMongooseErrors');
 const addCreatedAndModified = require('../util/addCreatedAndModified');
 const validatePagination = require('../util/validatePagination');
 const service = {};
 
-service.getStationsByYearRange = async (modelsService, townIdOrName, yearTo, yearFrom) => {
-  const townId = await getTown(modelsService, townIdOrName);
-  if (!townId) {
-    return { statusCode: 404, data: 'Town not found' };
-  }
-  const yearFromQuery = yearFrom ? { $gt: parseInt(yearFrom) - 1 } : null;
-  const stations = await modelsService.getModel('Station')
-    .find({ town: townId, year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 }, connections: { $exists: true, $ne: [] } });
-  return { statusCode: 200, data: stations };
-}
+// service.getStationsByYearRange = async (modelsService, townIdOrName, yearTo, yearFrom) => {
+//   const townId = await getTown(modelsService, townIdOrName);
+//   if (!townId) {
+//     return { statusCode: 404, data: 'Town not found' };
+//   }
+//   const yearFromQuery = yearFrom ? { $gt: parseInt(yearFrom) - 1 } : null;
+//   const stations = await modelsService.getModel('Station')
+//     .find({ town: townId, year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 }, connections: { $exists: true, $ne: [] } });
+//   return { statusCode: 200, data: stations };
+// }
 
 service.searchStations = async (modelsService, user, draftId, body) => {
   if (!verifyRoles(['U', 'A'], user)) {
@@ -83,14 +83,14 @@ service.getStationFullInfo = async (modelsService, user, stationId) => {
   return { statusCode: 200, data: station };
 }
 
-service.addStation = async (modelsService, user, townIdOrName, stationObj) => {
-  const town = await getTown(modelsService, townIdOrName);
-  if (!verifyRoles(['M', 'A'], user, town._id)) {
+service.addStation = async (modelsService, user, draftId, stationObj) => {
+  const draft = await getDraft(modelsService, draftId);
+  if (!verifyRoles(['M', 'A'], user, draft.town._id)) {
     return { statusCode: 401, data: 'Unauthorized' };
   }
 
   const Station = modelsService.getModel('Station');
-  const station = new Station(addCreatedAndModified({ ...stationObj, town: town._id, markerIcon: 'multiple' }, user, true));
+  const station = new Station(addCreatedAndModified({ ...stationObj, draft: draftId, markerIcon: 'multiple' }, user, true));
 
   try {
     const doc = await station.save();

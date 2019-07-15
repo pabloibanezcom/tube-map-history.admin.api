@@ -5,22 +5,22 @@ const defaultSearchBody = require('./defaultRequestBodies/default_search.json');
 
 module.exports = (app, modelsService, passport, modelDefinition) => {
 
-  const registerGetStationsByYearRange = () => {
-    const url = '/api/:town/station/year/:yearTo';
-    app.get(url,
-      (req, res) => {
-        service.getStationsByYearRange(modelsService, req.params.town, req.params.yearTo)
-          .then(result => res.status(result.statusCode).send(result.data))
-          .catch(err => res.status(500).send(err));
-      });
-    app.get(`${url}/:yearFrom`,
-      (req, res) => {
-        service.getStationsByYearRange(modelsService, req.params.town, req.params.yearTo, req.params.yearFrom)
-          .then(result => res.status(result.statusCode).send(result.data))
-          .catch(err => res.status(500).send(err));
-      });
-    app.routesInfo['Station'].push({ model: 'Station', name: 'Get stations by year range in town', method: 'GET', url: url });
-  }
+  // const registerGetStationsByYearRange = () => {
+  //   const url = '/api/:town/station/year/:yearTo';
+  //   app.get(url,
+  //     (req, res) => {
+  //       service.getStationsByYearRange(modelsService, req.params.town, req.params.yearTo)
+  //         .then(result => res.status(result.statusCode).send(result.data))
+  //         .catch(err => res.status(500).send(err));
+  //     });
+  //   app.get(`${url}/:yearFrom`,
+  //     (req, res) => {
+  //       service.getStationsByYearRange(modelsService, req.params.town, req.params.yearTo, req.params.yearFrom)
+  //         .then(result => res.status(result.statusCode).send(result.data))
+  //         .catch(err => res.status(500).send(err));
+  //     });
+  //   app.routesInfo['Station'].push({ model: 'Station', name: 'Get stations by year range in town', method: 'GET', url: url });
+  // }
 
   const registerSearchStations = () => {
     const url = '/api/:draftId/station/search';
@@ -47,11 +47,11 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
   }
 
   const registerAddStation = () => {
-    const url = '/api/:town/station';
+    const url = '/api/:draftId/station';
     app.post(url,
       passport.authenticate('local-user-with-towns', { session: false }),
       (req, res) => {
-        service.addStation(modelsService, req.user, req.params.town, filterBodyForAction(modelDefinition, 'add', req.body))
+        service.addStation(modelsService, req.user, req.params.draftId, filterBodyForAction(modelDefinition, 'add', req.body))
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
@@ -82,7 +82,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
     app.routesInfo['Station'].push({ model: 'Station', name: 'Delete station', method: 'DELETE', url: url, auth: ['C', 'A'] });
   }
 
-  registerGetStationsByYearRange();
+  // registerGetStationsByYearRange();
   registerSearchStations();
   registerGetStationFullInfo();
   registerAddStation();
