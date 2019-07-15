@@ -1,0 +1,14 @@
+{
+  "order": 30,
+  "name": "Test Town",
+  "alias": "Test tube",
+  "center": {
+    "type": "Point",
+    "coordinates": [
+      -0.0833327,
+      51.525955
+    ]
+  },
+  "zoom": 12,
+  "year": 1900
+}

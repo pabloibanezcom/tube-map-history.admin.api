@@ -1,5 +1,5 @@
-const app = require('../app')
-const agent = require('supertest').agent(app)
+const app = require('../app');
+const agent = require('supertest').agent(app);
 const mockLine = require('./mock/line.json');
 const loginAsRole = require('./helpers/loginAsRole');
 const lineSearchBody = require('./mock/line_search_body.json');

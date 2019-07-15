@@ -4,25 +4,75 @@
   "authLevel": "none",
   "properties": {
     "order": {
-      "type": "Number"
+      "type": "Number",
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "name": {
-      "type": "String"
+      "type": "String",
+      "required": [
+        true,
+        "Name is required"
+      ],
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "url": {
-      "type": "String"
+      "type": "String",
+      "required": [
+        true,
+        "Url is required"
+      ],
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "center": {
-      "type": "Point"
+      "type": "Point",
+      "required": [
+        true,
+        "Center is required"
+      ],
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "zoom": {
-      "type": "Number"
+      "type": "Number",
+      "required": [
+        true,
+        "Zoom is required"
+      ],
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "year": {
-      "type": "Number"
+      "type": "Number",
+      "required": true,
+      "validate": "isYear",
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "alias": {
-      "type": "String"
+      "type": "String",
+      "required": [
+        true,
+        "Alias is required"
+      ],
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "linesAmount": {
       "type": "Number"
@@ -35,7 +85,15 @@
     },
     "country": {
       "type": "Country",
-      "propertyMatch": "towns"
+      "propertyMatch": "towns",
+      "required": [
+        true,
+        "Country is required"
+      ],
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "users": {
       "type": "[UserTown]",
