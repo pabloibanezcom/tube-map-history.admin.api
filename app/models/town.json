@@ -74,15 +74,6 @@
         "update": true
       }
     },
-    "linesAmount": {
-      "type": "Number"
-    },
-    "stationsAmount": {
-      "type": "Number"
-    },
-    "connectionsAmount": {
-      "type": "Number"
-    },
     "country": {
       "type": "Country",
       "propertyMatch": "towns",
@@ -97,6 +88,10 @@
     },
     "users": {
       "type": "[UserTown]",
+      "propertyMatch": "town"
+    },
+    "drafts": {
+      "type": "[Draft]",
       "propertyMatch": "town"
     }
   }

@@ -1,24 +1,6 @@
 const app = require('../../app')
 const agent = require('supertest').agent(app)
-
-const roles = {
-  U: {
-    email: 'nomanager@gmail.com',
-    password: 'nomanager'
-  },
-  M1: {
-    email: 'london.manager1@gmail.com',
-    password: 'london.manager1'
-  },
-  M2: {
-    email: 'london.manager2@gmail.com',
-    password: 'london.manager2'
-  },
-  A: {
-    email: 'admin@gmail.com',
-    password: 'admin'
-  },
-}
+const roles = require('../mock/roles.json');
 
 const loginAsRole = async (role) => {
   return new Promise((resolve, reject) => {

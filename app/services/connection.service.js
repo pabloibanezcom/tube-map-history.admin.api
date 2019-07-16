@@ -1,6 +1,6 @@
 const calculateDistance = require('../util/calculateDistance');
 const paginateResults = require('../util/paginateResults');
-const getTown = require('../util/getTown');
+const getDraft = require('../util/getDraft');
 const verifyRoles = require('../auth/role-verification');
 const transformMongooseErrors = require('../util/transformMongooseErrors');
 const addCreatedAndModified = require('../util/addCreatedAndModified');
@@ -8,35 +8,30 @@ const validatePagination = require('../util/validatePagination');
 
 const service = {};
 
-service.getConnectionsByYearRange = async (modelsService, townIdOrName, yearTo, yearFrom) => {
-  const townId = await getTown(modelsService, townIdOrName);
-  if (!townId) {
-    return { statusCode: 404, data: 'Town not found' };
-  }
-  const yearFromQuery = yearFrom ? { $gt: parseInt(yearFrom) - 1 } : null;
-  const connections = await modelsService.getModel('Connection')
-    .find({ town: townId, year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 } })
-    .populate({ path: 'line', select: 'name shortName colour fontColour' })
-    .populate({ path: 'stations', select: 'name geometry' })
-  return { statusCode: 200, data: connections };
-}
+// service.getConnectionsByYearRange = async (modelsService, townIdOrName, yearTo, yearFrom) => {
+//   const townId = await getTown(modelsService, townIdOrName);
+//   if (!townId) {
+//     return { statusCode: 404, data: 'Town not found' };
+//   }
+//   const yearFromQuery = yearFrom ? { $gt: parseInt(yearFrom) - 1 } : null;
+//   const connections = await modelsService.getModel('Connection')
+//     .find({ town: townId, year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 } })
+//     .populate({ path: 'line', select: 'name shortName colour fontColour' })
+//     .populate({ path: 'stations', select: 'name geometry' })
+//   return { statusCode: 200, data: connections };
+// }
 
-service.searchConnections = async (modelsService, user, townIdOrName, body) => {
+service.searchConnections = async (modelsService, user, draftId, body) => {
   if (!verifyRoles(['U', 'A'], user)) {
     return { statusCode: 401, data: 'Unauthorized' };
   }
   if (!validatePagination(body.pagination)) {
     return { statusCode: 400, data: 'Bad request: Pagination is wrong format' };
   }
-  const townId = await getTown(modelsService, townIdOrName);
-
-  if (!townId) {
-    return { statusCode: 404, data: 'Town not found' };
-  }
 
   const searchParams = {
     filter: {
-      town: townId
+      draft: draftId
     },
     sort: body.sort || '',
     select: body.select || '',
@@ -68,9 +63,9 @@ service.getConnectionFullInfo = async (modelsService, user, connectionId) => {
   return { statusCode: 200, data: connection };
 }
 
-service.addConnection = async (modelsService, user, townIdOrName, connectionObj) => {
-  const town = await getTown(modelsService, townIdOrName);
-  if (!verifyRoles(['M', 'A'], user, town._id)) {
+service.addConnection = async (modelsService, user, draftId, connectionObj) => {
+  const draft = await getDraft(modelsService, draftId);
+  if (!verifyRoles(['M', 'A'], user, draft.town._id)) {
     return { statusCode: 401, data: 'Unauthorized' };
   }
 
@@ -80,12 +75,12 @@ service.addConnection = async (modelsService, user, townIdOrName, connectionObj)
     return { statusCode: 400, data: 'Connection with same two stations and line already exists' };
   }
 
-  const stations = await modelsService.getModel('Station').find({ '_id': { $in: connectionObj.stations }, 'town': town._id }).populate({ path: 'connections', populate: { path: 'line' } });
+  const stations = await modelsService.getModel('Station').find({ '_id': { $in: connectionObj.stations }, 'draft': draftId }).populate({ path: 'connections', populate: { path: 'line' } });
   if (stations.length !== 2) {
     return { statusCode: 400, data: 'Stations need to be two' };
   }
   const objSchema = {
-    town: town._id,
+    draft: draftId,
     line: connectionObj.line,
     stations: connectionObj.stations.sort(),
     year: connectionObj.year,

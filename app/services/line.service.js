@@ -1,39 +1,22 @@
 const paginateResults = require('../util/paginateResults');
-const getTown = require('../util/getTown');
+const getDraft = require('../util/getDraft');
 const verifyRoles = require('../auth/role-verification');
 const transformMongooseErrors = require('../util/transformMongooseErrors');
 const addCreatedAndModified = require('../util/addCreatedAndModified');
 const validatePagination = require('../util/validatePagination');
 const service = {};
 
-service.getLines = async (modelsService, townIdOrName) => {
-  const townId = await getTown(modelsService, townIdOrName);
-  if (!townId) {
-    return { statusCode: 404, data: 'Town not found' };
-  }
-  const lines = await modelsService.getModel('Line')
-    .find({ town: townId })
-    .sort('order')
-    .select('order key name shortName colour fontColour year distance stationsAmount lastModifiedDate lastModifiedUser');
-  return { statusCode: 200, data: lines };
-}
-
-service.searchLines = async (modelsService, user, townIdOrName, body) => {
+service.searchLines = async (modelsService, user, draftId, body) => {
   if (!verifyRoles(['U', 'A'], user)) {
     return { statusCode: 401, data: 'Unauthorized' };
   }
   if (!validatePagination(body.pagination)) {
     return { statusCode: 400, data: 'Bad request: Pagination is wrong format' };
   }
-  const townId = await getTown(modelsService, townIdOrName);
-
-  if (!townId) {
-    return { statusCode: 404, data: 'Town not found' };
-  }
 
   const searchParams = {
     filter: {
-      town: townId
+      draft: draftId
     },
     sort: body.sort || '',
     select: body.select || '',
@@ -85,14 +68,14 @@ service.calculateLineDistance = async (modelsService, lineId) => {
   return { statusCode: 202, data: `${line.name} total distance: ${line.distance}` };
 }
 
-service.addLine = async (modelsService, user, townIdOrName, lineObj) => {
-  const town = await getTown(modelsService, townIdOrName);
-  if (!verifyRoles(['M', 'A'], user, town._id)) {
+service.addLine = async (modelsService, user, draftId, lineObj) => {
+  const draft = await getDraft(modelsService, draftId);
+  if (!verifyRoles(['M', 'A'], user, draft.town._id)) {
     return { statusCode: 401, data: 'Unauthorized' };
   }
 
   const Line = modelsService.getModel('Line');
-  const line = new Line(addCreatedAndModified({ ...lineObj, town: town._id }, user, true));
+  const line = new Line(addCreatedAndModified({ ...lineObj, draft: draftId }, user, true));
 
   try {
     const doc = await line.save();

@@ -45,6 +45,10 @@
       "type": "[Connection]",
       "propertyMatch": "stations"
     },
+    "draft": {
+      "type": "Draft",
+      "required": true
+    },
     "town": {
       "type": "Town"
     }

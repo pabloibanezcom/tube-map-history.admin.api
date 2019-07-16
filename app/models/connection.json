@@ -18,8 +18,7 @@
       }
     },
     "distance": {
-      "type": "Number",
-      "required": true
+      "type": "Number"
     },
     "line": {
       "type": "Line",
@@ -37,8 +36,9 @@
         "update": true
       }
     },
-    "town": {
-      "type": "Town"
+    "draft": {
+      "type": "Draft",
+      "required": true
     }
   }
 }

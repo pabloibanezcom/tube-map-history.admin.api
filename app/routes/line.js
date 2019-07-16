@@ -5,23 +5,12 @@ const defaultSearchBody = require('./defaultRequestBodies/default_search.json');
 
 module.exports = (app, modelsService, passport, modelDefinition) => {
 
-  const registerGetLines = () => {
-    const url = '/api/:town/lines';
-    app.get(url,
-      (req, res) => {
-        service.getLines(modelsService, req.params.town)
-          .then(result => res.status(result.statusCode).send(result.data))
-          .catch(err => res.status(500).send(err));
-      });
-    app.routesInfo['Line'].push({ model: 'Line', name: 'Get lines in town', method: 'GET', url: url });
-  }
-
   const registerSearchLines = () => {
-    const url = '/api/:town/line/search';
+    const url = '/api/:draftId/line/search';
     app.post(url,
       passport.authenticate('local-user', { session: false }),
       (req, res) => {
-        service.searchLines(modelsService, req.user, req.params.town, req.body)
+        service.searchLines(modelsService, req.user, req.params.draftId, req.body)
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
@@ -41,11 +30,11 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
   }
 
   const registerAddLine = () => {
-    const url = '/api/:town/line';
+    const url = '/api/:draftId/line';
     app.post(url,
       passport.authenticate('local-user-with-towns', { session: false }),
       (req, res) => {
-        service.addLine(modelsService, req.user, req.params.town, filterBodyForAction(modelDefinition, 'add', req.body))
+        service.addLine(modelsService, req.user, req.params.draftId, filterBodyForAction(modelDefinition, 'add', req.body))
           .then(result => res.status(result.statusCode).send(result.data))
           .catch(err => res.status(500).send(err));
       });
@@ -77,7 +66,6 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
   }
 
   app.routesInfo['Line'] = [];
-  registerGetLines();
   registerSearchLines();
   registerGetLineFullInfo();
   registerAddLine();

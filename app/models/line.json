@@ -76,9 +76,12 @@
       "type": "[Connection]",
       "propertyMatch": "line"
     },
-    "town": {
-      "type": "Town",
+    "draft": {
+      "type": "Draft",
       "required": true
+    },
+    "town": {
+      "type": "Town"
     }
   }
 }
