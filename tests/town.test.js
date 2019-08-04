@@ -5,7 +5,7 @@ const mockTownWithoutCountry = require('./mock/town.json');
 const loginAsRole = require('./helpers/loginAsRole');
 
 // GET TOWNS
-// GET /api/towns
+// GET /api/town/all
 describe('GET TOWNS', function () {
 
   let tokenU;
@@ -18,15 +18,15 @@ describe('GET TOWNS', function () {
   });
 
   it('when user is not logged it can not get towns', async (done) => {
-    agent.get('/api/towns').expect(401, done);
+    agent.get('/api/town/all').expect(401, done);
   });
 
   it('when user is logged it can get towns', async (done) => {
-    agent.get('/api/towns').set('Authorization', `Bearer ${tokenU}`).expect(200, done);
+    agent.get('/api/town/all').set('Authorization', `Bearer ${tokenU}`).expect(200, done);
   });
 
   it('when user is admin it can get towns', async (done) => {
-    agent.get('/api/towns').set('Authorization', `Bearer ${tokenA}`).expect(200, done);
+    agent.get('/api/town/all').set('Authorization', `Bearer ${tokenA}`).expect(200, done);
   });
 
 });
@@ -42,7 +42,7 @@ describe('GET TOWN INFO', function () {
   beforeAll(async (done) => {
     tokenU = await loginAsRole('U');
     tokenA = await loginAsRole('A');
-    const getTownsRes = await agent.get('/api/towns').set('Authorization', `Bearer ${tokenA}`);
+    const getTownsRes = await agent.get('/api/town/all').set('Authorization', `Bearer ${tokenA}`);
     someTownId = getTownsRes.body[0]._id;
     done();
   });

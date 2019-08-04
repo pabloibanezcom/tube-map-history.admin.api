@@ -6,7 +6,7 @@ const log500 = require('../util/log500');
 module.exports = (app, modelsService, passport, modelDefinition) => {
 
   const registerGetTowns = () => {
-    const url = '/api/towns';
+    const url = '/api/town/all';
     app.get(url,
       passport.authenticate('local-user', { session: false }),
       (req, res) => {
