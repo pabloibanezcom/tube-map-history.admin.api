@@ -1,6 +1,5 @@
 const calculateDistance = require('../util/calculateDistance');
 const paginateResults = require('../util/paginateResults');
-const getDraft = require('../util/getDraft');
 const verifyRoles = require('../auth/role-verification');
 const transformMongooseErrors = require('../util/transformMongooseErrors');
 const addCreatedAndModified = require('../util/addCreatedAndModified');
@@ -51,7 +50,8 @@ service.getConnectionFullInfo = async (modelsService, user, connectionId) => {
   if (!verifyRoles(['U', 'A'], user)) {
     return { statusCode: 401, data: 'Unauthorized' };
   }
-  const connection = await modelsService.getModel('Connection').findOne({ _id: connectionId })
+  const connection = await modelsService.getModel('Connection')
+    .findById(connectionId)
     .populate([
       { path: 'town', select: 'name country' },
       { path: 'line', select: 'name shortName colour fontColour' },
@@ -64,9 +64,17 @@ service.getConnectionFullInfo = async (modelsService, user, connectionId) => {
 }
 
 service.addConnection = async (modelsService, user, draftId, connectionObj) => {
-  const draft = await getDraft(modelsService, draftId);
-  if (!verifyRoles(['M', 'A'], user, draft.town._id)) {
+  if (!verifyRoles(['M', 'A'], user, draftId)) {
     return { statusCode: 401, data: 'Unauthorized' };
+  }
+
+  const draft = await modelsService.getModel('Draft').findOne({ _id: draftId });
+  if (!draft) {
+    return { statusCode: 404, data: 'Draft does not exist' };
+  }
+
+  if (draft.isPublished) {
+    return { statusCode: 403, data: 'Draft can not be updated as it is published' };
   }
 
   const Connection = modelsService.getModel('Connection');
@@ -87,38 +95,48 @@ service.addConnection = async (modelsService, user, draftId, connectionObj) => {
     yearEnd: connectionObj.yearEnd,
     distance: calculateDistance(stations[0].geometry.coordinates, stations[1].geometry.coordinates),
   }
-  const newObj = new Connection(addCreatedAndModified(objSchema, user, true));
-
-  let doc;
+  const connection = new Connection(addCreatedAndModified(objSchema, user, true));
 
   try {
-    doc = await newObj.save();
+    connection.save();
   }
   catch (err) {
     return { statusCode: 400, data: transformMongooseErrors(err) };
   }
 
   const line = await modelsService.getModel('Line').findOne({ _id: connectionObj.line });
-  doc.line = line;
 
-  stations.forEach(station => updateMarkerIcon(station, doc, 'add'));
-  updateRelationship(false, stations, doc._id);
-  updateRelationship(false, [line], doc._id);
+  stations.forEach(station => updateMarkerIcon(station, connection, 'add'));
+  updateRelationship(false, stations, connection._id);
+  updateRelationship(false, [line], connection._id);
 
   for (const s of stations) {
     await s.save();
   }
   await line.save();
 
-  return { statusCode: 200, data: doc };
+  // Add connection ref to draft
+  draft.connections.push(connection._id);
+  await draft.save();
+
+  return { statusCode: 200, data: connection };
 }
 
 service.updateConnection = async (modelsService, user, connectionId, connectionObj) => {
-  connectionObj.stations.sort();
-  const connection = await modelsService.getModel('Connection').findOne({ _id: connectionId });
-  if (!verifyRoles(['C', 'A'], user, null, connection)) {
+  const connection = await modelsService.getModel('Connection').findOne({ _id: connectionId }).populate({ path: 'draft', select: 'isPublished' });
+  if (!connection) {
+    return { statusCode: 404, data: 'Connection does not exist' };
+  }
+
+  if (!verifyRoles(['M', 'A'], user, connection.draft._id)) {
     return { statusCode: 401, data: 'Unauthorized' };
   }
+
+  if (connection.draft.isPublished) {
+    return { statusCode: 403, data: 'Draft can not be updated as it is published' };
+  }
+
+  connectionObj.stations.sort();
 
   const oldLine = connection.line;
   const newLine = connectionObj.line;
@@ -182,26 +200,53 @@ service.updateConnection = async (modelsService, user, connectionId, connectionO
 
 service.deleteConnection = async (modelsService, user, connectionId) => {
   const connection = await modelsService.getModel('Connection').findOne({ _id: connectionId });
-  if (!verifyRoles(['C', 'A'], user, null, connection)) {
+  if (!connection) {
+    return { statusCode: 404, data: 'Connection does not exist' };
+  }
+
+  const draft = await modelsService.getModel('Draft').findOne({ _id: connection.draft });
+
+  if (!verifyRoles(['M', 'A'], user, draft._id)) {
     return { statusCode: 401, data: 'Unauthorized' };
+  }
+
+  if (draft.isPublished) {
+    return { statusCode: 403, data: 'Draft can not be updated as it is published' };
   }
 
   try {
     await connection.remove();
-    return { statusCode: 200, data: `${connection._id} was removed` };
   }
   catch (err) {
     return { statusCode: 400, data: transformMongooseErrors(err) };
   }
+
+  const line = await modelsService.getModel('Line').findOne({ _id: connection.line });
+  const stations = await modelsService.getModel('Station').find({ '_id': { $in: connection.stations }, 'draft': draft._id }).populate({ path: 'connections', populate: { path: 'line' } });
+
+  stations.forEach(station => updateMarkerIcon(station, connection, 'remove'));
+  updateRelationship(true, stations, connection._id);
+  updateRelationship(true, [line], connection._id);
+
+  for (const s of stations) {
+    await s.save();
+  }
+  await line.save();
+
+  // Remove connection ref from draft
+  draft.connections = draft.connections.filter(c => !c.equals(connection._id));
+  await draft.save();
+
+  return { statusCode: 200, data: `${connection._id} was removed` };
 }
 
-service.updateMarkerIconForAllStations = async (modelsService) => {
-  const stations = await modelsService.getModel('Station').find({}).populate({ path: 'connections', populate: { path: 'line' } });
-  for (const s of stations) {
-    await updateMarkerIcon(s);
-  }
-  return { statusCode: 200, data: 'Stations markers updated correctly' };
-}
+// service.updateMarkerIconForAllStations = async (modelsService) => {
+//   const stations = await modelsService.getModel('Station').find({}).populate({ path: 'connections', populate: { path: 'line' } });
+//   for (const s of stations) {
+//     await updateMarkerIcon(s);
+//   }
+//   return { statusCode: 200, data: 'Stations markers updated correctly' };
+// }
 
 const updateRelationship = (removeMode, elementsToUpdate, connectionId) => {
   for (const e of elementsToUpdate) {

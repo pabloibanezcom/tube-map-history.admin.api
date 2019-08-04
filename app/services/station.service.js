@@ -1,5 +1,4 @@
 const paginateResults = require('../util/paginateResults');
-const getDraft = require('../util/getDraft');
 const verifyRoles = require('../auth/role-verification');
 const transformMongooseErrors = require('../util/transformMongooseErrors');
 const addCreatedAndModified = require('../util/addCreatedAndModified');
@@ -68,7 +67,8 @@ service.getStationFullInfo = async (modelsService, user, stationId) => {
   if (!verifyRoles(['U', 'A'], user)) {
     return { statusCode: 401, data: 'Unauthorized' };
   }
-  const station = await modelsService.getModel('Station').findOne({ _id: stationId })
+  const station = await modelsService.getModel('Station')
+    .findById(stationId)
     .populate({
       path: 'connections', populate: [{ path: 'stations', select: 'name year markerIcon' },
       { path: 'line', select: 'name shortName colour fontColour' }]
@@ -84,26 +84,43 @@ service.getStationFullInfo = async (modelsService, user, stationId) => {
 }
 
 service.addStation = async (modelsService, user, draftId, stationObj) => {
-  const draft = await getDraft(modelsService, draftId);
-  if (!verifyRoles(['M', 'A'], user, draft.town._id)) {
+  if (!verifyRoles(['M', 'A'], user, draftId)) {
     return { statusCode: 401, data: 'Unauthorized' };
+  }
+
+  const draft = await modelsService.getModel('Draft').findOne({ _id: draftId });
+  if (!draft) {
+    return { statusCode: 404, data: 'Draft does not exist' };
+  }
+
+  if (draft.isPublished) {
+    return { statusCode: 403, data: 'Draft can not be updated as it is published' };
   }
 
   const Station = modelsService.getModel('Station');
   const station = new Station(addCreatedAndModified({ ...stationObj, draft: draftId, markerIcon: 'multiple' }, user, true));
 
   try {
-    const doc = await station.save();
-    return { statusCode: 200, data: doc };
+    await station.save();
   }
   catch (err) {
     return { statusCode: 400, data: transformMongooseErrors(err) };
   }
+
+  // Add station ref to draft
+  draft.stations.push(station._id);
+  await draft.save();
+
+  return { statusCode: 200, data: station };
 }
 
 service.updateStation = async (modelsService, user, stationId, stationObj) => {
-  const station = await modelsService.getModel('Station').findOne({ _id: stationId });
-  if (!verifyRoles(['C', 'A'], user, null, station)) {
+  const station = await modelsService.getModel('Station').findOne({ _id: stationId }).populate({ path: 'draft', select: 'isPublished' });
+  if (!station) {
+    return { statusCode: 404, data: 'Station does not exist' };
+  }
+
+  if (!verifyRoles(['M', 'A'], user, station.draft._id)) {
     return { statusCode: 401, data: 'Unauthorized' };
   }
 
@@ -120,17 +137,28 @@ service.updateStation = async (modelsService, user, stationId, stationObj) => {
 
 service.deleteStation = async (modelsService, user, stationId) => {
   const station = await modelsService.getModel('Station').findOne({ _id: stationId });
-  if (!verifyRoles(['C', 'A'], user, null, station)) {
+  if (!station) {
+    return { statusCode: 404, data: 'Station does not exist' };
+  }
+
+  const draft = await modelsService.getModel('Draft').findOne({ _id: station.draft });
+
+  if (!verifyRoles(['M', 'A'], user, draft._id)) {
     return { statusCode: 401, data: 'Unauthorized' };
   }
 
   try {
     await station.remove();
-    return { statusCode: 200, data: `${station.name} was removed` };
   }
   catch (err) {
     return { statusCode: 400, data: transformMongooseErrors(err) };
   }
+
+  // Remove station ref from draft
+  draft.stations = draft.stations.filter(s => !s.equals(station._id));
+  await draft.save();
+
+  return { statusCode: 200, data: `${station.name} was removed` };
 }
 
 module.exports = service;

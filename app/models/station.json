@@ -35,8 +35,7 @@
       }
     },
     "markerIcon": {
-      "type": "String",
-      "required": true
+      "type": "String"
     },
     "markerColor": {
       "type": "String"

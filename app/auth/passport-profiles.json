@@ -2,5 +2,9 @@
   {
     "name": "local-user-with-towns",
     "populate": "towns"
+  },
+  {
+    "name": "local-user-with-drafts",
+    "populate": "drafts"
   }
 ]

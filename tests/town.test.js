@@ -4,54 +4,77 @@ const agent = require('supertest').agent(app);
 const mockTownWithoutCountry = require('./mock/town.json');
 const loginAsRole = require('./helpers/loginAsRole');
 
-let someTownId;
-
 // GET TOWNS
 // GET /api/towns
 describe('GET TOWNS', function () {
-  it('it get json with all towns', function (done) {
-    agent
-      .get('/api/towns')
-      .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .end((err, res) => {
-        if (err) {
-          return done(err);
-        }
-        someTownId = res.body[0]._id;
-        return done();
-      });
+
+  let tokenU;
+  let tokenA;
+
+  beforeAll(async (done) => {
+    tokenU = await loginAsRole('U');
+    tokenA = await loginAsRole('A');
+    done();
   });
+
+  it('when user is not logged it can not get towns', async (done) => {
+    agent.get('/api/towns').expect(401, done);
+  });
+
+  it('when user is logged it can get towns', async (done) => {
+    agent.get('/api/towns').set('Authorization', `Bearer ${tokenU}`).expect(200, done);
+  });
+
+  it('when user is admin it can get towns', async (done) => {
+    agent.get('/api/towns').set('Authorization', `Bearer ${tokenA}`).expect(200, done);
+  });
+
 });
 
 // GET TOWN INFO
 // GET /api/town/:town
 describe('GET TOWN INFO', function () {
-  it('it get json with town info when townId exits', function (done) {
-    agent
-      .get(`/api/town/${someTownId}`)
-      .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
-      .expect(200, done)
+
+  let tokenU;
+  let tokenA;
+  let someTownId
+
+  beforeAll(async (done) => {
+    tokenU = await loginAsRole('U');
+    tokenA = await loginAsRole('A');
+    const getTownsRes = await agent.get('/api/towns').set('Authorization', `Bearer ${tokenA}`);
+    someTownId = getTownsRes.body[0]._id;
+    done();
   });
 
-  it('it get 404 when townId does not exit', function (done) {
-    agent
-      .get('/api/town/111111')
-      .set('Accept', 'application/json')
-      .expect(404, done)
+  it('when user is not logged it can not get towns', async (done) => {
+    agent.get(`/api/town/${someTownId}`).expect(401, done);
   });
+
+  it('when user is logged it can get towns', async (done) => {
+    agent.get(`/api/town/${someTownId}`).set('Authorization', `Bearer ${tokenU}`).expect(200, done);
+  });
+
+  it('when user is admin it can get towns', async (done) => {
+    agent.get(`/api/town/${someTownId}`).set('Authorization', `Bearer ${tokenA}`).expect(200, done);
+  });
+
+  it('when towns does not exist it gets 404', async (done) => {
+    agent.get('/api/town/111111').set('Authorization', `Bearer ${tokenA}`).expect(404, done);
+  });
+
 });
 
 // ADD TOWN
 // POST /api/town
 describe('ADD TOWN', () => {
 
+  let tokenU;
   let tokenA;
   let mockTown;
 
   beforeAll(async (done) => {
+    tokenU = await loginAsRole('U');
     tokenA = await loginAsRole('A');
 
     const countriesRes = await agent.get('/api/countries');
@@ -65,7 +88,13 @@ describe('ADD TOWN', () => {
       .expect(401, done);
   });
 
+  it('when user is logged it can add town', async (done) => {
+    agent.post(`/api/town`).send(mockTown).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenU}`)
+      .expect(200, done);
+  });
+
   it('when user is admin it can add town', async (done) => {
+    mockTown.url = faker.random.uuid();
     agent.post(`/api/town`).send(mockTown).set('Accept', 'application/json').set('Authorization', `Bearer ${tokenA}`)
       .expect(200, done);
   });

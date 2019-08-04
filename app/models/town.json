@@ -10,6 +10,12 @@
         "update": true
       }
     },
+    "isActive": {
+      "type": "Boolean",
+      "actions": {
+        "update": true
+      }
+    },
     "name": {
       "type": "String",
       "required": [
@@ -85,10 +91,6 @@
         "add": true,
         "update": true
       }
-    },
-    "users": {
-      "type": "[UserTown]",
-      "propertyMatch": "town"
     },
     "drafts": {
       "type": "[Draft]",

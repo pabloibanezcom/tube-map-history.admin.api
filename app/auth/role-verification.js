@@ -1,14 +1,11 @@
-const verifyRoles = (roles, user, townId, doc) => {
-  // Roles: ['user', 'manager', 'creator', 'admin']
+const verifyRoles = (roles, user, draftId) => {
+  // Roles: ['user', 'draft manager', 'admin']
   const verifyRole = (role) => {
     if (role === 'user' || role === 'U') {
       return user ? true : false;
     }
-    if (role === 'manager' || role === 'M') {
-      return user.towns.some(userTown => compareIds(userTown.town, townId));
-    }
-    if (role === 'creator' || role === 'C') {
-      return doc && doc.created && compareIds(doc.created.user, user._id);
+    if (role === 'draft_manager' || role === 'M') {
+      return user.drafts.some(d => compareIds(d.id, draftId));
     }
     if (role === 'admin' || role === 'A') {
       return user.authLevel === 'admin';

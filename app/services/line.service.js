@@ -1,5 +1,4 @@
 const paginateResults = require('../util/paginateResults');
-const getDraft = require('../util/getDraft');
 const verifyRoles = require('../auth/role-verification');
 const transformMongooseErrors = require('../util/transformMongooseErrors');
 const addCreatedAndModified = require('../util/addCreatedAndModified');
@@ -69,27 +68,48 @@ service.calculateLineDistance = async (modelsService, lineId) => {
 }
 
 service.addLine = async (modelsService, user, draftId, lineObj) => {
-  const draft = await getDraft(modelsService, draftId);
-  if (!verifyRoles(['M', 'A'], user, draft.town._id)) {
+  if (!verifyRoles(['M', 'A'], user, draftId)) {
     return { statusCode: 401, data: 'Unauthorized' };
+  }
+
+  const draft = await modelsService.getModel('Draft').findOne({ _id: draftId });
+  if (!draft) {
+    return { statusCode: 404, data: 'Draft does not exist' };
+  }
+
+  if (draft.isPublished) {
+    return { statusCode: 403, data: 'Draft can not be updated as it is published' };
   }
 
   const Line = modelsService.getModel('Line');
   const line = new Line(addCreatedAndModified({ ...lineObj, draft: draftId }, user, true));
 
   try {
-    const doc = await line.save();
-    return { statusCode: 200, data: doc };
+    await line.save();
   }
   catch (err) {
     return { statusCode: 400, data: transformMongooseErrors(err) };
   }
+
+  // Add line ref to draft
+  draft.lines.push(line._id);
+  await draft.save();
+
+  return { statusCode: 200, data: line };
 }
 
 service.updateLine = async (modelsService, user, lineId, lineObj) => {
-  const line = await modelsService.getModel('Line').findOne({ _id: lineId });
-  if (!verifyRoles(['C', 'A'], user, null, line)) {
+  const line = await modelsService.getModel('Line').findOne({ _id: lineId }).populate({ path: 'draft', select: 'isPublished' });
+  if (!line) {
+    return { statusCode: 404, data: 'Line does not exist' };
+  }
+
+  if (!verifyRoles(['M', 'A'], user, line.draft._id)) {
     return { statusCode: 401, data: 'Unauthorized' };
+  }
+
+  if (line.draft.isPublished) {
+    return { statusCode: 403, data: 'Draft can not be updated as it is published' };
   }
 
   Object.assign(line, addCreatedAndModified(lineObj, user, false));
@@ -101,21 +121,37 @@ service.updateLine = async (modelsService, user, lineId, lineObj) => {
   catch (err) {
     return { statusCode: 400, data: transformMongooseErrors(err) };
   }
+
 }
 
 service.deleteLine = async (modelsService, user, lineId) => {
   const line = await modelsService.getModel('Line').findOne({ _id: lineId });
-  if (!verifyRoles(['C', 'A'], user, null, line)) {
+  if (!line) {
+    return { statusCode: 404, data: 'Line does not exist' };
+  }
+
+  const draft = await modelsService.getModel('Draft').findOne({ _id: line.draft });
+
+  if (!verifyRoles(['M', 'A'], user, draft._id)) {
     return { statusCode: 401, data: 'Unauthorized' };
+  }
+
+  if (draft.isPublished) {
+    return { statusCode: 403, data: 'Draft can not be updated as it is published' };
   }
 
   try {
     await line.remove();
-    return { statusCode: 200, data: `${line.name} (${line.key}) was removed` };
   }
   catch (err) {
     return { statusCode: 400, data: transformMongooseErrors(err) };
   }
+
+  // Remove line ref from draft
+  draft.lines = draft.lines.filter(l => !l.equals(line._id));
+  await draft.save();
+
+  return { statusCode: 200, data: `${line.name} (${line.key}) was removed` };
 }
 
 const sortConnections = (connections, startStations) => {

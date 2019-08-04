@@ -1,5 +1,6 @@
 const fs = require('fs');
 const fileUpload = require('express-fileupload');
+const log500 = require('../util/log500');
 const service = require('../services/generation.service');
 
 module.exports = (app, modelsService, passport, modelDefinition) => {
@@ -19,7 +20,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
               }
             }, 500);
           })
-          .catch(err => res.status(500).send(err));
+          .catch(err => { log500(err); res.status(500).send(err) });
       });
     app.routesInfo['Generation'].push({ model: 'Generation', name: 'Export DB from town', method: 'GET', url: url, auth: ['A'] });
   }
@@ -42,7 +43,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
 
           service.importTownData(modelsService, req.user, req.params.town, `temp/${file.name}`)
             .then(result => res.status(result.statusCode).send(result.data))
-            .catch(err => res.status(500).send(err));
+            .catch(err => { log500(err); res.status(500).send(err) });
         });
       });
     app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import town data', method: 'PUT', url: url, auth: ['A'] });
@@ -63,7 +64,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
 
           service.importTowns(modelsService, req.user)
             .then(result => res.status(result.statusCode).send(result.data))
-            .catch(err => res.status(500).send(err));
+            .catch(err => { log500(err); res.status(500).send(err) });
         });
       });
     app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import Towns', method: 'PUT', url: url, auth: ['A'] });
@@ -84,7 +85,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
 
           service.importCountries(modelsService, req.user)
             .then(result => res.status(result.statusCode).send(result.data))
-            .catch(err => res.status(500).send(err));
+            .catch(err => { log500(err); res.status(500).send(err) });
         });
       });
     app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import Countries', method: 'PUT', url: url, auth: ['A'] });
@@ -97,7 +98,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
       (req, res) => {
         service.doCalculations(modelsService, req.user, req.params.draftId)
           .then(result => res.status(200).send('All calculations were made successfully'))
-          .catch(err => res.status(500).send(err));
+          .catch(err => { log500(err); res.status(500).send(err) });
       });
     app.routesInfo['Generation'].push({ model: 'Generation', name: 'Do all calculations', method: 'GET', url: url, auth: ['A'] });
   }
