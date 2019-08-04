@@ -6,9 +6,9 @@
     "country": {
       "type": "Country"
     },
-    "towns": {
-      "type": "[UserTown]",
-      "propertyMatch": "user"
+    "drafts": {
+      "type": "[Draft]",
+      "propertyMatch": "managers"
     }
   }
 }
