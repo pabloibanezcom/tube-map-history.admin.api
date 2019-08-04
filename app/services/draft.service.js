@@ -15,6 +15,18 @@ const draftPopulate = [
   { path: 'managers', select: 'local firstName lastName title genre country', populate: { path: 'country', select: 'name' } }
 ];
 
+const applyCountersToDraft = (draft) => {
+  return {
+    ...draft,
+    stationsAmount: draft.stations.length,
+    linesAmount: draft.lines.length,
+    connectionsAmount: draft.connections.length,
+    stations: undefined,
+    lines: undefined,
+    connections: undefined
+  }
+}
+
 service.searchDrafts = async (modelsService, user, body) => {
   if (!verifyRoles(['U', 'A'], user)) {
     return { statusCode: 401, data: 'Unauthorized' };
@@ -40,7 +52,7 @@ service.searchDrafts = async (modelsService, user, body) => {
     .sort(searchParams.sort)
     .populate(draftPopulate);
 
-  return { statusCode: 200, data: paginateResults(drafts, body.pagination) };
+  return { statusCode: 200, data: paginateResults(drafts.map(d => applyCountersToDraft(d._doc)), body.pagination) };
 }
 
 service.getDraftSummary = async (modelsService, user, draftId) => {
