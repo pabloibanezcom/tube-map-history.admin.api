@@ -28,8 +28,9 @@ service.getTowns = async (modelsService, user) => {
   }
 
   const towns = await modelsService.getModel('Town').find({})
+    .sort('order')
     .populate({ path: 'country', select: 'name code continent' })
-    .select('name country url alias year imgCard');
+    .select('order name country url alias year imgCard');
   return { statusCode: 200, data: towns };
 }
 
