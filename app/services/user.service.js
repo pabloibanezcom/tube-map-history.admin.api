@@ -6,7 +6,7 @@ service.getOwnUserInfo = async (modelsService, userId) => {
   const extendedUser = await modelsService.getModel('User')
     .findOne({ _id: userId })
     .populate([
-      { path: 'drafts', select: 'name isPublished linesAmount stationsAmount connectionsAmount town', populate: { path: 'town', select: 'name' } },
+      { path: 'drafts', select: 'name isPublished linesAmount stationsAmount connectionsAmount town', populate: { path: 'town', select: 'name url imgCard country year', populate: { path: 'country', select: 'code name' } } },
       { path: 'country' }
     ]);
   return { statusCode: 200, data: extendedUser };

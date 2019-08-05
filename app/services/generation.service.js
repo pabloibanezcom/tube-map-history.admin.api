@@ -234,6 +234,7 @@ service.importTowns = async (modelsService, user) => {
       townDocument.zoom = tw.zoom;
       townDocument.year = tw.year;
       townDocument.alias = tw.alias;
+      townDocument.order = tw.order;
       await townDocument.save();
     }
     return { statusCode: 200, data: 'All towns were imported correctly' };
