@@ -29,7 +29,7 @@ service.getTowns = async (modelsService, user) => {
 
   const towns = await modelsService.getModel('Town').find({})
     .populate({ path: 'country', select: 'name code continent' })
-    .select('name country url alias year');
+    .select('name country url alias year imgCard');
   return { statusCode: 200, data: towns };
 }
 

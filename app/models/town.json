@@ -80,6 +80,9 @@
         "update": true
       }
     },
+    "imgCard": {
+      "type": "String"
+    },
     "country": {
       "type": "Country",
       "propertyMatch": "towns",
