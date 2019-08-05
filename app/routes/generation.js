@@ -55,6 +55,9 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
       passport.authenticate('local-user', { session: false }),
       (req, res) => {
         const dataFile = req.files.towns;
+        if (!fs.existsSync('temp')) {
+          fs.mkdirSync('temp');
+        }
         if (fs.existsSync('temp/towns.xlsx')) {
           fs.unlinkSync('temp/towns.xlsx');
         }
@@ -76,6 +79,9 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
       passport.authenticate('local-user', { session: false }),
       (req, res) => {
         const dataFile = req.files.countries;
+        if (!fs.existsSync('temp')) {
+          fs.mkdirSync('temp');
+        }
         if (fs.existsSync('temp/countries.xlsx')) {
           fs.unlinkSync('temp/countries.xlsx');
         }
