@@ -5,7 +5,10 @@ const verifyRoles = require('../auth/role-verification');
 service.getOwnUserInfo = async (modelsService, userId) => {
   const extendedUser = await modelsService.getModel('User')
     .findOne({ _id: userId })
-    .populate({ path: 'drafts', select: 'name isPublished linesAmount stationsAmount connectionsAmount town', populate: { path: 'town', select: 'name' } });
+    .populate([
+      { path: 'drafts', select: 'name isPublished linesAmount stationsAmount connectionsAmount town', populate: { path: 'town', select: 'name' } },
+      { path: 'country' }
+    ]);
   return { statusCode: 200, data: extendedUser };
 }
 
@@ -18,7 +21,10 @@ service.getUserInfo = async (modelsService, user, userId) => {
   }
   const extendedUser = await modelsService.getModel('User')
     .findOne({ _id: userId })
-    .populate({ path: 'drafts', select: 'name isPublished linesAmount stationsAmount connectionsAmount town', populate: { path: 'town', select: 'name' } });
+    .populate([
+      { path: 'drafts', select: 'name isPublished linesAmount stationsAmount connectionsAmount town', populate: { path: 'town', select: 'name' } },
+      { path: 'country' }
+    ]);
   return { statusCode: 200, data: extendedUser };
 }
 
