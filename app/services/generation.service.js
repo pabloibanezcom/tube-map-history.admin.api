@@ -1,3 +1,6 @@
+const fs = require('fs');
+const UUID = require("uuid-v4");
+const fireBaseAdmin = require("firebase-admin");
 const XLSX = require('xlsx');
 const verifyRoles = require('../auth/role-verification');
 const getUniqueInArray = require('../util/getUniqueInArray');
@@ -9,6 +12,16 @@ const lineService = require('./line.service');
 const connectionService = require('./connection.service');
 
 const service = {};
+
+const getFireBaseBucket = () => {
+  const serviceAccount = require("../../tube-map-history-firebase-adminsdk-x70ri-9c60acfc5a.json");
+  fireBaseAdmin.initializeApp({
+    credential: fireBaseAdmin.credential.cert(serviceAccount),
+    storageBucket: "gs://tube-map-history.appspot.com"
+  });
+  return fireBaseAdmin.storage().bucket();
+}
+const bucket = getFireBaseBucket();
 
 service.exportDB = async (modelsService, user, townIdOrName) => {
   if (!verifyRoles(['A'], user)) {
@@ -203,7 +216,7 @@ service.importTownData = async (modelsService, user, townIdOrName, fileName) => 
   }
 }
 
-service.importTowns = async (modelsService, user) => {
+service.importTowns = async (modelsService, user, imgPath) => {
   if (!verifyRoles(['A'], user)) {
     return { statusCode: 401, data: 'Unauthorized' };
   }
@@ -235,6 +248,9 @@ service.importTowns = async (modelsService, user) => {
       townDocument.year = tw.year;
       townDocument.alias = tw.alias;
       townDocument.order = tw.order;
+
+      //Images
+      townDocument.imgCard = await uploadAndGetUrl(`${imgPath}/imgCard/${tw.url}.jpg`, `/imgCard/${tw.url}.jpg`);
       await townDocument.save();
     }
     return { statusCode: 200, data: 'All towns were imported correctly' };
@@ -309,6 +325,25 @@ service.doCalculations = async (modelsService, user, draftId) => {
   calculateStationsAndDistanceInLine(Line);
 }
 
+const uploadAndGetUrl = async (localFile, remoteFile) => {
+  if (!fs.existsSync(localFile)) {
+    return null;
+  }
 
+  let uuid = UUID();
+
+  const data = await bucket.upload(localFile, {
+    destination: `${process.env[`FIREBASE_STORAGE_${process.env.ENVIRONMENT.toUpperCase()}`]}${remoteFile}`,
+    uploadType: "media",
+    metadata: {
+      contentType: 'image/jpg',
+      metadata: {
+        firebaseStorageDownloadTokens: uuid
+      }
+    }
+  });
+
+  return `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${encodeURIComponent(data[0].name)}?alt=media&token=${uuid}`;
+}
 
 module.exports = service;
