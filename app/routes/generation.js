@@ -65,7 +65,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
           if (err)
             return res.status(500).send(err);
 
-          service.importTowns(modelsService, req.user)
+          service.importTowns(modelsService, req.user, req.body.imgPath)
             .then(result => res.status(result.statusCode).send(result.data))
             .catch(err => { log500(err); res.status(500).send(err) });
         });
