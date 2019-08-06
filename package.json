@@ -13,7 +13,9 @@
     "reset-test-db": "npm run copy-db --source=dev --target=test",
     "copy-db": "node ./tasks/copy_db",
     "export-db": "node ./tasks/export_db",
-    "import-db": "node ./tasks/import_db"
+    "import-db": "node ./tasks/import_db",
+    "load-env": "node ./tasks/load_env",
+    "env:dev": "npm run load-env --env=dev"
   },
   "dependencies": {
     "body-parser": "~1.15.2",
