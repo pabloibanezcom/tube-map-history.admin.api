@@ -1,3 +1,4 @@
+const fs = require('fs');
 const XLSX = require('xlsx');
 const verifyRoles = require('../auth/role-verification');
 const getUniqueInArray = require('../util/getUniqueInArray');
@@ -236,11 +237,53 @@ service.importTowns = async (modelsService, user, imgPath) => {
       townDocument.alias = tw.alias;
       townDocument.order = tw.order;
 
-      //Images
-      townDocument.imgCard = await storage.uploadAndGetUrl(`${imgPath}/imgCard/${tw.url}.jpg`, `/imgCard/${tw.url}.jpg`);
       await townDocument.save();
     }
     return { statusCode: 200, data: 'All towns were imported correctly' };
+  }
+  catch (err) {
+    return { statusCode: 500, data: err };
+  }
+}
+
+service.importTownsImages = async (modelsService, user, files) => {
+  if (!verifyRoles(['A'], user)) {
+    return { statusCode: 401, data: 'Unauthorized' };
+  }
+
+  const Town = modelsService.getModel('Town');
+
+  const uplodadAndSaveUrl = async (file, folder) => {
+    const tempFilePath = `temp/${folder}/${file.name}`;
+    file.mv(tempFilePath, async (err) => {
+      if (err) {
+        return { statusCode: 500, data: err };
+      }
+
+      const town = await Town.findOne({ url: file.name.split('.')[0] });
+      town.imgCard = await storage.uploadAndGetUrl(tempFilePath, `/${folder}/${file.name}`);
+      await town.save();
+      fs.unlinkSync(tempFilePath);
+    });
+  }
+
+  const processFolder = async (folder) => {
+    if (files[folder]) {
+      if (!fs.existsSync('temp')) {
+        fs.mkdirSync('temp');
+      }
+      if (!fs.existsSync(`temp/${folder}`)) {
+        fs.mkdirSync(`temp/${folder}`);
+      }
+      for (const file of files[folder]) {
+        await uplodadAndSaveUrl(file, folder);
+      }
+    }
+  }
+
+  try {
+    await processFolder('imgCard');
+    return { statusCode: 200, data: 'All town images were imported correctly' };
   }
   catch (err) {
     return { statusCode: 500, data: err };

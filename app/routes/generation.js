@@ -27,7 +27,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
 
   const registerImportTownData = () => {
     const url = '/api/generation/import/town/:town';
-    app.put(url,
+    app.post(url,
       passport.authenticate('local-user', { session: false }),
       (req, res) => {
         const file = req.files[Object.keys(req.files)[0]];
@@ -46,12 +46,12 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
             .catch(err => { log500(err); res.status(500).send(err) });
         });
       });
-    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import town data', method: 'PUT', url: url, auth: ['A'] });
+    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import town data', method: 'POST', url: url, auth: ['A'] });
   }
 
   const registerImportTowns = () => {
     const url = '/api/generation/import/towns';
-    app.put(url,
+    app.post(url,
       passport.authenticate('local-user', { session: false }),
       (req, res) => {
         const dataFile = req.files.towns;
@@ -70,12 +70,24 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
             .catch(err => { log500(err); res.status(500).send(err) });
         });
       });
-    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import Towns', method: 'PUT', url: url, auth: ['A'] });
+    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import Towns', method: 'POST', url: url, auth: ['A'] });
+  }
+
+  const registerImportTownImages = () => {
+    const url = '/api/generation/import/towns/images';
+    app.post(url,
+      passport.authenticate('local-user', { session: false }),
+      (req, res) => {
+        service.importTownsImages(modelsService, req.user, req.files)
+          .then(result => res.status(result.statusCode).send(result.data))
+          .catch(err => { log500(err); res.status(500).send(err) });
+      });
+    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import Towns images', method: 'POST', url: url, auth: ['A'] });
   }
 
   const registerImportCountries = () => {
     const url = '/api/generation/import/countries';
-    app.put(url,
+    app.post(url,
       passport.authenticate('local-user', { session: false }),
       (req, res) => {
         const dataFile = req.files.countries;
@@ -94,7 +106,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
             .catch(err => { log500(err); res.status(500).send(err) });
         });
       });
-    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import Countries', method: 'PUT', url: url, auth: ['A'] });
+    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import Countries', method: 'POST', url: url, auth: ['A'] });
   }
 
   const registerDoCalculations = () => {
@@ -113,6 +125,7 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
   registerExportDB();
   registerImportTownData();
   registerImportTowns();
+  registerImportTownImages();
   registerImportCountries();
   registerDoCalculations();
 };
