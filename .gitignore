@@ -37,6 +37,7 @@ Thumbs.db
 
 #environment variables
 .env
+.env.dev
 
 # Temporary data file
 /temp
