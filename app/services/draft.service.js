@@ -11,8 +11,10 @@ const duplicateConnection = require('../util/duplicateConnection');
 const service = {};
 
 const draftPopulate = [
-  { path: 'town', select: 'name url country', populate: { path: 'country', select: 'name' } },
-  { path: 'managers', select: 'local firstName lastName title genre country', populate: { path: 'country', select: 'name' } }
+  { path: 'town', select: 'name url country', populate: { path: 'country', select: 'name code continent' } },
+  { path: 'managers', select: 'local firstName lastName title genre country', populate: { path: 'country', select: 'name' } },
+  { path: 'lines', select: 'order key name shortName colour fontColour year distance stationsAmount' },
+  { path: 'stations', select: 'name year yearEnd markerIcon markerColor' }
 ];
 
 const applyCountersToDraft = (draft) => {
