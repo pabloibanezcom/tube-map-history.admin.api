@@ -1,5 +1,6 @@
 const service = {};
 const getTown = require('../util/getTown');
+const transformDraftAmounts = require('../util/transformDraftAmounts');
 const verifyRoles = require('../auth/role-verification');
 
 service.getOwnUserInfo = async (modelsService, userId) => {
@@ -9,6 +10,7 @@ service.getOwnUserInfo = async (modelsService, userId) => {
       { path: 'drafts', select: 'name isPublished linesAmount stationsAmount connectionsAmount town', populate: { path: 'town', select: 'name url imgCard country year', populate: { path: 'country', select: 'code name' } } },
       { path: 'country' }
     ]);
+  extendedUser.drafts = extendedUser.drafts.map(d => transformDraftAmounts(d));
   return { statusCode: 200, data: extendedUser };
 }
 
@@ -25,6 +27,7 @@ service.getUserInfo = async (modelsService, user, userId) => {
       { path: 'drafts', select: 'name isPublished linesAmount stationsAmount connectionsAmount town', populate: { path: 'town', select: 'name' } },
       { path: 'country' }
     ]);
+  extendedUser.drafts = extendedUser.drafts.map(d => transformDraftAmounts(d));
   return { statusCode: 200, data: extendedUser };
 }
 
