@@ -7,10 +7,10 @@ service.getOwnUserInfo = async (modelsService, userId) => {
   const extendedUser = await modelsService.getModel('User')
     .findOne({ _id: userId })
     .populate([
-      { path: 'drafts', select: 'name isPublished lines stations connections town', populate: { path: 'town', select: 'name url imgCard country year', populate: { path: 'country', select: 'code name' } } },
+      { path: 'drafts', select: 'name description isPublished lines stations connections town', populate: { path: 'town', select: 'name url imgCard country year', populate: { path: 'country', select: 'code name' } } },
       { path: 'country' }
     ]);
-  extendedUser.drafts = extendedUser.drafts.map(d => transformDraftAmounts(d));
+  extendedUser.drafts = extendedUser.drafts.map(d => transformDraftAmounts(d._doc));
   return { statusCode: 200, data: extendedUser };
 }
 
@@ -24,10 +24,10 @@ service.getUserInfo = async (modelsService, user, userId) => {
   const extendedUser = await modelsService.getModel('User')
     .findOne({ _id: userId })
     .populate([
-      { path: 'drafts', select: 'name isPublished lines stations connections town', populate: { path: 'town', select: 'name' } },
+      { path: 'drafts', select: 'name description isPublished lines stations connections town', populate: { path: 'town', select: 'name' } },
       { path: 'country' }
     ]);
-  extendedUser.drafts = extendedUser.drafts.map(d => transformDraftAmounts(d));
+  extendedUser.drafts = extendedUser.drafts.map(d => transformDraftAmounts(d._doc));
   return { statusCode: 200, data: extendedUser };
 }
 
