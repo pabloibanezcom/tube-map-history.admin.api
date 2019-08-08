@@ -7,6 +7,7 @@ const addCreatedAndModified = require('../util/addCreatedAndModified');
 const duplicateLine = require('../util/duplicateLine');
 const duplicateStation = require('../util/duplicateStation');
 const duplicateConnection = require('../util/duplicateConnection');
+const transformDraftAmounts = require('../util/transformDraftAmounts');
 
 const service = {};
 
@@ -67,7 +68,7 @@ service.getDraftSummary = async (modelsService, user, draftId) => {
     return { statusCode: 404, data: 'Draft does not exist' };
   }
 
-  return { statusCode: 200, data: draft };
+  return { statusCode: 200, data: transformDraftAmounts(draft._doc) };
 }
 
 service.addDraft = async (modelsService, user, townNameOrId, draftObj) => {

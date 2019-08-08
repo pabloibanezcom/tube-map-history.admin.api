@@ -1,5 +1,4 @@
 const service = {};
-const getTown = require('../util/getTown');
 const transformDraftAmounts = require('../util/transformDraftAmounts');
 const verifyRoles = require('../auth/role-verification');
 
