@@ -228,8 +228,8 @@ service.importTowns = async (modelsService, user, imgPath) => {
       townDocument.center = {
         type: 'Point',
         coordinates: [
-          tw.lat,
-          tw.lng
+          tw.lng,
+          tw.lat
         ]
       };
       townDocument.zoom = tw.zoom;
