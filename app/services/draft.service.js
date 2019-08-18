@@ -8,6 +8,7 @@ const duplicateLine = require('../util/duplicateLine');
 const duplicateStation = require('../util/duplicateStation');
 const duplicateConnection = require('../util/duplicateConnection');
 const transformDraftAmounts = require('../util/transformDraftAmounts');
+const uuidv4 = require('uuid/v4');
 
 const service = {};
 
@@ -88,7 +89,7 @@ service.addDraft = async (modelsService, user, townNameOrId, draftObj) => {
   }
 
   const Draft = modelsService.getModel('Draft');
-  const draft = new Draft(addCreatedAndModified({ ...draftObj, town: town._id, managers: [user._id], status: 'draft' }, user, true));
+  const draft = new Draft(addCreatedAndModified({ ...draftObj, town: town._id, managers: [user._id], status: 'draft', exportId: uuidv4() }, user, true));
 
   try {
     await draft.save();
