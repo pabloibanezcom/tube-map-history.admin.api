@@ -11,12 +11,9 @@ const connectionService = require('./connection.service');
 
 const service = {};
 
-service.exportDraftData = async (modelsService, user, draftId) => {
-  if (!verifyRoles(['M', 'A'], user, draftId)) {
-    return { statusCode: 401, data: 'Unauthorized' };
-  }
+service.exportDraftData = async (modelsService, exportId) => {
 
-  const draft = await modelsService.getModel('Draft').findOne({ _id: draftId }).populate({ path: 'town', select: 'url' });
+  const draft = await modelsService.getModel('Draft').findOne({ exportId: exportId }).populate({ path: 'town', select: 'url' });
   if (!draft) {
     return { statusCode: 404, data: 'Draft does not exist' };
   }

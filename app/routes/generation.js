@@ -8,11 +8,10 @@ module.exports = (app, modelsService, passport) => {
   app.use(fileUpload());
 
   const registerExportDraftData = () => {
-    const url = '/api/generation/export/draft/:draftId';
+    const url = '/api/generation/export/draft/:exportId';
     app.get(url,
-      passport.authenticate('local-user', { session: false }),
       (req, res) => {
-        service.exportDraftData(modelsService, req.user, req.params.draftId)
+        service.exportDraftData(modelsService, req.params.exportId)
           .then(result => {
             setTimeout(() => {
               if (fs.existsSync(`${result.fileName}.xlsx`)) {
@@ -22,7 +21,7 @@ module.exports = (app, modelsService, passport) => {
           })
           .catch(err => { log500(err); res.status(500).send(err) });
       });
-    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Export draft data', method: 'GET', url: url, auth: ['M', 'A'] });
+    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Export draft data', method: 'GET', url: url });
   }
 
   const registerImportDraftData = () => {
