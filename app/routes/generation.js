@@ -3,30 +3,30 @@ const fileUpload = require('express-fileupload');
 const log500 = require('../util/log500');
 const service = require('../services/generation.service');
 
-module.exports = (app, modelsService, passport, modelDefinition) => {
+module.exports = (app, modelsService, passport) => {
 
   app.use(fileUpload());
 
-  const registerExportDB = () => {
-    const url = '/api/generation/export/:town';
+  const registerExportDraftData = () => {
+    const url = '/api/generation/export/draft/:draftId';
     app.get(url,
       passport.authenticate('local-user', { session: false }),
       (req, res) => {
-        service.exportDB(modelsService, req.user, req.params.town)
+        service.exportDraftData(modelsService, req.user, req.params.draftId)
           .then(result => {
             setTimeout(() => {
-              if (fs.existsSync(`${req.params.town}.xlsx`)) {
-                res.download(`${req.params.town}.xlsx`);
+              if (fs.existsSync(`${result.fileName}.xlsx`)) {
+                res.download(`${result.fileName}.xlsx`);
               }
             }, 500);
           })
           .catch(err => { log500(err); res.status(500).send(err) });
       });
-    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Export DB from town', method: 'GET', url: url, auth: ['A'] });
+    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Export draft data', method: 'GET', url: url, auth: ['M', 'A'] });
   }
 
-  const registerImportTownData = () => {
-    const url = '/api/generation/import/town/:town';
+  const registerImportDraftData = () => {
+    const url = '/api/generation/import/draft/:draftId';
     app.post(url,
       passport.authenticate('local-user', { session: false }),
       (req, res) => {
@@ -41,12 +41,12 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
           if (err)
             return res.status(500).send(err);
 
-          service.importTownData(modelsService, req.user, req.params.town, `temp/${file.name}`)
+          service.importDraftData(modelsService, req.user, req.params.draftId, `temp/${file.name}`)
             .then(result => res.status(result.statusCode).send(result.data))
             .catch(err => { log500(err); res.status(500).send(err) });
         });
       });
-    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import town data', method: 'POST', url: url, auth: ['A'] });
+    app.routesInfo['Generation'].push({ model: 'Generation', name: 'Import draft data', method: 'POST', url: url, auth: ['M', 'A'] });
   }
 
   const registerImportTowns = () => {
@@ -122,8 +122,8 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
   }
 
   app.routesInfo['Generation'] = [];
-  registerExportDB();
-  registerImportTownData();
+  registerExportDraftData();
+  registerImportDraftData();
   registerImportTowns();
   registerImportTownImages();
   registerImportCountries();
