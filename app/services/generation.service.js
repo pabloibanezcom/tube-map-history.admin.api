@@ -55,7 +55,7 @@ service.exportDraftData = async (modelsService, exportId) => {
 
       var lineSheet = XLSX.utils.aoa_to_sheet(line_data);
 
-      XLSX.utils.book_append_sheet(book, lineSheet, `Line_${l.name}`);
+      XLSX.utils.book_append_sheet(book, lineSheet, `Line_${l.shortName}`);
     });
 
     if (!fs.existsSync('temp')) {
