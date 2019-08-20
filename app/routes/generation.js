@@ -27,7 +27,7 @@ module.exports = (app, modelsService, passport) => {
   const registerImportDraftData = () => {
     const url = '/api/generation/import/draft/:draftId';
     app.post(url,
-      passport.authenticate('local-user', { session: false }),
+      passport.authenticate('local-user-with-drafts', { session: false }),
       (req, res) => {
         const file = req.files[Object.keys(req.files)[0]];
         if (!fs.existsSync('temp')) {
