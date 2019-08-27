@@ -1,4 +1,4 @@
-# tube-map-history.api
+# tube-map-history.admin.api
 
 This is a private API for admin management of TubeMapHistory web app
 
