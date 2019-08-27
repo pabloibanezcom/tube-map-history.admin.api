@@ -1,0 +1,18 @@
+{
+  "U": {
+    "email": "nomanager@gmail.com",
+    "password": "nomanager1234"
+  },
+  "M1": {
+    "email": "london.manager1@gmail.com",
+    "password": "london.manager1"
+  },
+  "M2": {
+    "email": "london.manager2@gmail.com",
+    "password": "london.manager2"
+  },
+  "A": {
+    "email": "admin@gmail.com",
+    "password": "Password1"
+  }
+}

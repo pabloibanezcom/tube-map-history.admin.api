@@ -13,6 +13,7 @@
     "key": {
       "type": "String",
       "required": true,
+      "validate": "isKey",
       "actions": {
         "add": true,
         "update": false
@@ -56,6 +57,7 @@
     "year": {
       "type": "Number",
       "required": true,
+      "validate": "isYear",
       "actions": {
         "add": true,
         "update": true
@@ -74,9 +76,12 @@
       "type": "[Connection]",
       "propertyMatch": "line"
     },
-    "town": {
-      "type": "Town",
+    "draft": {
+      "type": "Draft",
       "required": true
+    },
+    "town": {
+      "type": "Town"
     }
   }
 }

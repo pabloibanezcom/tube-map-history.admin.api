@@ -1,39 +1,33 @@
 const service = {};
-const getTown = require('../util/getTown');
+const transformDraftAmounts = require('../util/transformDraftAmounts');
+const verifyRoles = require('../auth/role-verification');
 
-service.getUserInfo = async (modelsService, user) => {
+service.getOwnUserInfo = async (modelsService, userId) => {
   const extendedUser = await modelsService.getModel('User')
-    .findOne({ _id: user.id })
-    .populate({ path: 'towns', select: 'town role', populate: { path: 'town', select: 'name' } });
+    .findOne({ _id: userId })
+    .populate([
+      { path: 'drafts', select: 'name description isPublished lines stations connections town', populate: { path: 'town', select: 'name url imgCard country year', populate: { path: 'country', select: 'code name' } } },
+      { path: 'country' }
+    ]);
+  extendedUser.drafts = extendedUser.drafts.map(d => transformDraftAmounts(d._doc));
   return { statusCode: 200, data: extendedUser };
 }
 
-service.assignTownRoleToUser = async (modelsService, userId, townIdOrName, body) => {
-  let newUserTown;
-  if (!body.role) {
-    return { statusCode: 400, data: 'No role defined' };
+service.getUserInfo = async (modelsService, user, userId) => {
+  if (!verifyRoles(['A'], user)) {
+    return { statusCode: 401, data: 'Unauthorized' };
   }
-  const town = await getTown(modelsService, townIdOrName, false);
-  const UserTown = modelsService.getModel('UserTown');
-  let userTown = await UserTown.findOne({ user: userId, town: town._id });
-  if (!userTown) {
-    userTown = new UserTown({
-      user: userId,
-      town: town,
-      role: body.role
-    });
-    newUserTown = true;
-  } else {
-    userTown.role = body.role;
+  if (!userId) {
+    return { statusCode: 400, data: 'userId is required' };
   }
-  await userTown.save();
-
-  if (newUserTown) {
-    await modelsService.getModel('User').findOneAndUpdate({ _id: userId }, { "$push": { 'towns': userTown.id } });
-    await modelsService.getModel('Town').findOneAndUpdate({ _id: town }, { "$push": { 'users': userTown.id } });
-  }
-
-  return { statusCode: 200, data: 'User role updated successfully' };
+  const extendedUser = await modelsService.getModel('User')
+    .findOne({ _id: userId })
+    .populate([
+      { path: 'drafts', select: 'name description isPublished lines stations connections town', populate: { path: 'town', select: 'name' } },
+      { path: 'country' }
+    ]);
+  extendedUser.drafts = extendedUser.drafts.map(d => transformDraftAmounts(d._doc));
+  return { statusCode: 200, data: extendedUser };
 }
 
 module.exports = service;

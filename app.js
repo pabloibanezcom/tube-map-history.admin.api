@@ -7,6 +7,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passportProfiles = require('./app/auth/passport-profiles.json')
+const customValidations = require('./app/validations/custom_validations');
 
 require('dotenv').load();
 const app = express();
@@ -25,7 +26,7 @@ app.use(session({
 const options = {
   app_name: process.env.APP_NAME,
   host: process.env.HOST,
-  mongodb_uri: process.env.MONGODB_URI,
+  mongodb_uri: process.env.NODE_ENV !== 'test' ? process.env.MONGODB_URI : process.env.MONGODB_URI_TEST,
   root_path: process.env.ROOT_PATH,
   root_url: process.env.ROOT_URL
 };
@@ -37,6 +38,6 @@ if (process.env.DEV_MODE === 'true') {
   generator = require('node-express-mongodb');
 }
 
-generator.init(app, options, passportProfiles);
+generator.init(app, options, passportProfiles, customValidations);
 
 module.exports = app;

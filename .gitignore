@@ -37,6 +37,14 @@ Thumbs.db
 
 #environment variables
 .env
+.env.dev
 
 # Temporary data file
 /temp
+/dump
+
+# Test Reports
+test-report.html
+
+# Firebase auth
+tube-map-history-firebase*

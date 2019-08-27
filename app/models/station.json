@@ -1,19 +1,39 @@
 {
   "name": "Station",
   "route": "station",
-  "authLevel": "none",
   "properties": {
     "name": {
-      "type": "String"
+      "type": "String",
+      "required": true,
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "geometry": {
-      "type": "Point"
+      "type": "Point",
+      "required": true,
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "year": {
-      "type": "Number"
+      "type": "Number",
+      "required": true,
+      "validate": "isYear",
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "yearEnd": {
-      "type": "Number"
+      "type": "Number",
+      "validate": "isYear",
+      "actions": {
+        "add": true,
+        "update": true
+      }
     },
     "markerIcon": {
       "type": "String"
@@ -24,6 +44,10 @@
     "connections": {
       "type": "[Connection]",
       "propertyMatch": "stations"
+    },
+    "draft": {
+      "type": "Draft",
+      "required": true
     },
     "town": {
       "type": "Town"
