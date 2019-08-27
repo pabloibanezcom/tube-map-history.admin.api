@@ -1,5 +1,5 @@
 {
-  "name": "tubemaphistory.api",
+  "name": "tubemaphistory.admin.api",
   "author": "Pablo Ibanez",
   "version": "1.0.0",
   "private": true,

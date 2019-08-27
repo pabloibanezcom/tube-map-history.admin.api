@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('tube-map-history.api:server');
+var debug = require('debug')('tube-map-history.admin.api:server');
 var http = require('http');
 
 /**
