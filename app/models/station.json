@@ -35,9 +35,6 @@
         "update": true
       }
     },
-    "markerIcon": {
-      "type": "String"
-    },
     "markerColor": {
       "type": "String"
     },

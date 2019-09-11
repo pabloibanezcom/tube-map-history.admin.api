@@ -16,7 +16,7 @@ const draftPopulate = [
   { path: 'town', select: 'name url alias year center zoom imgCard country', populate: { path: 'country', select: 'name code continent' } },
   { path: 'managers', select: 'local firstName lastName title genre country', populate: { path: 'country', select: 'name' } },
   { path: 'lines', select: 'order key name shortName colour fontColour year distance stationsAmount' },
-  { path: 'stations', select: 'name year yearEnd markerIcon markerColor' }
+  { path: 'stations', select: 'name year yearEnd markerColor' }
 ];
 
 const applyCountersToDraft = (draft) => {

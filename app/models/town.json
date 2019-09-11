@@ -10,12 +10,6 @@
         "update": true
       }
     },
-    "isActive": {
-      "type": "Boolean",
-      "actions": {
-        "update": true
-      }
-    },
     "name": {
       "type": "String",
       "required": [
