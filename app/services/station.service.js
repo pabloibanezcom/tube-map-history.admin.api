@@ -32,6 +32,9 @@ service.searchStations = async (modelsService, user, draftId, body) => {
     select: body.select || '',
     populate: body.populate || ''
   };
+  if (body.filter && body.filter._id) {
+    searchParams.filter._id = body.filter._id;
+  }
   if (body.filter && body.filter.name) {
     searchParams.filter.name = { $regex: body.filter.name, $options: 'i' };
   }
