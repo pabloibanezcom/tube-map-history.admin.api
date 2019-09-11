@@ -5,23 +5,6 @@ const defaultSearchBody = require('./defaultRequestBodies/default_search.json');
 
 module.exports = (app, modelsService, passport, modelDefinition) => {
 
-  // const registerGetConnectionsByYearRange = () => {
-  //   const url = '/api/:town/connection/year/:yearTo';
-  //   app.get(url,
-  //     (req, res) => {
-  //       service.getConnectionsByYearRange(modelsService, req.params.town, req.params.yearTo)
-  //         .then(result => res.status(result.statusCode).send(result.data))
-  //         .catch(err => { log500(err); res.status(500).send(err) });
-  //     });
-  //   app.get(`${url}/:yearFrom`,
-  //     (req, res) => {
-  //       service.getConnectionsByYearRange(modelsService, req.params.town, req.params.yearTo, req.params.yearFrom)
-  //         .then(result => res.status(result.statusCode).send(result.data))
-  //         .catch(err => { log500(err); res.status(500).send(err) });
-  //     });
-  //   app.routesInfo['Connection'].push({ model: 'Connection', name: 'Get connections by year range in town', method: 'GET', url: url });
-  // }
-
   const registerSearchConnections = () => {
     const url = '/api/:draftId/connection/search';
     app.post(url,
@@ -82,23 +65,11 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
     app.routesInfo['Connection'].push({ model: 'Connection', name: 'Delete connection', method: 'DELETE', url: url, auth: ['C', 'A'] });
   }
 
-  // const registerUpdateMarkerIconForAllStations = () => {
-  //   const url = '/api/connection/udpate-station-markers';
-  //   app.get(url,
-  //     (req, res) => {
-  //       service.updateMarkerIconForAllStations(modelsService)
-  //         .then(result => res.status(result.statusCode).send(result.data))
-  //         .catch(err => { log500(err); res.status(500).send(err) });
-  //     });
-  // }
-
   app.routesInfo['Connection'] = [];
-  // registerGetConnectionsByYearRange();
   registerSearchConnections();
   registerGetConnectionFullInfo();
   registerAddConnection();
   registerUpdateConnection();
   registerDeleteConnection();
-  // registerUpdateMarkerIconForAllStations();
 
 };

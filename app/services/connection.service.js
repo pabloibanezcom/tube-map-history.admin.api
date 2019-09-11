@@ -7,19 +7,6 @@ const validatePagination = require('../util/validatePagination');
 
 const service = {};
 
-// service.getConnectionsByYearRange = async (modelsService, townIdOrName, yearTo, yearFrom) => {
-//   const townId = await getTown(modelsService, townIdOrName);
-//   if (!townId) {
-//     return { statusCode: 404, data: 'Town not found' };
-//   }
-//   const yearFromQuery = yearFrom ? { $gt: parseInt(yearFrom) - 1 } : null;
-//   const connections = await modelsService.getModel('Connection')
-//     .find({ town: townId, year: { ...yearFromQuery, $lt: parseInt(yearTo) + 1 } })
-//     .populate({ path: 'line', select: 'name shortName colour fontColour' })
-//     .populate({ path: 'stations', select: 'name geometry' })
-//   return { statusCode: 200, data: connections };
-// }
-
 service.searchConnections = async (modelsService, user, draftId, body) => {
   if (!verifyRoles(['U', 'A'], user)) {
     return { statusCode: 401, data: 'Unauthorized' };
@@ -36,6 +23,14 @@ service.searchConnections = async (modelsService, user, draftId, body) => {
     select: body.select || '',
     populate: body.populate || ''
   };
+
+  if (body.filter && body.filter.line) {
+    searchParams.filter.line = body.filter.line;
+  }
+
+  if (body.filter && body.filter.station) {
+    searchParams.filter.stations = body.filter.station;
+  }
 
   let connections = await modelsService.getModel('Connection')
     .find(searchParams.filter)
@@ -55,7 +50,7 @@ service.getConnectionFullInfo = async (modelsService, user, connectionId) => {
     .populate([
       { path: 'town', select: 'name country' },
       { path: 'line', select: 'name shortName colour fontColour' },
-      { path: 'stations', select: 'name year markerIcon' }
+      { path: 'stations', select: 'name year markerColor' }
     ]);
   if (!connection) {
     return { statusCode: 404, data: 'Connection not found' };
@@ -106,7 +101,7 @@ service.addConnection = async (modelsService, user, draftId, connectionObj) => {
 
   const line = await modelsService.getModel('Line').findOne({ _id: connectionObj.line });
 
-  stations.forEach(station => updateMarkerIcon(station, connection, 'add'));
+  stations.forEach(station => updateMarkerColor(station, { ...connection, line: line }, 'add'));
   updateRelationship(false, stations, connection._id);
   updateRelationship(false, [line], connection._id);
 
@@ -224,7 +219,7 @@ service.deleteConnection = async (modelsService, user, connectionId) => {
   const line = await modelsService.getModel('Line').findOne({ _id: connection.line });
   const stations = await modelsService.getModel('Station').find({ '_id': { $in: connection.stations }, 'draft': draft._id }).populate({ path: 'connections', populate: { path: 'line' } });
 
-  stations.forEach(station => updateMarkerIcon(station, connection, 'remove'));
+  stations.forEach(station => updateMarkerColor(station, connection, 'remove'));
   updateRelationship(true, stations, connection._id);
   updateRelationship(true, [line], connection._id);
 
@@ -239,14 +234,6 @@ service.deleteConnection = async (modelsService, user, connectionId) => {
 
   return { statusCode: 200, data: `${connection._id} was removed` };
 }
-
-// service.updateMarkerIconForAllStations = async (modelsService) => {
-//   const stations = await modelsService.getModel('Station').find({}).populate({ path: 'connections', populate: { path: 'line' } });
-//   for (const s of stations) {
-//     await updateMarkerIcon(s);
-//   }
-//   return { statusCode: 200, data: 'Stations markers updated correctly' };
-// }
 
 const updateRelationship = (removeMode, elementsToUpdate, connectionId) => {
   for (const e of elementsToUpdate) {
@@ -263,7 +250,7 @@ const updateRelationship = (removeMode, elementsToUpdate, connectionId) => {
   return;
 }
 
-const updateMarkerIcon = (station, connection, operation) => {
+const updateMarkerColor = (station, connection, operation) => {
   let connections;
   if (operation === 'add') {
     connections = [connection].concat(station.connections);
@@ -272,8 +259,8 @@ const updateMarkerIcon = (station, connection, operation) => {
   } else {
     connections = station.connections.slice(0);
   }
-  const uniqueLines = [...new Set(connections.map(c => { return c.line.key }))];
-  station.markerIcon = uniqueLines.length === 1 ? uniqueLines[0] : 'multiple';
+  const uniqueLineColours = [...new Set(connections.map(c => { return c.line.colour }))];
+  station.markerColor = uniqueLineColours.length === 1 ? uniqueLineColours[0] : '#ffffff';
   return;
 }
 

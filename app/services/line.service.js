@@ -44,7 +44,7 @@ service.getLineFullInfo = async (modelsService, user, lineId) => {
     .select('name key shortName colour fontColour startStations year distance lastModifiedDate lastModifiedUser')
     .populate(
       [
-        { path: 'connections', select: 'stations year yearEnd distance', populate: { path: 'stations', select: 'name markerIcon' } },
+        { path: 'connections', select: 'stations year yearEnd distance', populate: { path: 'stations', select: 'name markerColor' } },
         { path: 'lastModifiedUser', select: 'firstName lastName country' },
         { path: 'created.user', select: 'firstName lastName country' }
       ]

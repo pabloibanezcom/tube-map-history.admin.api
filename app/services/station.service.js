@@ -70,7 +70,7 @@ service.getStationFullInfo = async (modelsService, user, stationId) => {
   const station = await modelsService.getModel('Station')
     .findById(stationId)
     .populate({
-      path: 'connections', populate: [{ path: 'stations', select: 'name year markerIcon' },
+      path: 'connections', populate: [{ path: 'stations', select: 'name year markerColor' },
       { path: 'line', select: 'name shortName colour fontColour' }]
     });
   if (!station) {
@@ -98,7 +98,7 @@ service.addStation = async (modelsService, user, draftId, stationObj) => {
   }
 
   const Station = modelsService.getModel('Station');
-  const station = new Station(addCreatedAndModified({ ...stationObj, draft: draftId, markerIcon: 'multiple' }, user, true));
+  const station = new Station(addCreatedAndModified({ ...stationObj, draft: draftId, markerColor: '#ffffff' }, user, true));
 
   try {
     await station.save();
