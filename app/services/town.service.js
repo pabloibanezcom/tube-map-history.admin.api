@@ -33,7 +33,7 @@ service.getTowns = async (modelsService, user) => {
     .find({})
     .sort("order")
     .populate({ path: "country", select: "name code continent" })
-    .select("order name country url alias year imgCard logo");
+    .select("order center name country url alias year imgCard logo");
   return { statusCode: 200, data: towns };
 };
 
