@@ -12,7 +12,7 @@ service.getOwnUserInfo = async (modelsService, userId) => {
         select: "name description isPublished lines stations connections town",
         populate: {
           path: "town",
-          select: "name url imgCard logo country year",
+          select: "name url center imgCard logo country year",
           populate: { path: "country", select: "code name" }
         }
       },
