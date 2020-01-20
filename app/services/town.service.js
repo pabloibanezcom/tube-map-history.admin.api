@@ -7,7 +7,12 @@ const paginateResults = require("../util/paginateResults");
 
 const service = {};
 
-const draftPopulate = [];
+const draftPopulate = [
+  {
+    path: "country",
+    select: "name code continent"
+  }
+];
 
 service.getTownInfo = async (modelsService, user, townIdOrName) => {
   if (!verifyRoles(["U", "A"], user)) {
