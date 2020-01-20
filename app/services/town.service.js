@@ -1,8 +1,13 @@
-const service = {};
 const getTown = require("../util/getTown");
 const verifyRoles = require("../auth/role-verification");
 const addCreatedAndModified = require("../util/addCreatedAndModified");
 const transformMongooseErrors = require("../util/transformMongooseErrors");
+const validatePagination = require("../util/validatePagination");
+const paginateResults = require("../util/paginateResults");
+
+const service = {};
+
+const draftPopulate = [];
 
 service.getTownInfo = async (modelsService, user, townIdOrName) => {
   if (!verifyRoles(["U", "A"], user)) {
@@ -35,6 +40,37 @@ service.getTowns = async (modelsService, user) => {
     .populate({ path: "country", select: "name code continent" })
     .select("order center name country url alias year imgCard logo");
   return { statusCode: 200, data: towns };
+};
+
+service.searchTowns = async (modelsService, user, body) => {
+  if (!verifyRoles(["U", "A"], user)) {
+    return { statusCode: 401, data: "Unauthorized" };
+  }
+  if (!validatePagination(body.pagination)) {
+    return { statusCode: 400, data: "Bad request: Pagination is wrong format" };
+  }
+
+  const searchParams = {
+    filter: {},
+    sort: body.sort || "",
+    select: body.select || "",
+    populate: body.populate || ""
+  };
+
+  if (body.filter && body.filter.name) {
+    searchParams.filter.name = { $regex: body.filter.name, $options: "i" };
+  }
+
+  let towns = await modelsService
+    .getModel("Town")
+    .find(searchParams.filter)
+    .sort(searchParams.sort)
+    .populate(draftPopulate);
+
+  return {
+    statusCode: 200,
+    data: paginateResults(towns, body.pagination)
+  };
 };
 
 service.addTown = async (modelsService, user, townObj) => {
