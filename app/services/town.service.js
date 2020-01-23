@@ -1,9 +1,11 @@
+const fs = require("fs");
 const getTown = require("../util/getTown");
 const verifyRoles = require("../auth/role-verification");
 const addCreatedAndModified = require("../util/addCreatedAndModified");
 const transformMongooseErrors = require("../util/transformMongooseErrors");
 const validatePagination = require("../util/validatePagination");
 const paginateResults = require("../util/paginateResults");
+const storage = require("../util/storage");
 
 const service = {};
 
@@ -101,10 +103,10 @@ service.addTown = async (modelsService, user, townObj) => {
 };
 
 service.updateTown = async (modelsService, user, townId, townObj) => {
-  const town = await modelsService.getModel("Town").findOne({ _id: townId });
   if (!verifyRoles(["A"], user)) {
     return { statusCode: 401, data: "Unauthorized" };
   }
+  const town = await modelsService.getModel("Town").findOne({ _id: townId });
 
   Object.assign(town, addCreatedAndModified(townObj, user, false));
 
@@ -117,14 +119,58 @@ service.updateTown = async (modelsService, user, townId, townObj) => {
 };
 
 service.deleteTown = async (modelsService, user, townId) => {
-  const town = await modelsService.getModel("Town").findOne({ _id: townId });
   if (!verifyRoles(["A"], user, null, town)) {
     return { statusCode: 401, data: "Unauthorized" };
   }
+  const town = await modelsService.getModel("Town").findOne({ _id: townId });
 
   try {
     await town.remove();
     return { statusCode: 200, data: `${town.name} was removed` };
+  } catch (err) {
+    return { statusCode: 400, data: transformMongooseErrors(err) };
+  }
+};
+
+service.uploadTownImage = async (modelsService, user, townId, files) => {
+  if (!verifyRoles(["A"], user)) {
+    return { statusCode: 401, data: "Unauthorized" };
+  }
+  if (!files) {
+    return { statusCode: 400, data: "You must post at least an image" };
+  }
+  const town = await modelsService.getModel("Town").findOne({ _id: townId });
+
+  const uplodadAndSaveUrl = async files => {
+    if (!fs.existsSync(`temp/${town.url}`)) {
+      fs.mkdirSync(`temp/${town.url}`);
+    }
+
+    Object.keys(files).map(fileName => {
+      const tempFilePath = `temp/${town.url}/${fileName}`;
+      files[fileName].mv(tempFilePath, async err => {
+        if (err) {
+          return { statusCode: 500, data: err };
+        }
+
+        town[fileName] = await storage.uploadAndGetUrl(
+          tempFilePath,
+          `/${fileName}/${town.url}`
+        );
+
+        fs.unlinkSync(tempFilePath);
+      });
+    });
+  };
+
+  try {
+    await uplodadAndSaveUrl(files);
+    town.lastModified = { date: Date.now(), user: user._id };
+    await town.save();
+    return {
+      statusCode: 200,
+      data: `All images for ${town.name} were uploaded`
+    };
   } catch (err) {
     return { statusCode: 400, data: transformMongooseErrors(err) };
   }
