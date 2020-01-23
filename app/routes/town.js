@@ -161,6 +161,35 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
     });
   };
 
+  const registerUploadTownImage = () => {
+    const url = "/api/town/image/:townId";
+    app.post(
+      url,
+      passport.authenticate("local-user", { session: false }),
+      (req, res) => {
+        service
+          .uploadTownImage(
+            modelsService,
+            req.user,
+            req.params.townId,
+            req.files
+          )
+          .then(result => res.status(result.statusCode).send(result.data))
+          .catch(err => {
+            log500(err);
+            res.status(500).send(err);
+          });
+      }
+    );
+    app.routesInfo["Town"].push({
+      model: "Town",
+      name: "Upload town image",
+      method: "POST",
+      url: url,
+      auth: ["A"]
+    });
+  };
+
   app.routesInfo["Town"] = [];
   registerGetTowns();
   registerSearchTowns();
@@ -168,4 +197,5 @@ module.exports = (app, modelsService, passport, modelDefinition) => {
   registerAddTown();
   registerUpdateTown();
   registerDeleteTown();
+  registerUploadTownImage();
 };
